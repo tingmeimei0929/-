@@ -2,179 +2,245 @@
   position: relative;
   width: 100%;
   height: 140px;
-}
 
-.topbar {
-  position: relative;
-  width: 100%;
-  height: 40px;
-  background-color: #333;
-  color: #b0b0b0;
-  font-size: 12px;
-  z-index: 30px;
+  .topbar {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color: #333;
+    color: #b0b0b0;
+    font-size: 12px;
+    z-index: 30px;
 
-  .container {
-    width: 1226px;
-    margin-left: auto;
-    margin-right: auto;
-
-    li {
-      float: left;
-      text-align: center;
-      height: 40px;
-      line-height: 40px;
-
-      a {
-        font-size: 12px;
-        color: #b0b0b0;
-      }
-
-      a:hover {
-        color: #fff;
-        cursor: pointer;
-      }
-
-      .sep {
-        font-family: sans-serif;
-        margin: 0 .4em;
-        color: #424242;
-      }
-
-    }
-
-
-    .topbar-list {
-      display: block;
-      float: left;
-      height: 40px;
-      line-height: 40px;
-    }
-
-    .topbar-info {
-      position: relative;
-      display: block;
-      float: right;
-      height: 40px;
-      line-height: 40px;
-
-      li {
-        &.cartLi {
-          display: block;
-          width: 120px;
-          margin-left: 10px;
-          background-color: #424242;
-        }
-
-        i {
-          padding: 0 .4em;
-        }
-      }
-    }
-  }
-}
-
-
-.nav {
-  position: relative;
-  height: 100px;
-  border-bottom: 1px solid #000;
-
-  .container {
-    width: 1226px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 16px;
-
-    .nav-logo {
-      width: 62px;
-      float: left;
-      margin-top: 22px;
-
-      .logo {
-        position: relative;
-        display: block;
-        width: 55px;
-        height: 55px;
-        overflow: hidden;
-        background: url('https://s02.mifile.cn/assets/static/image/mi-logo.png') no-repeat 50% 50%;
-        background-color: #ff6700;
-        text-align: center;
-
-
-        img {
-          display: block;
-          margin: 0 auto;
-        }
-      }
-
-    }
-
-    .nav-list {
-      width: 850px;
-      float: left;
-      display: block;
+    .container {
+      width: 1226px;
+      margin-left: auto;
+      margin-right: auto;
 
       li {
         float: left;
-
-        &.nav-title {
-          width: 165px;
-          height: 100px;
-          line-height: 100px;
-
-          img {
-            margin-top: 20px;
-          }
-        }
-
-        &.nav-link {
-          display: block;
-          padding: 38px 12px;
-        }
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
 
         a {
-          color: #333;
+          font-size: 12px;
+          color: #b0b0b0;
         }
 
         a:hover {
+          color: #fff;
           cursor: pointer;
-          color: #ff6700;
         }
-      }
-    }
 
-    .search {
-      width: 296px;
-      float: right;
-      margin-top: 25px;
-      height: 50px;
-
-      input {
-        float: left;
-        width: 223px;
-        height: inherit;
-        line-height: 48px;
-        padding: 0 10px;
-        font-size: 14px;
-        border: 1px solid #e0e0e0
-      }
-
-      .btn {
-        float: left;
-        width: 52px;
-        height: inherit;
-        border: 1px solid #e0e0e0;
-        line-height: 24px;
-        background: #fff;
-
-        i {
-          font-size: 26px;
+        .sep {
+          font-family: sans-serif;
+          margin: 0 .4em;
+          color: #424242;
         }
+
       }
 
-      .btn:hover {
-        background: #ff6700;
+
+      .topbar-list {
+        display: block;
+        float: left;
+        height: 40px;
+        line-height: 40px;
+      }
+
+      .topbar-info {
+        position: relative;
+        display: block;
+        float: right;
+        height: 40px;
+        line-height: 40px;
+
+        li {
+          &.cartLi {
+            display: block;
+            width: 120px;
+            margin-left: 10px;
+            background-color: #424242;
+          }
+
+          i {
+            padding: 0 .4em;
+          }
+        }
       }
     }
   }
+
+
+  .nav {
+    position: relative;
+    width: 100%;
+    height: 100px;
+
+    .container {
+      width: 1226px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 16px;
+
+      .nav-logo {
+        width: 62px;
+        float: left;
+        margin-top: 22px;
+
+        .logo {
+          position: relative;
+          display: block;
+          width: 55px;
+          height: 55px;
+          overflow: hidden;
+          background: url('https://s02.mifile.cn/assets/static/image/mi-logo.png') no-repeat 50% 50%;
+          background-color: #ff6700;
+          text-align: center;
+
+
+          img {
+            display: block;
+            margin: 0 auto;
+          }
+        }
+
+      }
+
+      .nav-list {
+        width: 850px;
+        float: left;
+        display: block;
+
+        li {
+          float: left;
+
+          &.nav-title {
+            width: 165px;
+            height: 100px;
+            line-height: 100px;
+
+            img {
+              margin-top: 20px;
+            }
+          }
+
+          &.nav-link,
+          &.nav-menu {
+            display: block;
+            padding: 38px 12px;
+          }
+
+          a {
+            color: #333;
+          }
+
+          a:hover {
+            cursor: pointer;
+            color: #ff6700;
+          }
+        }
+      }
+
+      .search {
+        width: 296px;
+        float: right;
+        margin-top: 25px;
+        height: 50px;
+
+        input {
+          float: left;
+          width: 223px;
+          height: inherit;
+          line-height: 48px;
+          padding: 0 10px;
+          font-size: 14px;
+          border: 1px solid #e0e0e0
+        }
+
+        .btn {
+          float: left;
+          width: 52px;
+          height: inherit;
+          border: 1px solid #e0e0e0;
+          line-height: 24px;
+          background: #fff;
+
+          i {
+            font-size: 26px;
+          }
+        }
+
+        .btn:hover {
+          background: #ff6700;
+        }
+      }
+    }
+  }
+
+
+  .children {
+    position: relative;
+    display: inline-block;
+    z-index: 9999px;
+    width: 100%;
+    height: 200px;
+    border-top: 1px solid #ccc;
+    background-color: #ff6700;
+
+    .item-children {
+      position: relative;
+      width: 1226px;
+      margin-left: auto;
+      margin-right: auto;
+
+      .item-detaile {
+        display: block;
+        width: 200px;
+        height: 250px;
+        float: left;
+
+        a {
+          display: block;
+          margin: 20px 0;
+          width: 200px;
+          height: 210px;
+          color: #333;
+          font-size: 12px;
+          text-align: center;
+
+          .item-img {
+            width: 200px;
+            height: 110px;
+            border-right: 1px solid #ccc;
+
+
+            &.last-item {
+              border-right: 1px solid transparent;
+            }
+
+            img {
+              width: 160px;
+              height: 110px;
+              margin-left: auto;
+              margin-right: auto;
+            }
+          }
+
+          .item-title {
+            margin-top: 10px;
+          }
+
+          .item-price {
+            margin-top: 5px;
+            color: #ff6700;
+          }
+        }
+      }
+
+
+    }
+  }
+
 }
