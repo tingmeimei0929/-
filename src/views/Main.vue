@@ -3,36 +3,25 @@
     <navHeader></navHeader>
     <main class="main">
       <div class="container">
-        <swiper :options="swiperOption"
-                ref="mySwiper"
-                class="swiper-container">
-          <swiper-slide v-for="(item,index) in swiperInfo"
-                        :key="index">
-            <a :href="item.href"><img :src="item.imgSrc"></a>
-          </swiper-slide>
-          <!-- 上一页 -->
-          <div class="swiper-button-prev"
-               slot="button-prev"></div>
-          <!-- 下一页 -->
-          <div class="swiper-button-next"
-               slot="button-next"></div>
-          <!-- 分页 -->
-          <div class="swiper-pagination"
-               slot="pagination"></div>
-        </swiper>
-        <ul class="category-item">
-          <li><a>手机 电话卡 <i class="el-icon-aliqianjinxiayige"></i></a></li>
-          <li><a>电视 盒子 <i class="el-icon-aliqianjinxiayige"></i></a></li>
-          <li><a>笔记本 显示器 平板 <i class="el-icon-aliqianjinxiayige"></i></a></li>
-          <li><a>家电 插线板 <i class="el-icon-aliqianjinxiayige"></i></a></li>
-          <li><a>出行 穿戴<i class="el-icon-aliqianjinxiayige"></i></a></li>
-          <li><a>智能 路由器 <i class="el-icon-aliqianjinxiayige"></i></a></li>
-          <li><a>电源 配件 <i class="el-icon-aliqianjinxiayige"></i></a></li>
-          <li><a>健康 儿童 <i class="el-icon-aliqianjinxiayige"></i></a></li>
-          <li><a>耳机 音箱 <i class="el-icon-aliqianjinxiayige"></i></a></li>
-          <li><a>生活 箱包 <i class="el-icon-aliqianjinxiayige"></i></a></li>
-        </ul>
-        <div class="category-info"></div>
+        <div class="home-row">
+          <div class="home-left">
+            <ul class="home-ul .clearfix">
+              <li><a href="https://www.mi.com/seckill/"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48">小米秒杀</a></li>
+              <li class="li-after"><a href="https://qiye.mi.com/"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/806f2dfb2d27978e33fe3815d3851fa3.png?w=48&h=48">企业团购</a></li>
+              <li class="li-after"><a href="https://www.mi.com/order/fcode"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/eded6fa3b897a058163e2485532c4f10.png?w=48&h=48">F码通道</a></li>
+            </ul>
+            <ul class="home-ul clearfix">
+              <li><a href="https://www.mi.com/mimobile/"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43a3195efa6a3cc7662efed8e7abe8bf.png?w=48&h=48">米粉卡</a></li>
+              <li class="li-after"><a href="https://huanxin.mi.com/"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f4846bca6010a0deb9f85464409862af.png?w=48&h=48">以旧换新</a></li>
+              <li class="li-after"><a href="https://recharge.10046.mi.com/"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9a76d7636b08e0988efb4fc384ae497b.png?w=48&h=48">话费充值</a></li>
+            </ul>
+          </div>
+          <ul class="home-right">
+            <li><a href="http://www.mi.com/redminote8"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/35a2239e10e392af73b6b7a737a039d6.jpg?w=632&h=340"></a></li>
+            <li><a href="https://item.mi.com/product/10000203.html?selected=10000203"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fbff319c7dd00e75c9758acf248d3784.jpg?w=632&h=340"></a></li>
+            <li><a href="https://www.mi.com/shouhuan4/"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/816a66edef10673b4768128b41804cae.jpg?w=632&h=340"></a></li>
+          </ul>
+        </div>
       </div>
     </main>
 
@@ -43,76 +32,22 @@
 <script>
 import navHeader from '../components/Header'
 import navFooter from '../components/Footer'
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
-import '../assets/swiper/css/swiper.css'
+
 export default {
   name: "Main",
   components: {
     navHeader,
     navFooter,
-    Swiper,
-    SwiperSlide
-  },
-  directives: {
-    swiper: directive
   },
   data () {
     return {
-      swiperInfo: [
-        {
-          imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a7c2a3fec92ad95435f8ab8d8407db6c.jpg?thumb=1&w=2452&h=920&f=webp&q=90",
-          href: "https://www.mi.com/a/h/15490.html"
-        },
-        {
-          imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7e882fcbdcafc352dde03c741836399b.jpg?thumb=1&w=2452&h=920&f=webp&q=90",
-          href: "https://www.mi.com/a/h/15490.html"
-        },
-        {
-          imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/400f15aedf3b2981c462e8811e88d384.jpg?w=2452&h=920",
-          href: "https://www.mi.com/a/h/15490.html"
-        },
-        {
-          imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f306ce6727f8166fd97730c5876bfadc.jpg?thumb=1&w=2452&h=920&f=webp&q=90",
-          href: "https://www.mi.com/a/h/15490.html"
-        },
-        {
-          imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1b5bc9a947319a1d7424cb209c632b7d.jpg?thumb=1&w=2452&h=920&f=webp&q=90",
-          href: "https://www.mi.com/a/h/15490.html"
-        }
-      ],
-      swiperOption: {
-        notNextTick: true,
-        loop: true,
-        initialSlide: 0,
-        autoplay: true,
-        speed: 800,
 
-        //左右点击
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
 
-        //分页器设置 
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-          type: "bullets"
-        },
-
-      }
     }
   },
-  computed: {
-    swiper () {
-      return this.$refs.mySwiper.swiper
-    }
-  },
-  mounted () {
-    console.log('this is current swiper instance object', this.swiper);
-    this.swiper.slideTo(3, 1000, false)
+  methods: {
+
   }
-
 }
 </script>
   
