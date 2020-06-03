@@ -49,12 +49,12 @@
                          v-for="item in flashList"
                          :key="item">
                       <div class="thumb">
-                        <img :src="imgSrc"
+                        <img :src="item.imgSrc"
                              style="width:160px; height:160px">
                       </div>
-                      <h3 class="content-title">{{title}}</h3>
-                      <p class="desc">{{desc}}</p>
-                      <p class="price">{{newPrice}}<span>{{oldPrice}}</span></p>
+                      <h3 class="content-title">{{item.title}}</h3>
+                      <p class="desc">{{item.desc}}</p>
+                      <p class="price">{{item.newPrice}}<span>{{item.oldPrice}}</span></p>
                     </div>
                   </a></li>
 
