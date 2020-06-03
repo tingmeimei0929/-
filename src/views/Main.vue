@@ -3,7 +3,7 @@
     <navHeader></navHeader>
     <main class="main">
       <div class="container">
-        <div class="home-row">
+        <div class="home-row row">
           <div class="home-left">
             <ul class="home-ul .clearfix">
               <li><a href="https://www.mi.com/seckill/"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48">小米秒杀</a></li>
@@ -22,6 +22,46 @@
             <li><a href="https://www.mi.com/shouhuan4/"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/816a66edef10673b4768128b41804cae.jpg?w=632&h=340"></a></li>
           </ul>
         </div>
+        <div class="flash-sale row">
+          <div class="flash-title">
+            <h2>小米闪购</h2>
+            <div class="btn">
+              <!-- 上一页 -->
+              <div class="swiper-button-prev"
+                   slot="button-prev"></div>
+              <!-- 下一页 -->
+              <div class="swiper-button-next"
+                   slot="button-next"></div>
+            </div>
+          </div>
+          <div class="falsh-container">
+            <div class="flash-timer">
+              <h3>14:00场</h3>
+              <img src="../assets/image/falsh.jpg">
+              <h2>距离结束还有</h2>
+              <div class="timer"></div>
+            </div>
+            <div class="falsh-swiper">
+              <ul class="swiper-container"
+                  v-swiper:mySwiper="swiperOptions">
+                <li class="swiper-wrapper"><a href="#">
+                    <div class="swiper-slide"
+                         v-for="item in flashList"
+                         :key="item">
+                      <div class="thumb">
+                        <img :src="imgSrc"
+                             style="width:160px; height:160px">
+                      </div>
+                      <h3 class="content-title">{{title}}</h3>
+                      <p class="desc">{{desc}}</p>
+                      <p class="price">{{newPrice}}<span>{{oldPrice}}</span></p>
+                    </div>
+                  </a></li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 
@@ -32,22 +72,57 @@
 <script>
 import navHeader from '../components/Header'
 import navFooter from '../components/Footer'
-
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import '../assets/swiper/css/swiper.css'
 export default {
   name: "Main",
+  data () {
+    return {
+      swiperOptions: {
+        notNextTick: true,
+        loop: true,
+        initialSlide: 0,
+        autoplay: true,
+        speed: 800,
+
+        //左右点击
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }
+
+      },
+      flashList: '',
+    }
+  },
   components: {
     navHeader,
     navFooter,
+    Swiper,
+    SwiperSlide
   },
-  data () {
-    return {
-
-
+  directives: {
+    swiper: directive
+  },
+  computed: {
+    swiper () {
+      return this.$refs.mySwiper.swiper
     }
   },
+  mounted () {
+    console.log('this is current swiper instance object', this.swiper);
+    this.swiper.slideTo(3, 1000, false);
+    this.init();
+  },
   methods: {
-
+    init () {
+      this.axios.get("/mock/flashSwiper.json").then((response) => {
+        let res = response.data;
+        this.flashList = res.data;
+      })
+    }
   }
+
 }
 </script>
   

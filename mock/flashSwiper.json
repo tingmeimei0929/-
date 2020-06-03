@@ -1,0 +1,70 @@
+{
+  "code": 0,
+  "data": [{
+      "href": "//www.mi.com/seckill/",
+      "imgSrc": "//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1581498837.11654651.jpg?thumb=1&w=400&h=400",
+      "title": "米家电动剃须刀 往复五刀头 黑色",
+      "desc": "五把刀头，三种刀型",
+      "newPrice": "399元",
+      "oldPrice": "499元"
+    },
+    {
+      "href": "//www.mi.com/seckill/",
+      "imgSrc": "//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1565167272.03476367.jpg?thumb=1&w=400&h=400",
+      "title": "小米简约休闲双肩包 黄色",
+      "desc": "这一次，“轻”装上阵",
+      "newPrice": "79元",
+      "oldPrice": "99元"
+    },
+    {
+      "href": "//www.mi.com/seckill/",
+      "imgSrc": "//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1560158394.03015626.jpg?thumb=1&w=400&h=400",
+      "title": "小米中性笔 10支装 白色",
+      "desc": "简约设计，丝滑书写",
+      "newPrice": "19.9元",
+      "oldPrice": "24.9元"
+    },
+    {
+      "href": "//www.mi.com/seckill/",
+      "imgSrc": "//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1553831369.32792610.jpg?thumb=1&w=400&h=400",
+      "title": "20英寸旅行箱 灰色 20寸",
+      "desc": "一款坚固的旅行箱伴您左右",
+      "newPrice": "249元",
+      "oldPrice": "299元"
+    },
+    {
+      "href": "//www.mi.com/seckill/",
+      "imgSrc": "//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1545878140.49791294.jpg?thumb=1&w=400&h=400",
+      "title": "米兔儿童书包2 小号 深蓝色",
+      "desc": "校园生活好伴侣",
+      "newPrice": "399元",
+      "oldPrice": "499元"
+    },
+    {
+      "href": "//www.mi.com/seckill/",
+      "imgSrc": "//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1583380235.83829825.jpg?thumb=1&w=400&h=400",
+      "title": "悦米YM人体工学椅 白色",
+      "desc": "健康坐姿，舒适体验",
+      "newPrice": "599元",
+      "oldPrice": "659元"
+    },
+    {
+      "href": "//www.mi.com/seckill/",
+      "imgSrc": "//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1573031970.47458207.jpg?thumb=1&w=400&h=400",
+      "title": "小米随身蓝牙音箱 无线立体声2个装 黑色",
+      "desc": "随身随地享受震撼立体声",
+      "newPrice": "1399元",
+      "oldPrice": "1499元"
+    },
+    {
+      "href": "//www.mi.com/seckill/",
+      "imgSrc": "//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1553778518.87814930.jpg?thumb=1&w=400&h=400",
+      "title": "小米旅行箱 24英寸 灰色 24寸",
+      "desc": "一款坚固的旅行箱伴您左右",
+      "newPrice": "1299元",
+      "oldPrice": "1399元"
+    }
+
+  ],
+  "message": ""
+}

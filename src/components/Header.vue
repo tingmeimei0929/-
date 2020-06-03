@@ -48,18 +48,15 @@
           <li class="nav-menu"><a href="">社区</a></li>
         </ul>
         <div class="search">
-          <select size="1">
-            <option v-for="item in selectDate"
-                    :key="item">{{item}}</option>
-          </select>
+          <input type="text"
+                 :placeholder="inputDate">
           <button type="primary"
                   class="btn"><i class="el-icon-alichaxun"></i></button>
         </div>
       </div>
     </div>
     <div class="swiper">
-      <div class="children"
-           v-show="isShow">
+      <div class="children">
         <ul class="item-children">
           <li class="item-detaile">
             <a href="https://www.mi.com/buy?product_id=10000213">
@@ -337,7 +334,7 @@ export default {
   name: "Header",
   data () {
     return {
-      selectDate: ["小米10", "Redmi Note 8", "小米CC9", "黑鲨游戏手机", "小米电视", "小米笔记本", "路由器", "小爱音箱", "净水器"],
+      inputDate: ["小米10", "Redmi Note 8", "小米CC9", "黑鲨游戏手机", "小米电视", "小米笔记本", "路由器", "小爱音箱", "净水器"],
       swiperInfo: [
         {
           imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a7c2a3fec92ad95435f8ab8d8407db6c.jpg?thumb=1&w=2452&h=920&f=webp&q=90",
@@ -396,7 +393,7 @@ export default {
   computed: {
     swiper () {
       return this.$refs.mySwiper.swiper
-    },
+    }
   },
   mounted () {
     console.log('this is current swiper instance object', this.swiper);
@@ -406,6 +403,7 @@ export default {
     // 轮播list
     showDetails () {
       this.showList = true;
+      document.getElementsByClassName('children').display = block;
       this.axios.post("/mock/category.json").then((response) => {
         console.log(response)
         let res = response.data;
