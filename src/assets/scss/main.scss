@@ -415,6 +415,7 @@
                 height: 300px;
                 background-color: #fff;
 
+
                 a {
                   color: #757575;
 
@@ -463,9 +464,15 @@
               li:last-child {
                 margin-right: 0;
               }
-            }
 
+              li:hover {
+                transition: all linear 2s;
+              }
+
+
+            }
           }
+
         }
       }
     }

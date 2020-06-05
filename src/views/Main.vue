@@ -33,7 +33,6 @@
             <!-- 下一页 -->
             <div class="swiper-button-next btn"
                  slot="button-next"></div>
-
           </div>
           <div class="falsh-container">
             <div class="flash-timer">
@@ -221,7 +220,7 @@ export default {
   name: "Main",
   data () {
     return {
-      isEnd: false,
+      index: 0,
       day: '',
       hours: 0,
       minute: 0,
@@ -257,7 +256,7 @@ export default {
       return this.$refs.mySwiper.swiper
     }
   },
-  mounted () {
+  mounted: function () {
     console.log('Current Swiper instance object', this.mySwiper)
     this.mySwiper.slideTo(3, 1000, false)
     this.init();
@@ -274,7 +273,7 @@ export default {
       })
     },
     countdown () {
-      const end = Date.parse(new Date('2020-6-4 16:00:00'))
+      const end = Date.parse(new Date('2020-6-5 16:00:00'))
       // 定义当前时间戳
       const now = Date.parse(new Date())
       // 做判断当倒计时结束时都为0
@@ -302,10 +301,13 @@ export default {
 
       // 使用定时器 然后使用递归 让每一次函数能调用自己达到倒计时的效果
       setInterval(() => {
-        that, countdown()
+        that.countdown()
       }, 1000);
 
     }
+  },
+  beforeDestroy () {
+    clearTimeout(this.countdown);
   }
 
 }

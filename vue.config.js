@@ -9,7 +9,8 @@ module.exports = {
         target: 'http://localhost:8080',
         ws: false,
         // 将主机头的原点改为目标的URL
-        changeOrigin: false
+        changeOrigin: false,
+        "secure": false
       }
     }
   }
