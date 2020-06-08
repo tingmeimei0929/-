@@ -18,7 +18,7 @@
           <li><a href="javascript:;">Select Location</a></li>
         </ul>
         <ul class="topbar-info">
-          <li>登录 <span class="sep">|</span></li>
+          <li @click="login">登录 <span class="sep">|</span></li>
           <li>注册 <span class="sep">|</span></li>
           <li>消息通知</li>
           <li class="cartLi">
@@ -100,10 +100,20 @@
           <li class="nav-menu"><a href="">社区</a></li>
         </ul>
         <div class="search">
-          <input type="text"
-                 :placeholder="inputDate">
+          <div class="result-list">
+            <input type="text"
+                   v-for="(item,index) in inputDate"
+                   v-model="inputDate[index]"
+                   :key="index">
+            <ul v-for="(item,index) in inputDate"
+                :key="index"
+                class="searchList">
+              <li><a>{{item}}</a></li>
+            </ul>
+          </div>
           <button type="primary"
                   class="btn"><i class="el-icon-alichaxun"></i></button>
+
         </div>
       </div>
     </div>
@@ -115,8 +125,9 @@
                   ref="mySwiper"
                   class="swiper-container">
             <swiper-slide v-for="(item,index) in swiperInfo"
-                          :key="index">
-              <a :href="item.href"><img :src="item.imgSrc"></a>
+                          :key="index"
+                          :style="item.icon">
+              <a :href="item.href"></a>
             </swiper-slide>
             <!-- 上一页 -->
             <div class="swiper-button-prev"
@@ -446,24 +457,49 @@ export default {
       inputDate: ["小米10", "Redmi Note 8", "小米CC9", "黑鲨游戏手机", "小米电视", "小米笔记本", "路由器", "小爱音箱", "净水器"],
       swiperInfo: [
         {
-          imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a7c2a3fec92ad95435f8ab8d8407db6c.jpg?thumb=1&w=2452&h=920&f=webp&q=90",
-          href: "https://www.mi.com/a/h/15490.html"
+          'icon': {
+            backgroundImage: "url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a7c2a3fec92ad95435f8ab8d8407db6c.jpg?thumb=1&w=2452&h=920&f=webp&q=90)",
+            backgroundSize: "cover",
+            backgroundposition: "center",
+            backgroundRepeat: "no-repeat",
+          },
+          "href": "https://www.mi.com/a/h/15490.html"
         },
         {
-          imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7e882fcbdcafc352dde03c741836399b.jpg?thumb=1&w=2452&h=920&f=webp&q=90",
-          href: "https://www.mi.com/a/h/15490.html"
+          'icon': {
+            backgroundImage: "url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7e882fcbdcafc352dde03c741836399b.jpg?thumb=1&w=2452&h=920&f=webp&q=90)",
+            backgroundSize: "cover",
+            backgroundposition: "center",
+            backgroundRepeat: "no-repeat",
+          },
+          "href": "https://www.mi.com/a/h/15490.html"
         },
         {
-          imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/400f15aedf3b2981c462e8811e88d384.jpg?w=2452&h=920",
-          href: "https://www.mi.com/a/h/15490.html"
+          'icon': {
+            backgroundImage: "url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/400f15aedf3b2981c462e8811e88d384.jpg?w=2452&h=920)",
+            backgroundSize: "cover",
+            backgroundposition: "center",
+            backgroundRepeat: "no-repeat",
+          },
+          "href": "https://www.mi.com/a/h/15490.html"
         },
         {
-          imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f306ce6727f8166fd97730c5876bfadc.jpg?thumb=1&w=2452&h=920&f=webp&q=90",
-          href: "https://www.mi.com/a/h/15490.html"
+          'icon': {
+            backgroundImage: "url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f306ce6727f8166fd97730c5876bfadc.jpg?thumb=1&w=2452&h=920&f=webp&q=90)",
+            backgroundSize: "cover",
+            backgroundposition: "center",
+            backgroundRepeat: "no-repeat",
+          },
+          "href": "https://www.mi.com/a/h/15490.html"
         },
         {
-          imgSrc: "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1b5bc9a947319a1d7424cb209c632b7d.jpg?thumb=1&w=2452&h=920&f=webp&q=90",
-          href: "https://www.mi.com/a/h/15490.html"
+          'icon': {
+            backgroundImage: "url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1b5bc9a947319a1d7424cb209c632b7d.jpg?thumb=1&w=2452&h=920&f=webp&q=90)",
+            backgroundSize: "cover",
+            backgroundposition: "center",
+            backgroundRepeat: "no-repeat",
+          },
+          "href": "https://www.mi.com/a/h/15490.html"
         }
       ],
       swiperOption: {
@@ -509,25 +545,10 @@ export default {
     this.swiper.slideTo(3, 1000, false)
   },
   methods: {
-    // 轮播list
-    showDetails () {
-      this.showList = true;
-      document.getElementsByClassName('children').display = block;
-      this.axios.post("/mock/category.json").then((response) => {
-        console.log(response)
-        let res = response.data;
-        this.categoryList = res.data;
-        console.log('categoryList')
+    login () {
+      this.$router.push({
+        path: '/Login'
       })
-    },
-    hiddenDetails () {
-      this.showList = false;
-    },
-    toggleShow () {
-      this.isShow = true;
-    },
-    toggleHidden () {
-      this.isShow = false;
     }
 
   }

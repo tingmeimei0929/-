@@ -12,8 +12,8 @@ import "./assets/scss/iconfont.css"
 import "../src/assets/scss/main.scss"
 import "../src/assets/scss/header.scss"
 import "../src/assets/scss/footer.scss"
+import "../src/assets/scss/login.scss"
 import '../node_modules/swiper/css/swiper.min.css'
-
 
 
 Vue.use(VueAwesomeSwiper)
