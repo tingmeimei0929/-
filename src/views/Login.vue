@@ -54,10 +54,10 @@
     </div>
     <div class="bottom">
       <ul>
-        <li><a class="font-type">简体</a></li>
-        <li><a>繁体</a></li>
-        <li><a>English</a></li>
-        <li><a>常见问题</a></li>
+        <li><a class="font-type">简体</a><i class="el-icon-alivertical_line"></i></li>
+        <li><a>繁体</a><i class="el-icon-alivertical_line"></i></li>
+        <li><a>English</a><i class="el-icon-alivertical_line"></i></li>
+        <li><a>常见问题</a><i class="el-icon-alivertical_line"></i></li>
         <li><a class="privacy">隐私设置</a></li>
       </ul>
       <p>小米公司版权所有-京ICP备10046444-<img src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png">京公网安备11010802020134-京ICP证110507号</p>

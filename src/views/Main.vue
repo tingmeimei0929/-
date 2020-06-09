@@ -34,7 +34,7 @@
             <div class="swiper-button-next btn"
                  slot="button-next"></div>
           </div>
-          <div class="falsh-container">
+          <div class="flash-container">
             <div class="flash-timer">
               <h3>14:00场</h3>
               <img src="../assets/image/falsh.jpg">
@@ -47,7 +47,7 @@
                 <div class="timeruning">{{seconds}}</div>
               </div>
             </div>
-            <div class="falsh-swiper">
+            <div class="flash-swiper">
               <ul class="swiper-container"
                   v-swiper:mySwiper="swiperOptions"
                   ref="mySwiper">
@@ -259,19 +259,19 @@ export default {
   mounted: function () {
     console.log('Current Swiper instance object', this.mySwiper)
     this.mySwiper.slideTo(3, 1000, false)
-    this.init();
+    // this.init();
     this.countdown();
   },
   methods: {
-    init () {
-      this.axios.get("/mock/flashSwiper.json").then((response) => {
-        alert('kkk')
-        console.log(response)
-        let res = response.data;
-        this.flashList = res.data;
-        console.log(flashList)
-      })
-    },
+    // init () {
+    //   this.axios.get("/mock/flashSwiper.json").then((response) => {
+    //     alert('kkk')
+    //     console.log(response)
+    //     let res = response.data;
+    //     this.flashList = res.data;
+    //     console.log(flashList)
+    //   })
+    // },
     countdown () {
       const end = Date.parse(new Date('2020-6-5 16:00:00'))
       // 定义当前时间戳

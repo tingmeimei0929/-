@@ -1,0 +1,240 @@
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  background-color: #f9f9f9;
+  font-size: 14px;
+
+  .layout-main {
+    width: 854px;
+    margin: 0 auto;
+    background-color: #fff;
+    position: relative;
+
+    .layout-logo {
+      margin: 0 auto;
+      width: 62px;
+
+
+      .logo {
+        position: relative;
+        display: block;
+        width: 49px;
+        height: 48px;
+        cursor: default;
+        overflow: hidden;
+        background: url('https://s02.mifile.cn/assets/static/image/mi-logo.png') no-repeat 50% 50%;
+        background-color: #ff6700;
+        text-align: center;
+
+
+        img {
+          display: block;
+          margin: 0 auto;
+        }
+      }
+
+    }
+
+    .layout-title {
+      width: inherit;
+      height: 45px;
+      line-height: 45px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: normal;
+      color: #333;
+      margin-top: 40px;
+    }
+
+    .layout-table {
+      width: inherit;
+      height: 387px;
+
+      .regbox {
+        width: 332px;
+        padding: 30px 0;
+        line-height: 20px;
+        margin: 0 auto;
+        font-size: 14px;
+
+        h4 {
+          width: inherit;
+          height: 25px;
+          line-height: 25px;
+          text-align: start;
+          padding-bottom: 5px;
+          color: #333;
+          font-weight: normal;
+        }
+
+        .regbox-select {
+          position: relative;
+          width: inherit;
+          height: 42px;
+          overflow: hidden;
+
+          .select-block {
+            width: inherit;
+            height: 42px;
+            border: 1px solid #e8e8e8;
+            cursor: pointer;
+
+            .block-main {
+              float: left;
+              width: 275px;
+              height: 42px;
+              line-height: 42px;
+              margin-left: 14px;
+              border-right: 1px solid #e8e8e8;
+
+              &.phone {
+                width: 74px !important;
+                margin-left: 10px !important;
+                padding: 0 9px;
+                text-align: center;
+
+                P {
+                  float: left;
+                }
+
+                i {
+                  display: block;
+                  float: left;
+                  margin: 17px 0 0 10px;
+                  width: 0;
+                  height: 0;
+                  line-height: 0;
+                  font-size: 0;
+                  border-width: 5px;
+                  border-style: solid;
+                  border-color: #9d9d9d transparent transparent transparent;
+                }
+              }
+            }
+
+            .block-aside {
+              float: right;
+              background: url(https://account.xiaomi.com/static/res/0eeaaed/passport/oauth/images/icon_user.png);
+              width: 16px;
+              height: 16px;
+              margin: 11px 12px 0 12px;
+            }
+
+            .aside-phone {
+              display: block;
+              float: right;
+              width: 236px;
+              height: 40px;
+              border: none;
+            }
+
+          }
+
+          .country-list {
+            width: inherit;
+            background: #fff;
+            height: 270px;
+            line-height: 30px;
+            border: 1px solid #e8e8e8;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: absolute;
+            left: 0;
+            top: 42px;
+            z-index: 98;
+          }
+        }
+
+        .regbox-select:hover {
+          height: 320px;
+          border: 1px solid #e8e8e8;
+        }
+
+
+
+        .small {
+          width: inherit;
+          height: 20px;
+          font-size: 14px;
+          color: #666666;
+          text-align: start;
+          margin-top: 10px;
+          margin-bottom: 15px;
+        }
+      }
+
+      .privacy_box {
+        width: inherit;
+        color: #9d9d9d;
+        padding-top: 40px;
+        text-align: center;
+        background-color: rebeccapurple;
+      }
+    }
+  }
+
+
+  .layout-bottom {
+    position: relative;
+    width: inherit;
+    height: 80px;
+    margin-top: 20px;
+    background: #f9f9f9;
+    z-index: 4;
+
+    ul {
+      width: inherit;
+      height: 21px;
+      text-align: center;
+
+      li {
+        display: inline-block;
+        height: 21px;
+        line-height: 21px;
+
+        a {
+          height: 14px;
+          line-height: 14px;
+          padding: 0 10px;
+          color: #9d9d9d;
+          font-size: 14px;
+
+          &.font-type {
+            color: #333 !important;
+          }
+
+          &.privacy {
+            border-right: none !important;
+          }
+        }
+
+        a:hover {
+          cursor: pointer;
+          color: #333;
+        }
+
+        i {
+          color: #757575;
+          font-size: 10px;
+        }
+
+      }
+    }
+
+    p {
+      width: inherit;
+      height: 46px;
+      font-size: 14px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px 0;
+      color: #757575;
+    }
+  }
+}

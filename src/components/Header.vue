@@ -19,7 +19,7 @@
         </ul>
         <ul class="topbar-info">
           <li @click="login">登录 <span class="sep">|</span></li>
-          <li>注册 <span class="sep">|</span></li>
+          <li @click="signUp">注册 <span class="sep">|</span></li>
           <li>消息通知</li>
           <li class="cartLi">
             <i class="el-icon-aligouwuchekong"></i>购物车<span>(0)</span>
@@ -504,6 +504,7 @@ export default {
       ],
       swiperOption: {
         notNextTick: true,
+        grabCursor: true,
         loop: true,
         initialSlide: 0,
         autoplay: true,
@@ -548,6 +549,11 @@ export default {
     login () {
       this.$router.push({
         path: '/Login'
+      })
+    },
+    signUp () {
+      this.$router.push({
+        path: '/Registered'
       })
     }
 

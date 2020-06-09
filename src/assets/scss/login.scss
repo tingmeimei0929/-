@@ -221,7 +221,6 @@
           line-height: 14px;
           padding: 0 10px;
           color: #757575;
-          border-right: 1px solid #757575;
           font-size: 14px;
 
           &.font-type {
@@ -238,6 +237,10 @@
           color: #333;
         }
 
+        i {
+          color: #757575;
+          font-size: 10px;
+        }
 
       }
     }
