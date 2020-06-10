@@ -29,98 +29,95 @@
     </div>
     <div class="nav">
       <div class="container">
-        <div class="nav-logo">
-          <a href="https://www.mi.com/index.html"
-             class="logo"></a>
-        </div>
-        <ul class="nav-list">
-          <li class="nav-title"><a href="http://www.mi.com/a/h/15391.html"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/225054e1a54fe7aa86a7e0366b88e695.gif?w=165&h=55"> <span style="display:none">全部商品分类</span></a></li>
-          <li class="nav-link">
-            <a href="">小米手机</a>
-            <div class="link-list">
-              <ul class="item-children">
-                <li class="item-detaile">
-                  <a href="https://www.mi.com/buy?product_id=10000213">
-                    <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3bf20f1df3f2e22c5b29ff07634f3c59.png?thumb=1&amp;w=320&amp;h=220&amp;f=webp&amp;q=90"
-                           alt=""></div>
-                    <div class="item-title">小米10 青春版 5G</div>
-                    <p class="item-price">2099元起</p>
-                  </a>
-                </li>
-                <li class="item-detaile">
-                  <a href="https://www.mi.com/buy?product_id=10000213">
-                    <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=320&h=220&f=webp&q=90"
-                           alt=""></div>
-                    <div class="item-title">小米10 Pro</div>
-                    <p class="item-price">4999元起</p>
-                  </a>
-                </li>
-                <li class="item-detaile">
-                  <a href="https://www.mi.com/buy?product_id=10000213">
-                    <div class="item-img"><img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/a4a76ee684e51f0ee531ef3dc7f0aeaf.png?thumb=1&w=320&h=220&f=webp&q=90"
-                           alt=""></div>
-                    <div class="item-title">小米10</div>
-                    <p class="item-price">3999元起</p>
-                  </a>
-                </li>
-                <li class="item-detaile">
-                  <a href="https://www.mi.com/buy?product_id=10000213">
-                    <div class="item-img"><img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png?thumb=1&w=320&h=220"
-                           alt=""></div>
-                    <div class="item-title">小米CC9</div>
-                    <p class="item-price">1499元起</p>
-                  </a>
-                </li>
-                <li class="item-detaile">
-                  <a href="https://www.mi.com/buy?product_id=10000213">
-                    <div class="item-img"><img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/df9b3e7a562e02a33eb069b3f0119815.png?thumb=1&w=320&h=220"
-                           alt=""></div>
-                    <div class="item-title">小米CC9e</div>
-                    <p class="item-price">1299元起</p>
-                  </a>
-                </li>
-                <li class="item-detaile">
-                  <a href="https://www.mi.com/buy?product_id=10000213">
-                    <div class="item-img last-item"><img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/b02f50c9dd2e01c139a06a12502755ef.png?thumb=1&w=320&h=220"
-                           alt=""></div>
-                    <div class="item-title">小米CC9 美图定制版</div>
-                    <p class="item-price">1999元起</p>
-                  </a>
-                </li>
+        <div class="nav-row">
+          <div class="nav-logo">
+            <a href="https://www.mi.com/index.html"
+               class="logo"></a>
+          </div>
+          <ul class="nav-list">
+            <li class="nav-title"><a href="http://www.mi.com/a/h/15391.html"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/225054e1a54fe7aa86a7e0366b88e695.gif?w=165&h=55"> <span style="display:none">全部商品分类</span></a></li>
+            <li class="nav-link">
+              <a href="">小米手机</a>
+            </li>
+            <li class="nav-link"><a href="">Redmi红米</a></li>
+            <li class="nav-link"><a href="">电视</a></li>
+            <li class="nav-link"><a href="">笔记本</a></li>
+            <li class="nav-link"><a href="">家店</a></li>
+            <li class="nav-link"><a href="">路由器</a></li>
+            <li class="nav-link"><a href="">智能硬件</a></li>
+            <li class="nav-menu"><a href="">服务</a></li>
+            <li class="nav-menu"><a href="">社区</a></li>
+          </ul>
+          <div class="search">
+            <div class="result-list">
+              <input type="text"
+                     v-for="(item,index) in inputDate"
+                     v-model="inputDate[index]"
+                     :key="index">
+              <ul v-for="(item,index) in inputDate"
+                  :key="index"
+                  class="searchList">
+                <li><a>{{item}}</a></li>
               </ul>
             </div>
-          </li>
-          <li class="nav-link"><a href="">Redmi红米</a></li>
-          <li class="nav-link"><a href="">电视</a></li>
-          <li class="nav-link"><a href="">笔记本</a></li>
-          <li class="nav-link"><a href="">家店</a></li>
-          <li class="nav-link"><a href="">路由器</a></li>
-          <li class="nav-link"><a href="">智能硬件</a></li>
-          <li class="nav-menu"><a href="">服务</a></li>
-          <li class="nav-menu"><a href="">社区</a></li>
-        </ul>
-        <div class="search">
-          <div class="result-list">
-            <input type="text"
-                   v-for="(item,index) in inputDate"
-                   v-model="inputDate[index]"
-                   :key="index">
-            <ul v-for="(item,index) in inputDate"
-                :key="index"
-                class="searchList">
-              <li><a>{{item}}</a></li>
+            <button type="primary"
+                    class="btn"><i class="el-icon-alichaxun"></i></button>
+
+          </div>
+          <div class="link-list">
+            <ul class="item-children">
+              <li class="item-detaile">
+                <a href="https://www.mi.com/buy?product_id=10000213">
+                  <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3bf20f1df3f2e22c5b29ff07634f3c59.png?thumb=1&amp;w=320&amp;h=220&amp;f=webp&amp;q=90"
+                         alt=""></div>
+                  <div class="item-title">小米10 青春版 5G</div>
+                  <p class="item-price">2099元起</p>
+                </a>
+              </li>
+              <li class="item-detaile">
+                <a href="https://www.mi.com/buy?product_id=10000213">
+                  <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=320&h=220&f=webp&q=90"
+                         alt=""></div>
+                  <div class="item-title">小米10 Pro</div>
+                  <p class="item-price">4999元起</p>
+                </a>
+              </li>
+              <li class="item-detaile">
+                <a href="https://www.mi.com/buy?product_id=10000213">
+                  <div class="item-img"><img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/a4a76ee684e51f0ee531ef3dc7f0aeaf.png?thumb=1&w=320&h=220&f=webp&q=90"
+                         alt=""></div>
+                  <div class="item-title">小米10</div>
+                  <p class="item-price">3999元起</p>
+                </a>
+              </li>
+              <li class="item-detaile">
+                <a href="https://www.mi.com/buy?product_id=10000213">
+                  <div class="item-img"><img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png?thumb=1&w=320&h=220"
+                         alt=""></div>
+                  <div class="item-title">小米CC9</div>
+                  <p class="item-price">1499元起</p>
+                </a>
+              </li>
+              <li class="item-detaile">
+                <a href="https://www.mi.com/buy?product_id=10000213">
+                  <div class="item-img"><img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/df9b3e7a562e02a33eb069b3f0119815.png?thumb=1&w=320&h=220"
+                         alt=""></div>
+                  <div class="item-title">小米CC9e</div>
+                  <p class="item-price">1299元起</p>
+                </a>
+              </li>
+              <li class="item-detaile">
+                <a href="https://www.mi.com/buy?product_id=10000213">
+                  <div class="item-img last-item"><img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/b02f50c9dd2e01c139a06a12502755ef.png?thumb=1&w=320&h=220"
+                         alt=""></div>
+                  <div class="item-title">小米CC9 美图定制版</div>
+                  <p class="item-price">1999元起</p>
+                </a>
+              </li>
             </ul>
           </div>
-          <button type="primary"
-                  class="btn"><i class="el-icon-alichaxun"></i></button>
-
         </div>
-      </div>
-    </div>
-    <div class="swiper">
-      <div class="container">
         <div class="swiper-row">
-
           <swiper :options="swiperOption"
                   ref="mySwiper"
                   class="swiper-container">
@@ -443,7 +440,6 @@
         </div>
       </div>
     </div>
-
   </header>
 </template>
     

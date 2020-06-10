@@ -11,10 +11,13 @@
           <h4 class="regbox-title">国家/地区</h4>
           <div class="regbox-select">
             <div class="select-block">
-              <div class="block-main"></div>
-              <div class="block-aside"></div>
+              <div class="block-main"
+                   @click.stop="showCountry"></div>
+              <div class="block-aside"
+                   @click="hideCountry"></div>
             </div>
-            <div class="country-list">
+            <div class="country-list"
+                 v-show="country">
               <p>11</p>
               <p>11</p>
               <p>11</p>
@@ -29,15 +32,18 @@
           <h4 class="regbox-title">手机号码</h4>
           <div class="regbox-select">
             <div class="select-block">
-              <div class="block-main phone">
-                <p>+93</p>
+              <div class="block-main phone"
+                   @click.stop="showNum">
+                <p class="phone-btn">+93</p>
                 <i class="el-icon-alisanjiao"></i>
               </div>
               <input type="text"
                      class="aside-phone"
-                     placeholder="请输入手机号码">
+                     placeholder="请输入手机号码"
+                     v-model="inputArea">
             </div>
-            <div class="phone-list">
+            <div class="phone-list"
+                 v-show="phoneNum">
               <p>11</p>
               <p>11</p>
               <p>11</p>
@@ -46,7 +52,13 @@
               <p>11</p>
             </div>
           </div>
-          <button>立即注册</button>
+          <div class="small"
+               v-show="prompt">
+            <i class="el-icon-alibaocuo"></i>
+            <span class="errorPrompt">{{errorMsg}}</span>
+          </div>
+          <button class="btn"
+                  @click="register">立即注册</button>
         </div>
         <div class="privacy_box">
           <p>已阅读并同意：小米<a>用户协议</a>和<a>隐私政策</a></p>
@@ -70,10 +82,50 @@ export default {
   name: "Registered",
   data () {
     return {
-
+      country: false,
+      phoneNum: false,
+      prompt: false,
+      inputArea: '',
+      innerText: '',
+      errorMsg: '请输入手机号码'
     };
-  }
-};
+  },
+  mounted () {
+    document.addEventListener('click', this.handleOtherClick)
+  },
+  methods: {
+    showCountry () {
+      this.country = !this.country;
+    },
+    showNum () {
+      this.phoneNum = !this.phoneNum;
+    },
+    hideCountry () {
+      this.country = false;
+    },
+    handleOtherClick (e) {
+      console.log(e.target);
+      if (e.target.className != 'block-main') {
+        this.country = false;
+        this.phoneNum = false;
+      }
+    },
+    register () {
+      const errorPrompt = this.errorMsg;
+      const inputResult = this.inputArea;
+      // const errorPrompt = document.getElementsByClassName('errorPrompt');
+      if (this.inputResult === '') {
+        this.prompt = true;
+      } else if (!/^((1[3,5,8,7,9][0-9])|(14[5,7])|(17[0,6,7,8])|(19[7]))\d{8}$/.test(this.inputResult)) {
+        this.$set(errorPrompt, "手机号格式不正确")
+        this.prompt = true;
+      }
+    }
+  },
+  destroyed () {
+    document.removeEventListener('click', this.handleOtherClick)
+  },
+}
 </script>
   
 <style lang="scss" scoped>
