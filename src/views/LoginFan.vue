@@ -7,21 +7,21 @@
     <div class="middle">
       <div class="type">
         <div class="login-title">
-          <a class="signIn">账号登录</a>
+          <a class="signIn">帳號登入</a>
           <span></span>
-          <a>扫码登录</a>
+          <a>二維碼登入</a>
         </div>
         <div class="login-type">
           <div class="account">
             <input type="text"
-                   placeholder="邮箱/手机号码/小米ID"
+                   placeholder="E-mail/手機號碼/小米ID"
                    name="username"
                    id="userName"
                    v-model="username">
           </div>
           <div class="account last">
             <input type="password"
-                   placeholder="密码"
+                   placeholder="密碼"
                    name="password"
                    id="password"
                    v-model="password">
@@ -31,13 +31,13 @@
             <i class="el-icon-alibaocuo"></i>
             <span class="errorPrompt">{{errorMsg}}</span>
           </div>
-          <button>登录</button>
+          <button>登入</button>
           <div class="prompt">
-            <div class="sms-link"><a>手机短信登录/注册</a></div>
+            <div class="sms-link"><a>手機短信登入/注冊</a></div>
             <div class="other-login-type">
-              <a @click="signup">立即注册</a>
+              <a @click="signup">立即註冊</a>
               <span>|</span>
-              <a @click="forget">忘记密码</a>
+              <a>忘記密碼?</a>
             </div>
             <fieldset>
               <legend>其他登入方式</legend>
@@ -59,23 +59,24 @@
     </div>
     <div class="bottom">
       <ul>
-        <li @click="simple"><a class="font-type">简体</a><i class="el-icon-alivertical_line"></i></li>
-        <li @click="complex"><a>繁体</a><i class="el-icon-alivertical_line"></i></li>
+        <li @click="simple"><a>简体</a><i class="el-icon-alivertical_line"></i></li>
+        <li @click="complex"><a class="font-type">繁体</a><i class="el-icon-alivertical_line"></i></li>
         <li @click="foreign"><a>English</a><i class="el-icon-alivertical_line"></i></li>
-        <li><a href="https://static.account.xiaomi.com/html/faq/faqList.html">常见问题</a><i class="el-icon-alivertical_line"></i></li>
-        <li><a class="privacy">隐私设置</a></li>
+        <li><a href="https://static.account.xiaomi.com/html/faq/faqList.html">常見問題</a><i class="el-icon-alivertical_line"></i></li>
+        <li><a class="privacy">隱私政策</a></li>
       </ul>
-      <p>小米公司版权所有-京ICP备10046444-<img src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png">京公网安备11010802020134-京ICP证110507号</p>
+      <p>小米公司版權所有-京ICP備10046444-<img src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png">京公網安備11010802020134號-京ICP證110507號</p>
     </div>
   </div>
 </template>
     
 <script>
 export default {
-  name: "Login",
+  name: "LoginFan",
   data () {
     return {
-
+      username: '',
+      password: ''
     };
   },
   methods: {

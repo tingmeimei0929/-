@@ -5,10 +5,10 @@
         <a href="https://www.mi.com/index.html"
            class="logo"></a>
       </div>
-      <h4 class="layout-title">注册小米账号</h4>
+      <h4 class="layout-title">註冊小米帳號</h4>
       <div class="layout-table">
         <div class="regbox">
-          <h4 class="regbox-title">国家/地区</h4>
+          <h4 class="regbox-title">國家/地區</h4>
           <div class="regbox-select">
             <div class="select-block">
               <div class="block-main"
@@ -27,9 +27,9 @@
 
             </div>
           </div>
-          <div class="small">成功注册账号后，国家/地区将不能被修改</div>
+          <div class="small">成功註冊帳號後，國家/地區將不能被修改</div>
 
-          <h4 class="regbox-title">手机号码</h4>
+          <h4 class="regbox-title">手機號碼</h4>
           <div class="regbox-select">
             <div class="select-block">
               <div class="block-main phone"
@@ -39,7 +39,7 @@
               </div>
               <input type="text"
                      class="aside-phone"
-                     placeholder="请输入手机号码"
+                     placeholder="請輸入手機號碼"
                      v-model="inputArea">
             </div>
             <div class="phone-list"
@@ -58,28 +58,28 @@
             <span class="errorPrompt">{{errorMsg}}</span>
           </div>
           <button class="btn"
-                  @click="register">立即注册</button>
+                  @click="register">立即註冊</button>
         </div>
         <div class="privacy_box">
-          <p>已阅读并同意：小米<a>用户协议</a>和<a>隐私政策</a></p>
+          <p>已閱讀並同意：小米<a>使用者協定</a>和<a>隱私政策</a></p>
         </div>
       </div>
     </div>
     <div class="layout-bottom">
       <ul>
-        <li @click="simple"><a class="font-type">简体</a><i class="el-icon-alivertical_line"></i></li>
-        <li @click="complex"><a>繁体</a><i class="el-icon-alivertical_line"></i></li>
+        <li @click="simple"><a>简体</a><i class="el-icon-alivertical_line"></i></li>
+        <li @click="complex"><a class="font-type">繁体</a><i class="el-icon-alivertical_line"></i></li>
         <li @click="foreign"><a>English</a><i class="el-icon-alivertical_line"></i></li>
         <li><a class="privacy">常见问题</a></li>
       </ul>
-      <p>小米公司版权所有-京ICP备10046444-<img src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png">京公网安备11010802020134-京ICP证110507号</p>
+      <p>小米公司版權所有-京ICP備10046444-<img src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png">京公網安備11010802020134號-京ICP證110507號</p>
     </div>
   </div>
 </template>
     
 <script>
 export default {
-  name: "Registered",
+  name: "RegisteredFan",
   data () {
     return {
       country: false,
@@ -87,7 +87,7 @@ export default {
       prompt: false,
       inputArea: '',
       innerText: '',
-      errorMsg: '请输入手机号码'
+      errorMsg: '請輸入手機號碼'
     };
   },
   mounted () {
@@ -116,7 +116,7 @@ export default {
       if (this.inputResult === '') {
         this.prompt = true;
       } else if (!/^((1[3,5,8,7,9][0-9])|(14[5,7])|(17[0,6,7,8])|(19[7]))\d{8}$/.test(this.inputResult)) {
-        this.errorMsg = "手机号格式不正确"
+        this.errorMsg = "手機號碼格式錯誤"
         this.prompt = true;
       }
     },
