@@ -2,14 +2,14 @@
   <div class="login-type">
     <div class="account">
       <input type="text"
-             placeholder="邮箱/手机号码/小米ID"
+             placeholder="E-mail/手機號碼/小米ID"
              name="username"
              id="userName"
              v-model="username">
     </div>
     <div class="account last">
       <input type="password"
-             placeholder="密码"
+             placeholder="密碼"
              name="password"
              id="password"
              v-model="password">
@@ -19,14 +19,14 @@
       <i class="el-icon-alibaocuo"></i>
       <span class="errorPrompt">{{errorMsg}}</span>
     </div>
-    <button>登录</button>
+    <button>登入</button>
     <div class="prompt">
       <div class="prompt-top">
-        <div class="sms-link"><a @click="smscode">手机短信登录/注册</a></div>
+        <div class="sms-link"><a @click="smscode">手機短信登入/注冊</a></div>
         <div class="other-login-type">
-          <a @click="signup">立即注册</a>
+          <a @click="signup">立即註冊</a>
           <span>|</span>
-          <a @click="forget">忘记密码?</a>
+          <a @click="forget">忘記密碼?</a>
         </div>
       </div>
       <fieldset>
@@ -49,7 +49,7 @@
     
 <script>
 export default {
-  name: "Account",
+  name: "AccountFan",
   data () {
     return {
       username: '',
@@ -61,17 +61,17 @@ export default {
   methods: {
     signup () {
       this.$router.push({
-        path: '/Registered'
+        path: '/RegisteredFan'
       })
     },
     forget () {
       this.$router.push({
-        path: '/Forget'
+        path: '/ForgetFan'
       })
     },
     smscode () {
       this.$router.push({
-        path: '/Login/SMS'
+        path: '/LoginFan/SMSFan'
       })
     }
   }

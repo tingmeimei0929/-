@@ -1,32 +1,36 @@
 <template>
   <div class="login-type">
-    <div class="account">
-      <input type="text"
-             placeholder="邮箱/手机号码/小米ID"
-             name="username"
-             id="userName"
-             v-model="username">
+    <div class="smsPush">
+      <div class="number">+86</div>
+      <div class="phoneInput">
+        <input type="text"
+               placeholder="手機號碼"
+               name="phoneNumber"
+               id="phoneNumber">
+      </div>
     </div>
-    <div class="account last">
-      <input type="password"
-             placeholder="密码"
-             name="password"
-             id="password"
-             v-model="password">
+    <div class="smsPush last">
+      <div class="smsInput">
+        <input type="text"
+               placeholder="短信驗證碼"
+               name="smsnum"
+               id="smsnum">
+      </div>
+      <div class="smsbtn">
+        <a>獲取驗證碼</a>
+      </div>
     </div>
     <div class="small"
          v-show="prompt">
       <i class="el-icon-alibaocuo"></i>
       <span class="errorPrompt">{{errorMsg}}</span>
     </div>
-    <button>登录</button>
+    <button>立即登入/注冊</button>
     <div class="prompt">
       <div class="prompt-top">
-        <div class="sms-link"><a @click="smscode">手机短信登录/注册</a></div>
+        <div class="sms-link"><a @click="usercode">用戶名密碼登入</a></div>
         <div class="other-login-type">
-          <a @click="signup">立即注册</a>
-          <span>|</span>
-          <a @click="forget">忘记密码?</a>
+          <a>收不到驗證碼？</a>
         </div>
       </div>
       <fieldset>
@@ -49,29 +53,17 @@
     
 <script>
 export default {
-  name: "Account",
+  name: "SMSFan",
   data () {
     return {
-      username: '',
-      password: '',
-      errorMsg: '请输入账号',
+      errorMsg: '請輸入手機號',
       prompt: false
     };
   },
   methods: {
-    signup () {
+    usercode () {
       this.$router.push({
-        path: '/Registered'
-      })
-    },
-    forget () {
-      this.$router.push({
-        path: '/Forget'
-      })
-    },
-    smscode () {
-      this.$router.push({
-        path: '/Login/SMS'
+        path: '/Login/AccountFan'
       })
     }
   }

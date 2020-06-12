@@ -14,6 +14,7 @@ import "../src/assets/scss/header.scss"
 import "../src/assets/scss/footer.scss"
 import "../src/assets/scss/login.scss"
 import "../src/assets/scss/registered.scss"
+import "../src/assets/scss/forget.scss"
 import '../node_modules/swiper/css/swiper.min.css'
 
 

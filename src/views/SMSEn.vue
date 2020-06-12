@@ -1,36 +1,41 @@
 <template>
   <div class="login-type">
-    <div class="account">
-      <input type="text"
-             placeholder="邮箱/手机号码/小米ID"
-             name="username"
-             id="userName"
-             v-model="username">
+    <div class="smsPush">
+      <div class="number">+86</div>
+      <div class="phoneInput">
+        <input type="text"
+               placeholder="Phone number"
+               name="phoneNumber"
+               id="phoneNumber">
+      </div>
     </div>
-    <div class="account last">
-      <input type="password"
-             placeholder="密码"
-             name="password"
-             id="password"
-             v-model="password">
+    <div class="smsPush last">
+      <div class="smsInput">
+        <input type="text"
+               placeholder="Verification code"
+               name="smsnum"
+               id="smsnum"
+               class="inputEn">
+      </div>
+      <div class="smsbtn">
+        <a>Get verification code</a>
+      </div>
     </div>
     <div class="small"
          v-show="prompt">
       <i class="el-icon-alibaocuo"></i>
       <span class="errorPrompt">{{errorMsg}}</span>
     </div>
-    <button>登录</button>
+    <button>Sign in/Sign up</button>
     <div class="prompt">
       <div class="prompt-top">
-        <div class="sms-link"><a @click="smscode">手机短信登录/注册</a></div>
+        <div class="sms-link"><a @click="usercode">Sign in with password</a></div>
         <div class="other-login-type">
-          <a @click="signup">立即注册</a>
-          <span>|</span>
-          <a @click="forget">忘记密码?</a>
+          <a>Can't receive verification code?</a>
         </div>
       </div>
       <fieldset>
-        <legend>其他登入方式</legend>
+        <legend>More options</legend>
       </fieldset>
       <div class="other-type">
         <a href="/pass/sns/login/auth?appid=100284651&&callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252Findex.html%26sign%3DMjM0MWU0NjBlOTU1YzY4NGQzOTc3MDk4N2M2MjQ5Y2ZiZTMxNTFlZQ%2C%2C&sid=mi_eshop"
@@ -49,29 +54,17 @@
     
 <script>
 export default {
-  name: "Account",
+  name: "SMSEn",
   data () {
     return {
-      username: '',
-      password: '',
-      errorMsg: '请输入账号',
+      errorMsg: '请输入手机号',
       prompt: false
     };
   },
   methods: {
-    signup () {
+    usercode () {
       this.$router.push({
-        path: '/Registered'
-      })
-    },
-    forget () {
-      this.$router.push({
-        path: '/Forget'
-      })
-    },
-    smscode () {
-      this.$router.push({
-        path: '/Login/SMS'
+        path: '/Login/AccountEn'
       })
     }
   }

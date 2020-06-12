@@ -8,8 +8,8 @@
            src="../assets/image/qr.png">
     </div>
     <div class="custom">
-      <p>使用<span>小米商城APP</span>扫一扫</p>
-      <p>小米手机可打开「设置」>「小米帐号」扫码登录</p>
+      <p>Scan using <span>Mi Store</span> app</p>
+      <p>Go to Settings > Mi Account on your Mi Phone to sign in using a QR code</p>
     </div>
   </div>
 </template>

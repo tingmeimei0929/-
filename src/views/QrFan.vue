@@ -8,8 +8,8 @@
            src="../assets/image/qr.png">
     </div>
     <div class="custom">
-      <p>使用<span>小米商城APP</span>扫一扫</p>
-      <p>小米手机可打开「设置」>「小米帐号」扫码登录</p>
+      <p>使用<span>小米商城APP</span>掃一掃</p>
+      <p>小米手機可打開「設置」>「小米帳號」掃碼登入</p>
     </div>
   </div>
 </template>

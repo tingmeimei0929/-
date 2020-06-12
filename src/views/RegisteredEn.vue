@@ -121,7 +121,7 @@ export default {
     },
     complex () {
       this.$router.push({
-        path: '/RegisteredCf'
+        path: '/RegisteredFan'
       })
     },
     foreign () {
@@ -131,7 +131,7 @@ export default {
     },
     simple () {
       this.$router.push({
-        path: '/RegisteredCs'
+        path: '/Registered'
       })
     }
   },
