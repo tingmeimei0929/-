@@ -20,6 +20,13 @@ import SMSEn from "../views/SMSEn"
 import Forget from "../views/Forget"
 import ForgetFan from "../views/ForgetFan"
 import ForgetEn from "../views/ForgetEn"
+import Spike from "../views/Spike"
+import Spike1 from "../views/Spike1"
+import Spike2 from "../views/Spike2"
+import Spike3 from "../views/Spike3"
+import Spike4 from "../views/Spike4"
+import Spike5 from "../views/Spike5"
+import Company from "../views/Company"
 Vue.use(VueRouter)
 
 const routes = [{
@@ -136,6 +143,46 @@ const routes = [{
     path: '/ForgetEn',
     name: 'ForgetEn',
     component: ForgetEn
+  },
+  {
+    path: '/Spike',
+    name: 'Spike',
+    component: Spike,
+    children: [{
+        path: '/',
+        redirect: 'Spike1'
+      },
+      {
+        path: 'Spike1',
+        name: 'Spike1',
+        component: Spike1,
+      },
+      {
+        path: 'Spike2',
+        name: 'Spike2',
+        component: Spike2,
+      },
+      {
+        path: 'Spike3',
+        name: 'Spike3',
+        component: Spike3,
+      },
+      {
+        path: 'Spike4',
+        name: 'Spike4',
+        component: Spike4,
+      },
+      {
+        path: 'Spike5',
+        name: 'Spike5',
+        component: Spike5,
+      },
+    ]
+  },
+  {
+    path: '/Company',
+    name: 'Company',
+    component: Company
   },
 ]
 

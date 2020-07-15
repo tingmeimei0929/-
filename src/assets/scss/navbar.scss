@@ -1,0 +1,241 @@
+.nav {
+  position: relative;
+  width: 100%;
+  height: 100px;
+
+  .container {
+    width: 1226px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+
+    .nav-row {
+      height: 100px;
+      width: inherit;
+
+      .nav-logo {
+        width: 62px;
+        float: left;
+        margin-top: 22px;
+
+        .logo {
+          position: relative;
+          display: block;
+          width: 55px;
+          height: 55px;
+          overflow: hidden;
+          background: url('https://s02.mifile.cn/assets/static/image/mi-logo.png') no-repeat 50% 50%;
+          background-color: #ff6700;
+          text-align: center;
+
+
+          img {
+            display: block;
+            margin: 0 auto;
+          }
+        }
+
+      }
+
+      .nav-list {
+        width: 850px;
+        float: left;
+        display: block;
+
+        li {
+          position: relative;
+          z-index: 10;
+          float: left;
+          height: 88px;
+          line-height: 88px;
+          margin: 0;
+          padding: 12px 0 0 20px;
+          list-style-type: none;
+          font-size: 16px;
+          cursor: pointer;
+
+          &.nav-title {
+            width: 127px;
+            text-align: right;
+            margin-right: 15px;
+
+            a {
+              color: #333;
+            }
+          }
+
+          &.companyNav {
+            background: url("https://c1.mifile.cn/f/i/16/qiye2016/qiyelogo.png") 50% 50% no-repeat;
+            text-align: left;
+            width: 67px !important;
+            height: 50px;
+            margin: 30px 0 0 10px;
+          }
+
+          &.nav-menu {
+            display: block;
+
+            a {
+              color: #333;
+            }
+
+            a:hover {
+              color: #ff6700;
+            }
+          }
+
+          &.nav-link {
+            a {
+              display: block;
+              color: #333;
+            }
+
+            a:hover {
+              color: #ff6700;
+            }
+          }
+        }
+      }
+
+      .search {
+        position: relative;
+        width: 296px;
+        float: right;
+        margin-top: 25px;
+        height: 50px;
+
+        .result-list {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 223px;
+          height: 50px;
+          line-height: 48px;
+          overflow: hidden;
+          z-index: 1100;
+
+          font-size: 14px;
+
+          input {
+            display: block;
+            width: inherit;
+            height: inherit;
+            padding: 0 10px;
+            border: 1px solid #e0e0e0;
+          }
+
+          .searchList {
+            width: inherit;
+            display: block;
+            margin-top: 0;
+            z-index: 20;
+            background-color: #fff;
+
+            li {
+
+              a {
+                position: relative;
+                display: block;
+                padding: 6px 15px;
+                font-size: 12px;
+                color: #424242;
+                border: none;
+              }
+            }
+          }
+        }
+
+        .result-list:hover {
+          border: 1px solid #ff6700;
+          height: 266px;
+        }
+
+
+        .btn {
+          position: absolute;
+          top: 0;
+          left: 223px;
+          width: 52px;
+          height: inherit;
+          border: 1px solid #e0e0e0;
+          line-height: 24px;
+          background: #fff;
+
+          i {
+            font-size: 26px;
+          }
+        }
+
+        .btn:hover {
+          background: #ff6700;
+        }
+      }
+    }
+
+    .link-list {
+      position: absolute;
+      z-index: 9999px;
+      float: left;
+      top: 100px;
+      left: 0;
+      width: 100%;
+      height: 240px;
+      border-top: 1px solid #ccc;
+      background-color: #ff6700;
+      display: block;
+
+      .item-children {
+        position: relative;
+        width: 1226px;
+        margin-left: auto;
+        margin-right: auto;
+
+        .item-detaile {
+          display: block;
+          width: 200px;
+          height: 240px;
+          float: left;
+
+          a {
+            display: block;
+            margin: 20px 0;
+            width: 200px;
+            height: 210px;
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+
+            .item-img {
+              width: 200px;
+              height: 110px;
+              border-right: 1px solid #ccc;
+
+
+              &.last-item {
+                border-right: 1px solid transparent;
+              }
+
+              img {
+                width: 160px;
+                height: 110px;
+                margin-left: auto;
+                margin-right: auto;
+              }
+            }
+
+            .item-title {
+              margin-top: 10px;
+            }
+
+            .item-price {
+              margin-top: 5px;
+              color: #ff6700;
+            }
+          }
+        }
+
+
+      }
+    }
+  }
+}

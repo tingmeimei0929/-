@@ -1,0 +1,18 @@
+.companyMain {
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+  z-index: 10;
+
+  .container {
+    position: relative;
+    width: 1226px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .logo-company {
+      width: 1226px;
+      height: 460px;
+    }
+  }
+}
