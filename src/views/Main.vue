@@ -3,25 +3,20 @@
     <navHeader></navHeader>
     <main class="main">
       <div class="nav">
-        <div class="container">
-          <div class="nav-row">
+        <div class="nav-row">
+          <div class="container">
             <div class="nav-logo">
               <a href="https://www.mi.com/index.html"
                  class="logo"></a>
             </div>
             <ul class="nav-list">
-              <li class="nav-title"><a href="http://www.mi.com/a/h/15391.html">全部商品分类</a></li>
-              <li class="nav-link">
-                <a href="#">小米手机</a>
-              </li>
-              <li class="nav-link"><a href="#">Redmi红米</a></li>
-              <li class="nav-link"><a href="#">电视</a></li>
-              <li class="nav-link"><a href="#">笔记本</a></li>
-              <li class="nav-link"><a href="#">家店</a></li>
-              <li class="nav-link"><a href="#">路由器</a></li>
-              <li class="nav-link"><a href="#">智能硬件</a></li>
-              <li class="nav-menu"><a href="https://www.mi.com/service/">服务</a></li>
-              <li class="nav-menu"><a href="http://www.xiaomi.cn/">社区</a></li>
+              <li v-for="sort in sorts.defaults"
+                  :key="sort"
+                  class="nav-link"
+                  @click="show = !show"><a>{{ sort }}</a></li>
+              <!-- <li class="nav-title"><a href="http://www.mi.com/a/h/15391.html">全部商品分类</a></li> -->
+              <!-- <li class="nav-menu"><a href="https://www.mi.com/service/">服务</a></li>
+              <li class="nav-menu"><a href="http://www.xiaomi.cn/">社区</a></li> -->
             </ul>
             <div class="search">
               <div class="result-list">
@@ -39,7 +34,8 @@
                       class="btn"><i class="el-icon-alichaxun"></i></button>
 
             </div>
-            <!-- <div class="link-list">
+          </div>
+          <div class="link-list">
             <ul class="item-children">
               <li class="item-detaile">
                 <a href="https://www.mi.com/buy?product_id=10000213">
@@ -90,7 +86,6 @@
                 </a>
               </li>
             </ul>
-          </div> -->
           </div>
         </div>
       </div>
@@ -630,6 +625,9 @@ export default {
   name: "Main",
   data () {
     return {
+      sorts: {
+        "defaults": ['全部商品分类', '小米手机', 'Redmi红米', '电视', '笔记本', '家店', '路由器', '智能硬件', '服务', '社区']
+      },
       index: 0,
       day: '',
       hours: 0,
