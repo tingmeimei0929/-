@@ -4,6 +4,7 @@
   height: 100px;
 
   .nav-row {
+    position: relative;
     height: 100px;
     width: inherit;
 
@@ -43,7 +44,6 @@
         display: block;
 
         li {
-          position: relative;
           z-index: 10;
           float: left;
           height: 88px;
@@ -62,14 +62,6 @@
             a {
               color: #333;
             }
-          }
-
-          &.companyNav {
-            background: url("https://c1.mifile.cn/f/i/16/qiye2016/qiyelogo.png") 50% 50% no-repeat;
-            text-align: left;
-            width: 67px !important;
-            height: 50px;
-            margin: 30px 0 0 10px;
           }
 
           &:nth-child(9),
@@ -95,6 +87,77 @@
               color: #ff6700;
             }
           }
+
+
+          .link-list {
+            position: absolute;
+            z-index: 999;
+            float: left;
+            top: 100px;
+            left: 0;
+            width: 100%;
+            height: 240px;
+            background-color: #fff;
+            display: none;
+
+            .item-children {
+              position: relative;
+              width: 1226px;
+              margin-left: auto;
+              margin-right: auto;
+
+              .item-detaile {
+                display: block;
+                width: 200px;
+                height: 240px;
+                float: left;
+
+                a {
+                  display: block;
+                  margin: 40px 0;
+                  width: 200px;
+                  height: 210px;
+                  color: #333;
+                  font-size: 12px;
+                  text-align: center;
+
+                  .item-img {
+                    width: 200px;
+                    height: 110px;
+                    border-right: 1px solid #ccc;
+
+
+                    &.last-item {
+                      border-right: 1px solid transparent;
+                    }
+
+                    img {
+                      width: 160px;
+                      height: 110px;
+                      margin-left: auto;
+                      margin-right: auto;
+                    }
+                  }
+
+                  .item-title {
+                    margin-top: 10px;
+                  }
+
+                  .item-price {
+                    margin-top: 5px;
+                    color: #ff6700;
+                  }
+                }
+              }
+
+
+            }
+          }
+        }
+
+        li:hover .link-list {
+          display: block;
+          border-top: 1px solid #ccc;
         }
       }
 
@@ -170,73 +233,6 @@
         .btn:hover {
           background: #ff6700;
         }
-      }
-    }
-
-
-    .link-list {
-      position: absolute;
-      z-index: 999;
-      float: left;
-      top: 100px;
-      left: 0;
-      width: 100%;
-      height: 240px;
-      border-top: 1px solid #ccc;
-      background-color: #fff;
-      display: block;
-
-      .item-children {
-        position: relative;
-        width: 1226px;
-        margin-left: auto;
-        margin-right: auto;
-
-        .item-detaile {
-          display: block;
-          width: 200px;
-          height: 240px;
-          float: left;
-
-          a {
-            display: block;
-            margin: 40px 0;
-            width: 200px;
-            height: 210px;
-            color: #333;
-            font-size: 12px;
-            text-align: center;
-
-            .item-img {
-              width: 200px;
-              height: 110px;
-              border-right: 1px solid #ccc;
-
-
-              &.last-item {
-                border-right: 1px solid transparent;
-              }
-
-              img {
-                width: 160px;
-                height: 110px;
-                margin-left: auto;
-                margin-right: auto;
-              }
-            }
-
-            .item-title {
-              margin-top: 10px;
-            }
-
-            .item-price {
-              margin-top: 5px;
-              color: #ff6700;
-            }
-          }
-        }
-
-
       }
     }
   }

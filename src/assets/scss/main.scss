@@ -17,7 +17,6 @@
       margin-left: auto;
       margin-right: auto;
       height: 460px;
-      z-index: -10;
 
       .swiper-container {
         position: relative;
@@ -57,7 +56,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 10;
+        z-index: 999;
         display: block;
         float: left;
         width: 234px;

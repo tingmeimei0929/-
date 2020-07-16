@@ -3,24 +3,17 @@
     <navHeader></navHeader>
     <main class="companyMain">
       <div class="nav">
-        <div class="container">
-          <div class="nav-row">
+        <div class="nav-row">
+          <div class="container">
             <div class="nav-logo">
               <a href="https://www.mi.com/index.html"
                  class="logo"></a>
             </div>
             <ul class="nav-list">
-              <li class="nav-title companyNav"><a href="http://www.mi.com/a/h/15391.html"></a></li>
-              <li class="nav-link">
-                <a href="#">新品 ▪ 礼品卡</a>
-              </li>
-              <li class="nav-link"><a href="#">手机 ▪ 平板</a></li>
-              <li class="nav-link"><a href="#">笔记本</a></li>
-              <li class="nav-link"><a href="#">家店</a></li>
-              <li class="nav-link"><a href="#">智能 ▪ 路由器</a></li>
-              <li class="nav-link"><a href="#">耳机 ▪ 音箱</a></li>
-              <li class="nav-link"><a href="#">生活 ▪ 儿童</a></li>
-              <li class="nav-link"><a href="#">配件 ▪ 车品</a></li>
+              <li v-for="sort in sorts.defaults"
+                  :key="sort"
+                  class="nav-link"><a>{{ sort }}</a></li>
+              <!-- <li class="nav-title companyNav"><a href="http://www.mi.com/a/h/15391.html"></a></li> -->
             </ul>
             <div class="search">
               <div class="result-list">
@@ -38,7 +31,8 @@
                       class="btn"><i class="el-icon-alichaxun"></i></button>
 
             </div>
-            <!-- <div class="link-list">
+          </div>
+          <div class="link-list">
             <ul class="item-children">
               <li class="item-detaile">
                 <a href="https://www.mi.com/buy?product_id=10000213">
@@ -89,7 +83,6 @@
                 </a>
               </li>
             </ul>
-          </div> -->
           </div>
         </div>
       </div>
@@ -113,6 +106,9 @@ export default {
   name: "Company",
   data () {
     return {
+      sorts: {
+        "defaults": ['', '新品 ▪ 礼品卡', '手机 ▪ 平板', '笔记本', '家店', '智能 ▪ 耳机 ▪ 音箱', '生活 ▪ 儿童', '配件 ▪ 车品']
+      },
       inputDate: ["小米10", "Redmi Note 8", "小米CC9", "黑鲨游戏手机", "小米电视", "小米笔记本", "路由器", "小爱音箱", "净水器"],
       isShow: false,
       showList: false,
@@ -148,4 +144,12 @@ export default {
 </script>
   
 <style lang="scss" scoped>
+.nav-link:nth-child(1) {
+  background: url("https://c1.mifile.cn/f/i/16/qiye2016/qiyelogo.png") 50% 50%
+    no-repeat;
+  text-align: left !important;
+  width: 67px !important;
+  height: 50px !important;
+  margin: 30px 0 0 10px !important;
+}
 </style>
