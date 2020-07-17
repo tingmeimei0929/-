@@ -47,14 +47,13 @@
           z-index: 10;
           float: left;
           height: 88px;
-          line-height: 88px;
           margin: 0;
-          padding: 12px 0 0 20px;
+          padding: 40px 0 0 20px;
           list-style-type: none;
           font-size: 16px;
           cursor: pointer;
 
-          &:nth-child(1) {
+          &.nav-title {
             width: 127px;
             text-align: right;
             margin-right: 15px;
@@ -62,10 +61,125 @@
             a {
               color: #333;
             }
+
+            &.companyNav {
+              background: url("https://c1.mifile.cn/f/i/16/qiye2016/qiyelogo.png") 50% 50% no-repeat;
+              text-align: left !important;
+              width: 67px !important;
+              height: 50px !important;
+              margin: 30px 0 0 10px !important;
+            }
+
+            .allList {
+              display: none;
+
+              .category-item {
+                position: absolute;
+                top: 100px;
+                left: 0;
+                z-index: 500;
+                float: left;
+                width: 234px;
+                border: 0;
+                font-size: 14px;
+                border: 1px solid #ff6700;
+                background-color: #fff;
+
+                li {
+                  width: 234px;
+                  height: 42px;
+
+
+                  .main-menu {
+                    width: 234px;
+                    height: 42px;
+                    line-height: 42px;
+                    padding-left: 30px;
+                    text-align: start;
+
+                    a {
+                      color: #424242;
+                      cursor: pointer;
+
+                      i {
+                        position: absolute;
+                        right: 20px;
+                      }
+                    }
+                  }
+
+                  .main-menu:hover {
+                    background-color: #ff6700;
+                  }
+
+                  .sub-menu {
+                    display: none;
+                    position: absolute;
+                    left: 234px;
+                    top: 0;
+                    z-index: 999;
+                    width: 992px;
+                    height: 460px;
+                    border: 1px solid #e0e0e0;
+                    border-left: 0;
+                    background: #fff;
+                    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, .18);
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, .18);
+
+                    .item-list {
+                      height: 460px;
+                      margin: 0;
+                      padding: 2px 0;
+                      display: block;
+                      float: left;
+
+                      li {
+                        display: block;
+                        width: 245px;
+                        height: 76px;
+
+                        a {
+                          display: block;
+                          padding: 18px 20px;
+                          line-height: 40px;
+                          color: #333;
+                          font-size: 14px;
+
+                          img {
+                            width: 40px;
+                            height: 40px;
+                            vertical-align: middle;
+                          }
+
+                          .text {
+                            width: 172px;
+                            line-height: 40px;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                li:hover .sub-menu {
+                  display: block;
+                }
+              }
+            }
           }
 
-          &:nth-child(9),
-          &:nth-child(10) {
+          &.nav-title:hover .allList {
+            display: block;
+          }
+
+          &.nav-title:hover .category-item {
+            display: block;
+          }
+
+          &.nav-menu {
             display: block;
 
             a {
@@ -101,7 +215,6 @@
             display: none;
 
             .item-children {
-              position: relative;
               width: 1226px;
               margin-left: auto;
               margin-right: auto;
@@ -114,7 +227,7 @@
 
                 a {
                   display: block;
-                  margin: 40px 0;
+                  margin-top: 20px;
                   width: 200px;
                   height: 210px;
                   color: #333;
@@ -155,7 +268,7 @@
           }
         }
 
-        li:hover .link-list {
+        .nav-link:hover .link-list {
           display: block;
           border-top: 1px solid #ccc;
         }

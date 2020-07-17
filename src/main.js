@@ -18,6 +18,7 @@ import "../src/assets/scss/forget.scss"
 import "../src/assets/scss/spike.scss"
 import "../src/assets/scss/company.scss"
 import "../src/assets/scss/navbar.scss"
+import "../src/assets/scss/commodity.scss"
 import '../node_modules/swiper/css/swiper.min.css'
 
 

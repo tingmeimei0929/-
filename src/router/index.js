@@ -27,6 +27,15 @@ import Spike3 from "../views/Spike3"
 import Spike4 from "../views/Spike4"
 import Spike5 from "../views/Spike5"
 import Company from "../views/Company"
+import Commodity from "../views/Commodity"
+import Commodity1 from "../views/Commodity1"
+import Commodity2 from "../views/Commodity2"
+import Commodity3 from "../views/Commodity3"
+import Commodity4 from "../views/Commodity4"
+import Commodity5 from "../views/Commodity5"
+import Commodity6 from "../views/Commodity6"
+import Commodity7 from "../views/Commodity7"
+import Commodity8 from "../views/Commodity8"
 Vue.use(VueRouter)
 
 const routes = [{
@@ -184,8 +193,57 @@ const routes = [{
     name: 'Company',
     component: Company
   },
+  {
+    path: '/Commodity',
+    name: 'Commodity',
+    component: Commodity,
+    children: [{
+        path: '/',
+        redirect: 'Commodity1'
+      },
+      {
+        path: 'Commodity1',
+        name: 'Commodity1',
+        component: Commodity1,
+      },
+      {
+        path: 'Commodity2',
+        name: 'Commodity2',
+        component: Commodity2,
+      },
+      {
+        path: 'Commodity3',
+        name: 'Commodity3',
+        component: Commodity3,
+      },
+      {
+        path: 'Commodity4',
+        name: 'Commodity4',
+        component: Commodity4,
+      },
+      {
+        path: 'Commodity5',
+        name: 'Commodity5',
+        component: Commodity5,
+      },
+      {
+        path: 'Commodity6',
+        name: 'Commodity6',
+        component: Commodity6,
+      },
+      {
+        path: 'Commodity7',
+        name: 'Commodity7',
+        component: Commodity7,
+      },
+      {
+        path: 'Commodity8',
+        name: 'Commodity8',
+        component: Commodity8,
+      }
+    ]
+  }
 ]
-
 const router = new VueRouter({
   routes
 })
