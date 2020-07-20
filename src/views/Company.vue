@@ -69,28 +69,28 @@
               <h3>企业专属特权</h3>
               <ul>
                 <li>
-                  <img src="">
+                  <div class="img img1"></div>
                   <div class="bottom-right">
                     <h2>专属价格</h2>
                     <p>精选货品，专属优惠</p>
                   </div>
                 </li>
                 <li>
-                  <img src="">
+                  <div class="img img2"></div>
                   <div class="bottom-right">
                     <h2>自主开票</h2>
                     <p>全场商品，增票开具</p>
                   </div>
                 </li>
                 <li>
-                  <img src="">
+                  <div class="img img3"></div>
                   <div class="bottom-right">
                     <h2>便捷支付</h2>
                     <p>对公转账，票款一致</p>
                   </div>
                 </li>
                 <li>
-                  <img src="">
+                  <div class="img img4"></div>
                   <div class="bottom-right">
                     <h2>专业售后</h2>
                     <p>小米直供，售后无忧</p>
@@ -119,13 +119,12 @@
            <div class="brick-box">
             　<ul class="box-main">
               <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
+                <div class="thumb">
+                  <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
+                </div>
+                <p class="content-title">Redmi K30 5G</p>
+                <p class="desc">Redmi K30 5G</p>
+                <div class="btn-primary">登录企业账户开始采购</div>
               </li>
               <li>
                 <a>

@@ -75,8 +75,132 @@
         height: 460px;
         border: 0;
         font-size: 14px;
-        padding: 20px 0;
-        background-color: #fff;
+
+        .category-top {
+          width: inherit;
+          height: 127px;
+          background: rgba(23, 18, 21, 0.66);
+          overflow: hidden;
+          position: relative;
+
+          img {
+            display: block;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            padding: 2px;
+            border: 1px solid #ccc;
+            margin: 36px 11px 0 46px;
+            float: left;
+          }
+
+          .top-right {
+            float: left;
+            text-align: left;
+            margin: 30px 0 0 0;
+            width: 170px;
+            height: 58px;
+            vertical-align: middle;
+
+            h2 {
+              width: 170px;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              font-size: 16px;
+              font-weight: normal;
+              color: rgba(255, 255, 255, 0.9);
+              margin-top: 10px;
+            }
+
+            p {
+              margin-top: 0;
+              font-size: 12px;
+              color: rgba(255, 255, 255, 0.77);
+              cursor: pointer;
+            }
+          }
+
+
+        }
+
+        .category-bottom {
+          width: inherit;
+          height: 333px;
+          background: rgba(23, 18, 21, 0.86);
+
+          h3 {
+            padding-top: 28px;
+            font-size: 16px;
+            text-align: center;
+            color: #fff;
+          }
+
+          ul {
+            display: block;
+            margin: 20px 0 0 60px;
+            height: auto;
+            width: 236px;
+
+            li {
+              width: 236px;
+              height: 38px;
+              margin-bottom: 5px;
+
+              .img {
+                float: left;
+                width: 23px;
+                height: 25px;
+                margin-top: 2px;
+
+                &.img1 {
+                  background: url(https://c1.mifile.cn/f/i/17/qiye/sprite.png) -23px center no-repeat;
+                }
+
+                &.img2 {
+                  background: url(https://c1.mifile.cn/f/i/17/qiye/sprite.png) 0 center no-repeat;
+                }
+
+                &.img3 {
+                  background: url(https://c1.mifile.cn/f/i/17/qiye/sprite.png) -46px center no-repeat;
+                }
+
+                &.img4 {
+                  background: url(https://c1.mifile.cn/f/i/17/qiye/sprite.png) -69px center no-repeat;
+                }
+              }
+
+              .bottom-right {
+                float: left;
+                width: 120px;
+                margin-left: 18px;
+                text-align: left;
+
+                h2 {
+                  font-size: 14px;
+                  color: rgba(255, 255, 255, 0.9)
+                }
+
+                p {
+                  margin-top: -2px;
+                  font-size: 12px;
+                  color: rgba(255, 255, 255, 0.6);
+                }
+              }
+            }
+          }
+
+          .rule {
+            display: block;
+            font-size: 14px;
+            text-align: center;
+            width: inherit;
+            opacity: .8;
+            margin: 30px auto;
+            color: #fff;
+
+          }
+        }
       }
     }
 
@@ -194,7 +318,8 @@
           li {
             width: 225px;
             height: 300px;
-            padding-top: 39px;
+            padding-top: 39px !important;
+            overflow: hidden;
             float: left;
             text-align: center;
             background: #fff;
@@ -204,59 +329,73 @@
             list-style: none;
             margin-bottom: 15px;
             overflow: hidden;
-            _zoom: 1;
             margin-right: 20px;
             cursor: pointer;
             -webkit-transition: all .2s linear;
             transition: all .2s linear;
 
+            color: #757575;
 
-            a {
-              color: #757575;
+            .thumb {
+              width: 160px;
+              margin: 0 auto 22px;
 
-              .thumb {
+              img {
                 width: 160px;
-                margin: 0 auto 22px;
-
-                img {
-                  width: 160px;
-                  height: 160px;
-                }
-              }
-
-              .content-title {
-                margin: 0 20px 3px;
-                font-size: 14px;
-                font-weight: 400;
-                text-overflow: ellipsis;
-                color: #212121 !important;
-                overflow: hidden;
-                white-space: nowrap;
-              }
-
-              .desc {
-                height: 18px;
-                margin: 0 20px 12px;
-                font-size: 12px;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-                _zoom: 1;
-                color: #b0b0b0;
+                height: 160px;
               }
             }
+
+            .content-title {
+              margin: 0 20px 3px;
+              font-size: 14px;
+              font-weight: 400;
+              text-overflow: ellipsis;
+              color: #212121 !important;
+              overflow: hidden;
+              white-space: nowrap;
+            }
+
+            .desc {
+              height: 18px;
+              margin: 0 20px 12px;
+              font-size: 12px;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              _zoom: 1;
+              color: #b0b0b0;
+            }
+
+            .btn-primary {
+              position: absolute;
+              left: 0;
+              bottom: -38px;
+              transition: bottom .6s;
+              width: 100%;
+              height: 38px;
+              line-height: 38px;
+              display: inline-block;
+              padding: 0;
+              font-size: 14px;
+              text-align: center;
+              cursor: pointer;
+              color: #fff;
+              background: #ff6700;
+
+            }
           }
-
-          li:last-child {
-            margin-right: 0;
-          }
-
-          li:hover {
-            transition: all linear 2s;
-          }
-
-
         }
+
+        li:last-child {
+          margin-right: 0;
+        }
+
+        li:hover {
+          transition: all linear 2s;
+        }
+
+
       }
     }
   }
