@@ -457,7 +457,7 @@
               </div>
               <div class="flash-swiper">
                 <ul class="swiper-container"
-                    v-swiper:mySwiper="swiperOptions"
+                    v-swiper:mySwiper="swiperOption"
                     ref="mySwiper">
                   <li class="swiper-wrapper"
                       @click="details">
@@ -503,52 +503,16 @@
               </div>
               <div class="box-main">
                 <ul class="box-list ">
-                  <li>
-                    <a href="https://www.mi.com/mi10youth">
+                  <li v-for="phoneItem in phoneList"
+                      :key="phoneItem">
+                    <a href="phoneList.href">
                       <div class="thumb">
-                        <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/8729282b199b3ec51e31c1b6b15f3f93.jpg?thumb=1&w=400&h=400&f=webp&q=90"
+                        <img src="phoneList.imgSrc"
                              style="width:160px; height:160px">
                       </div>
-                      <h3 class="content-title"> 小米10 青春版 5G</h3>
-                      <p class="desc">50倍潜望式变焦 / 轻薄5G手机</p>
-                      <p class="price">2099元<span></span></p>
-
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.mi.com/mi10youth">
-                      <div class="thumb">
-                        <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/8729282b199b3ec51e31c1b6b15f3f93.jpg?thumb=1&w=400&h=400&f=webp&q=90"
-                             style="width:160px; height:160px">
-                      </div>
-                      <h3 class="content-title"> 小米10 青春版 5G</h3>
-                      <p class="desc">50倍潜望式变焦 / 轻薄5G手机</p>
-                      <p class="price">2099元<span></span></p>
-
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.mi.com/mi10youth">
-                      <div class="thumb">
-                        <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/8729282b199b3ec51e31c1b6b15f3f93.jpg?thumb=1&w=400&h=400&f=webp&q=90"
-                             style="width:160px; height:160px">
-                      </div>
-                      <h3 class="content-title"> 小米10 青春版 5G</h3>
-                      <p class="desc">50倍潜望式变焦 / 轻薄5G手机</p>
-                      <p class="price">2099元<span></span></p>
-
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.mi.com/mi10youth">
-                      <div class="thumb">
-                        <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/8729282b199b3ec51e31c1b6b15f3f93.jpg?thumb=1&w=400&h=400&f=webp&q=90"
-                             style="width:160px; height:160px">
-                      </div>
-                      <h3 class="content-title"> 小米10 青春版 5G</h3>
-                      <p class="desc">50倍潜望式变焦 / 轻薄5G手机</p>
-                      <p class="price">2099元<span></span></p>
-
+                      <h3 class="content-title"> phoneList.title</h3>
+                      <div class="desc">phoneList.desc</div>
+                      <div class="price">phoneList.newPrice<span>phoneList.oldPrice</span></div>
                     </a>
                   </li>
                 </ul>
@@ -724,17 +688,25 @@ export default {
     console.log('this is current swiper instance object', this.swiper);
     this.swiper.slideTo(3, 1000, false)
     this.countdown();
+    //初始化秒杀列表
+    this.init();
   },
   methods: {
-    // init () {
-    //   this.axios.get("/mock/flashSwiper.json").then((response) => {
-    //     alert('kkk')
-    //     console.log(response)
-    //     let res = response.data;
-    //     this.flashList = res.data;
-    //     console.log(flashList)
-    //   })
-    // },
+    init () {
+      this.axios.post("/api/public/flash.json").then((response) => {
+        alert("llll");
+        console.log(response)
+        let res = response.data;
+        this.flashList = res.data;
+        console.log(flashList)
+      })
+      this.axios.post("/api/public/phone.json").then((res) => {
+        console.log(res)
+        let phone = res.data;
+        this.phoneList = phone.data;
+        console.log(phoneList)
+      })
+    },
     countdown () {
       const end = Date.parse(new Date('2020-7-14 16:00:00'))
       // 定义当前时间戳

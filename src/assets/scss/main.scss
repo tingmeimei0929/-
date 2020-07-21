@@ -432,7 +432,9 @@
                       color: #ff6709 !important;
 
                       span {
+                        text-decoration: line-through;
                         color: #b0b0b0 !important;
+                        margin-left: .5em;
                       }
                     }
                   }
