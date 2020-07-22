@@ -575,6 +575,7 @@
         </div>
       </div>
     </main>
+    <navToolBar></navToolBar>
     <navFooter>
     </navFooter>
   </div>
@@ -583,6 +584,7 @@
 <script>
 import navHeader from '../components/Header'
 import navFooter from '../components/Footer'
+import navToolBar from '../components/ToolBar'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import '../assets/swiper/css/swiper.css'
 export default {
@@ -673,6 +675,7 @@ export default {
   components: {
     navHeader,
     navFooter,
+    navToolBar,
     Swiper,
     SwiperSlide
   },
@@ -754,7 +757,8 @@ export default {
       this.$router.push({
         path: '/Company'
       })
-    }
+    },
+
   },
   beforeDestroy () {
     clearTimeout(this.countdown);

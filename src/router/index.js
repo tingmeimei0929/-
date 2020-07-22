@@ -36,6 +36,7 @@ import Commodity5 from "../views/Commodity5"
 import Commodity6 from "../views/Commodity6"
 import Commodity7 from "../views/Commodity7"
 import Commodity8 from "../views/Commodity8"
+import Cart from "../views/Cart"
 Vue.use(VueRouter)
 
 const routes = [{
@@ -242,6 +243,11 @@ const routes = [{
         component: Commodity8,
       }
     ]
+  },
+  {
+    path: '/Cart',
+    name: 'Cart',
+    component: Cart,
   }
 ]
 const router = new VueRouter({

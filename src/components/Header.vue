@@ -42,12 +42,12 @@ export default {
   methods: {
     login () {
       this.$router.push({
-        path: '/Login'
+        path: '/LoginEn'
       })
     },
     signUp () {
       this.$router.push({
-        path: '/Registered'
+        path: '/RegisteredEn'
       })
     }
 

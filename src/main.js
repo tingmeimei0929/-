@@ -19,6 +19,8 @@ import "../src/assets/scss/spike.scss"
 import "../src/assets/scss/company.scss"
 import "../src/assets/scss/navbar.scss"
 import "../src/assets/scss/commodity.scss"
+import "../src/assets/scss/cart.scss"
+import "../src/assets/scss/toolBar.scss"
 import '../node_modules/swiper/css/swiper.min.css'
 
 
