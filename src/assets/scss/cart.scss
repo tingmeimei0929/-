@@ -97,6 +97,7 @@
           line-height: 70px;
           float: left;
           text-align: center;
+          display: block;
 
           &.col-check {
             width: 110px;
@@ -138,8 +139,8 @@
 
           &.col-statistics {
             width: 120px;
-            padding-right: 81px;
-            text-align: right !important;
+            margin-right: 70px;
+            text-align: right;
           }
 
           &.col-operating {
@@ -151,78 +152,113 @@
 
       .goods-list {
         position: relative;
-        width: inherit;
-        height: auto;
+        padding: 15px 26px 15px 0;
+        border-top: 1px solid #e0e0e0;
 
         .goods-content {
-          width: inherit;
-          height: 86px;
-          display: block;
-          padding-top: 15px !important;
-          padding-bottom: 15px !important;
+          display: table;
+          border-collapse: collapse;
+          border-spacing: 0;
 
-          border-top: 1px solid #e0e0e0;
+          .item-table {
+            display: table-row;
 
-          .col {
-            height: 86px;
-            line-height: 86px;
-            display: block;
-            float: left;
-            text-align: center;
+            .col {
+              display: table-cell;
+              vertical-align: middle;
 
-            &.col-check {
-              width: 110px;
-
-              span {
-                width: 18px;
-                height: 18px;
-                line-height: 18px;
-                display: inline-block;
-                color: #757575;
-                border: 1px solid #e0e0e0;
-                background: #fff;
-                margin: 0 15px 0 0;
-                font-size: 20px;
-                text-align: center;
-                vertical-align: middle;
-                cursor: pointer;
+              a {
+                color: #424242;
+                font-size: 16px;
               }
-            }
 
-            &.col-img {
-              width: 120px;
+              &.col-check {
+                width: 110px;
 
-              img {
+                span {
+                  width: 18px;
+                  height: 18px;
+                  line-height: 18px;
+                  display: inline-block;
+                  color: #757575;
+                  border: 1px solid #e0e0e0;
+                  background: #fff;
+                  margin: 0 15px 0 0;
+                  font-size: 20px;
+                  text-align: center;
+                  vertical-align: middle;
+                  cursor: pointer;
+                }
+              }
+
+              &.col-img {
+                width: 120px;
+
+                img {
+                  width: 80px;
+                  height: 80px;
+                }
+              }
+
+              &.col-name {
+                width: 380px;
+                text-align: left !important;
+              }
+
+              &.col-price {
+                width: 140px;
+                padding-right: 18px;
+
+              }
+
+              &.col-number {
+                width: 150px;
+
+                .changeNum {
+                  width: 148px;
+                  height: 40px;
+                  line-height: 40px;
+                  background: #fff;
+                  border: 1px solid #e0e0e0;
+
+
+                  .btn {
+                    display: block;
+                    float: left;
+                    width: 37px;
+                    height: 38px;
+                    line-height: 38px;
+                    font-size: 20px;
+                    border: none;
+                    text-align: center;
+                    color: #757575;
+                    background: #fff;
+                  }
+
+                  .goods-num {
+                    display: block;
+                    width: 72px;
+                    height: 38px;
+                    line-height: 38px;
+                    border: none;
+                    float: left;
+                    text-align: center;
+                  }
+                }
+              }
+
+              &.col-statistics {
+                width: 120px;
+                color: #ff6700 !important;
+                margin-right: 70px;
+                text-align: right;
+
+              }
+
+              &.col-operating {
                 width: 80px;
-                height: 80px;
               }
             }
-
-            &.col-name {
-              width: 380px;
-              text-align: left !important;
-            }
-
-            &.col-price {
-              width: 140px;
-              padding-right: 18px;
-
-            }
-
-            &.col-number {
-              width: 150px;
-            }
-
-            &.col-statistics {
-              width: 120px;
-              padding-right: 81px;
-              text-align: right !important;
-            }
-
-            &.col-operating {
-              width: 80px;
-            }
-
           }
         }
       }

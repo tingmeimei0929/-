@@ -31,42 +31,29 @@
           </div>
           <div class="goods-list">
             <div class="goods-content">
-              <div class="col col-check">
-                <span class="iconfont icon-checkbox"></span>
+              <div class="item-table">
+                <div class="col col-check">
+                  <span class="iconfont icon-checkbox"></span>
+                </div>
+                <div class="col col-img">
+                  <a href="">
+                    <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1584945960.00664304.jpg?thumb=1&w=160&h=160">
+                  </a>
+                </div>
+                <div class="col col-name"><a href="">Redmi K30 Pro 8GB+128GB 天际蓝</a></div>
+                <div class="col col-price">2299元</div>
+                <div class="col col-number">
+                  <div class="changeNum">
+                    <button class="btn">-</button>
+                    <input type="text"
+                           class="goods-num">
+                    <button class="btn">+</button>
+                  </div>
+                </div>
+                <div class="col col-statistics">2299元<p class="pre-info"></p>
+                </div>
+                <div class="col col-operating">x</div>
               </div>
-              <div class="col col-img">
-                <a href="">
-                  <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1584945960.00664304.jpg?thumb=1&w=160&h=160">
-                </a>
-              </div>
-              <div class="col col-name"><a href="">Redmi K30 Pro 8GB+128GB 天际蓝</a></div>
-              <div class="col col-number">
-                <button class="less">-</button>
-                <input type="text"
-                       class="goods-num">
-                <button class="more">+</button>
-              </div>
-              <div class="col col-statistics">13459元</div>
-              <div class="col col-operating">x</div>
-            </div>
-            <div class="goods-content">
-              <div class="col col-check">
-                <span class="iconfont icon-checkbox"></span>
-              </div>
-              <div class="col col-img">
-                <a href="">
-                  <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1584945960.00664304.jpg?thumb=1&w=160&h=160">
-                </a>
-              </div>
-              <div class="col col-name"><a href="">Redmi K30 Pro 8GB+128GB 天际蓝</a></div>
-              <div class="col col-number">
-                <button class="less">-</button>
-                <input type="text"
-                       class="goods-num">
-                <button class="more">+</button>
-              </div>
-              <div class="col col-statistics">13459元</div>
-              <div class="col col-operating">x</div>
             </div>
           </div>
         </div>

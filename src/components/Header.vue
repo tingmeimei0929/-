@@ -21,7 +21,8 @@
           <li @click="login">登录 <span class="sep">|</span></li>
           <li @click="signUp">注册 <span class="sep">|</span></li>
           <li>消息通知</li>
-          <li class="cartLi">
+          <li class="cartLi"
+              @click="cart">
             <i class="el-icon-aligouwuchekong"></i>购物车<span>(0)</span>
           </li>
         </ul>
@@ -48,6 +49,11 @@ export default {
     signUp () {
       this.$router.push({
         path: '/RegisteredEn'
+      })
+    },
+    cart () {
+      this.$router.push({
+        path: '/Cart'
       })
     }
 
