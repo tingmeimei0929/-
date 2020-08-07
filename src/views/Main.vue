@@ -72,19 +72,18 @@
             </ul>
             <div class="search">
               <div class="result-list">
-                <input type="text"
-                       v-for="(item,index) in inputDate"
+                  <!-- v-for="(item,index) in inputDate"
                        v-model="inputDate[index]"
-                       :key="index">
-                <ul v-for="(item,index) in inputDate"
-                    :key="index"
-                    class="searchList">
-                  <li><a>{{item}}</a></li>
+                       :key="item[index]" -->
+                <input type="text"
+                        name="slider">
+                <ul class="searchList">
+                  <li v-for="(item,index) in inputDate"
+                    :key="item[index]"><a :href="item.href">{{item.name}}</a></li>
                 </ul>
               </div>
               <button type="primary"
                       class="btn"><i class="el-icon-alichaxun"></i></button>
-
             </div>
           </div>
         </div>
@@ -95,7 +94,7 @@
                   ref="mySwiper"
                   class="swiper-container">
             <swiper-slide v-for="(item,index) in swiperInfo"
-                          :key="index"
+                          :key="item[index]"
                           :style="item.icon">
               <a :href="item.href"></a>
             </swiper-slide>
@@ -669,7 +668,7 @@ export default {
 
       },
       flashList: '',
-      inputDate: ["小米10", "Redmi Note 8", "小米CC9", "黑鲨游戏手机", "小米电视", "小米笔记本", "路由器", "小爱音箱", "净水器"],
+      inputDate: [{"name":"小米10","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"Redmi Note 8","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"},{"name":"小米CC9","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"黑鲨游戏手机","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"小米电视","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"小米笔记本","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"路由器","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"小爱音箱","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"},{"name":"净水器","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}],
     }
   },
   components: {
