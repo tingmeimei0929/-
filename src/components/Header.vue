@@ -3,7 +3,7 @@
     <div class="topbar">
       <div class="container">
        <ul class="topbar-list">
-            <li v-for="(item,index) in topbarInfo" :key="item[index]"><a :href="item.href">{{ item.name }}</a><span class="sep">|</span></li>
+            <li v-for="(item,index) in topbarInfo" :key="index"><a :href="item.href">{{ item.name }}</a><span class="sep">|</span></li>
         </ul>
         <ul class="topbar-info">
           <li @click="login">登录 <span class="sep">|</span></li>

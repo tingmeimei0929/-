@@ -46,17 +46,17 @@
     </div>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "Account",
+  name: 'Account',
   data () {
     return {
       username: '',
       password: '',
       errorMsg: '请输入账号',
       prompt: false
-    };
+    }
   },
   methods: {
     signup () {
@@ -75,9 +75,9 @@ export default {
       })
     }
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/login.scss");
 </style>

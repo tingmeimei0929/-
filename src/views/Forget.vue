@@ -34,67 +34,88 @@
 
     <div class="select-box"
          v-show="showSelect">
-      <div class="select-country">
-        <div class="header-text">请选择地区代码
-          <a></a>
-        </div>
-        <div class="regbox-select">
-          <div class="select-block">
-            <div class="block-main"
-                 @click.stop="showCountry">
-              中国(+86)</div>
-            <div class="block-aside"
-                 @click="hideCountry"></div>
-          </div>
-          <div class="country-list"
-               v-show="country">
-            <p>11</p>
-            <p>11</p>
-            <p>11</p>
-            <p>11</p>
-            <p>11</p>
-            <p>11</p>
+            <div class="select-country">
+                <div class="header-text">请选择地区代码
+                <a @click="closeBox"></a>
+                </div>
+                <div class="regbox-select">
+                    <div class="select-block">
+                        <div class="block-main"
+                            @click.stop="showCountry">
+                        中国(+86)</div>
+                        <div class="block-aside"
+                            @click="hideCountry"></div>
+                    </div>
+                    <div class="country-list"
+                        v-show="country">
+                        <p>11</p>
+                        <p>11</p>
+                        <p>11</p>
+                        <p>11</p>
+                        <p>11</p>
+                        <p>11</p>
 
-          </div>
-        </div>
-        <button>确定</button>
-      </div>
+                    </div>
+                </div>
+                <button @click="submitBox">确定</button>
+            </div>
     </div>
   </div>
 
 </template>
-    
+
 <script>
 export default {
-  name: "Forget",
+  name: 'Forget',
   data () {
     return {
       country: false,
       errorMsg: '请输入账号',
       showSelect: false
-    };
+    }
   },
   methods: {
     showCountry () {
-      this.country = !this.country;
+      this.country = !this.country
     },
     selcetCountry () {
-      this.showSelect = !this.showSelect;
+      this.showSelect = !this.showSelect
+    },
+    closeBox () {
+      this.showSelect = !this.showSelect
+    },
+    submitBox () {
+      this.showSelect = !this.showSelect
     },
     hideCountry () {
-      this.country = false;
+      this.country = false
     },
     handleOtherClick (e) {
-      console.log(e.target);
-      if (e.target.className != 'block-main') {
-        this.country = false;
-        this.phoneNum = false;
+      console.log(e.target)
+      if (e.target.className !== 'block-main') {
+        this.country = false
+        this.phoneNum = false
       }
     },
+    complex () {
+      this.$router.push({
+        path: '/ForgetFan'
+      })
+    },
+    foreign () {
+      this.$router.push({
+        path: '/ForgetEn'
+      })
+    },
+    simple () {
+      this.$router.push({
+        path: '/Login'
+      })
+    }
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/forget.scss");
 </style>

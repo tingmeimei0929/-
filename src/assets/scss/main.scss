@@ -251,6 +251,7 @@
 
 
         &.flash-sale {
+          width: inherit;
           height: 398px;
 
 
@@ -380,21 +381,19 @@
               float: left;
 
               .swiper-container {
-                width: 978px;
-                height: inherit;
+                width:978px;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
 
-                .swiper-wrapper {
+                .swiper-slide {
+                  flex:1 auto;
                   display: block;
                   width: 234px;
                   height: 339px;
-                  float: left;
                   margin-right: 14px;
-                  background-color: #fff;
                   color: #757575;
-
-                  .swiper-slide {
-                    width: inherit;
-                    height: inherit;
+                  background-color: #fff;
 
                     .thumb {
                       width: 160px;
@@ -437,8 +436,6 @@
                         margin-left: .5em;
                       }
                     }
-                  }
-
                 }
               }
             }

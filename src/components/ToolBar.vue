@@ -79,17 +79,17 @@
     </a>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "ToolBar",
+  name: 'ToolBar',
   data () {
     return {
       goTop: false
-    };
+    }
   },
   mounted () {
-    window.addEventListener("scroll", this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
     personal () {
@@ -103,21 +103,20 @@ export default {
       })
     },
     handleScroll () {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      console.log(scrollTop)
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
       if (this.scrollTop > 349) {
-        this.goTop = true;
+        this.goTop = true
       } else {
-        this.goTop = false;
+        this.goTop = false
       }
     }
   },
   destroyed () {
-    window.removeEventListener("scroll", this.showScroll)
+    window.removeEventListener('scroll', this.showScroll)
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/toolBar.scss");
 </style>

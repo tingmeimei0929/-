@@ -76,10 +76,10 @@
     </div>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "Registered",
+  name: 'Registered',
   data () {
     return {
       country: false,
@@ -88,36 +88,36 @@ export default {
       inputArea: '',
       innerText: '',
       errorMsg: '请输入手机号码'
-    };
+    }
   },
   mounted () {
     document.addEventListener('click', this.handleOtherClick)
   },
   methods: {
     showCountry () {
-      this.country = !this.country;
+      this.country = !this.country
     },
     showNum () {
-      this.phoneNum = !this.phoneNum;
+      this.phoneNum = !this.phoneNum
     },
     hideCountry () {
-      this.country = false;
+      this.country = false
     },
     handleOtherClick (e) {
-      console.log(e.target);
+      console.log(e.target)
       if (e.target.className != 'block-main') {
-        this.country = false;
-        this.phoneNum = false;
+        this.country = false
+        this.phoneNum = false
       }
     },
     register () {
-      const errorPrompt = this.errorMsg;
-      const inputResult = this.inputArea;
+      const errorPrompt = this.errorMsg
+      const inputResult = this.inputArea
       if (this.inputResult === '') {
-        this.prompt = true;
+        this.prompt = true
       } else if (!/^((1[3,5,8,7,9][0-9])|(14[5,7])|(17[0,6,7,8])|(19[7]))\d{8}$/.test(this.inputResult)) {
-        this.errorMsg = "手机号格式不正确"
-        this.prompt = true;
+        this.errorMsg = '手机号格式不正确'
+        this.prompt = true
       }
     },
     complex () {
@@ -138,10 +138,10 @@ export default {
   },
   destroyed () {
     document.removeEventListener('click', this.handleOtherClick)
-  },
+  }
 }
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/registered.scss");
 </style>

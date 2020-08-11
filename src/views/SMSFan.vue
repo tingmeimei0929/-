@@ -50,26 +50,26 @@
     </div>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "SMSFan",
+  name: 'SMSFan',
   data () {
     return {
       errorMsg: '請輸入手機號',
       prompt: false
-    };
+    }
   },
   methods: {
     usercode () {
       this.$router.push({
-        path: '/Login/AccountFan'
+        path: '/LoginFan/AccountFan'
       })
     }
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/login.scss");
 </style>

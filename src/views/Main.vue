@@ -72,14 +72,13 @@
             </ul>
             <div class="search">
               <div class="result-list">
-                  <!-- v-for="(item,index) in inputDate"
-                       v-model="inputDate[index]"
-                       :key="item[index]" -->
+                  <!--  -->
                 <input type="text"
-                        name="slider">
+                        name="slider"  v-for="(item,index) in inputDate"
+                       :key="index" :placeholder="item.name" >
                 <ul class="searchList">
                   <li v-for="(item,index) in inputDate"
-                    :key="item[index]"><a :href="item.href">{{item.name}}</a></li>
+                    :key="index"><a :href="item.href">{{item.name}}</a></li>
                 </ul>
               </div>
               <button type="primary"
@@ -94,7 +93,7 @@
                   ref="mySwiper"
                   class="swiper-container">
             <swiper-slide v-for="(item,index) in swiperInfo"
-                          :key="item[index]"
+                          :key="index"
                           :style="item.icon">
               <a :href="item.href"></a>
             </swiper-slide>
@@ -455,36 +454,79 @@
                 </div>
               </div>
               <div class="flash-swiper">
-                <ul class="swiper-container"
-                    v-swiper:mySwiper="swiperOption"
-                    ref="mySwiper">
-                  <li class="swiper-wrapper"
-                      @click="details">
-                    <div class="swiper-slide"
-                         v-for="(item,index) in flashList"
-                         :key="item.index">
-                      <div class="thumb">
-                        <img :src="item.imgSrc"
-                             style="width:160px; height:160px">
-                      </div>
-                      <h3 class="content-title">{{item.title}}</h3>
-                      <p class="desc">{{item.desc}}</p>
-                      <p class="price">{{item.newPrice}}<span>{{item.oldPrice}}</span></p>
-                    </div>
-                  </li>
-                  <li class="swiper-wrapper"
-                      @click="details">
-                    <div class="swiper-slide">
-                      <div class="thumb">
-                        <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a4cc78dcb3b77372c600aa28291ad3b.jpg?thumb=1&w=400&h=400&f=webp&q=90"
-                             style="width:160px; height:160px">
-                      </div>
-                      <h3 class="content-title">小米曲面显示器 34英寸 黑</h3>
-                      <p class="desc">超宽大环绕显示屏</p>
-                      <p class="price">1999元<span>2499元</span></p>
-                    </div>
-                  </li>
-                </ul>
+                   <swiper :options="swiperOption" ref="mySwiper" class="swiper-container">
+                        <swiper-slide>
+                            <a class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a4cc78dcb3b77372c600aa28291ad3b.jpg?thumb=1&w=400&h=400&f=webp&q=90"
+                                        style="width:160px; height:160px">
+                                </div>
+                                <h3 class="content-title">小米曲面显示器 34英寸 黑</h3>
+                                <p class="desc">超宽大环绕显示屏</p>
+                                <p class="price">1999元<span>2499元</span></p>
+                            </a>
+                             <a class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a4cc78dcb3b77372c600aa28291ad3b.jpg?thumb=1&w=400&h=400&f=webp&q=90"
+                                        style="width:160px; height:160px">
+                                </div>
+                                <h3 class="content-title">小米曲面显示器</h3>
+                                <p class="desc">超宽大环绕显示屏</p>
+                                <p class="price">1999元<span>2499元</span></p>
+                            </a>
+                              <a class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a4cc78dcb3b77372c600aa28291ad3b.jpg?thumb=1&w=400&h=400&f=webp&q=90"
+                                        style="width:160px; height:160px">
+                                </div>
+                                <h3 class="content-title">小米曲面显示器 34英寸 黑</h3>
+                                <p class="desc">超宽大环绕显示屏</p>
+                                <p class="price">1999元<span>2499元</span></p>
+                            </a>
+                             <a class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a4cc78dcb3b77372c600aa28291ad3b.jpg?thumb=1&w=400&h=400&f=webp&q=90"
+                                        style="width:160px; height:160px">
+                                </div>
+                                <h3 class="content-title">小米曲面显示器</h3>
+                                <p class="desc">超宽大环绕显示屏</p>
+                                <p class="price">1999元<span>2499元</span></p>
+                            </a>
+                        </swiper-slide>
+                         <swiper-slide>
+                            <a class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a4cc78dcb3b77372c600aa28291ad3b.jpg?thumb=1&w=400&h=400&f=webp&q=90"
+                                        style="width:160px; height:160px">
+                                </div>
+                                <h3 class="content-title">小米曲面显示器</h3>
+                                <p class="desc">超宽大环绕显示屏</p>
+                                <p class="price">1999元<span>2499元</span></p>
+                            </a>
+                        </swiper-slide>
+                         <swiper-slide>
+                            <a class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a4cc78dcb3b77372c600aa28291ad3b.jpg?thumb=1&w=400&h=400&f=webp&q=90"
+                                        style="width:160px; height:160px">
+                                </div>
+                                <h3 class="content-title">34英寸 黑</h3>
+                                <p class="desc">超宽大环绕显示屏</p>
+                                <p class="price">1999元<span>2499元</span></p>
+                            </a>
+                        </swiper-slide>
+                         <swiper-slide>
+                            <a class="swiper-slide">
+                                <div class="thumb">
+                                    <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a4cc78dcb3b77372c600aa28291ad3b.jpg?thumb=1&w=400&h=400&f=webp&q=90"
+                                        style="width:160px; height:160px">
+                                </div>
+                                <h3 class="content-title">黑</h3>
+                                <p class="desc">超宽大环绕显示屏</p>
+                                <p class="price">1999元<span>2499元</span></p>
+                            </a>
+                        </swiper-slide>
+                   </swiper>
               </div>
             </div>
           </div>
@@ -579,7 +621,7 @@
     </navFooter>
   </div>
 </template>
-    
+
 <script>
 import navHeader from '../components/Header'
 import navFooter from '../components/Footer'
@@ -587,11 +629,11 @@ import navToolBar from '../components/ToolBar'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import '../assets/swiper/css/swiper.css'
 export default {
-  name: "Main",
+  name: 'Main',
   data () {
     return {
       sorts: {
-        "defaults": ['小米手机', 'Redmi红米', '电视', '笔记本', '家店', '路由器', '智能硬件']
+        defaults: ['小米手机', 'Redmi红米', '电视', '笔记本', '家店', '路由器', '智能硬件']
       },
       index: 0,
       day: '',
@@ -600,49 +642,49 @@ export default {
       seconds: 0,
       swiperInfo: [
         {
-          'icon': {
-            backgroundImage: "url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a7c2a3fec92ad95435f8ab8d8407db6c.jpg?thumb=1&w=2452&h=920&f=webp&q=90)",
-            backgroundSize: "cover",
-            backgroundposition: "center",
-            backgroundRepeat: "no-repeat",
+          icon: {
+            backgroundImage: 'url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a7c2a3fec92ad95435f8ab8d8407db6c.jpg?thumb=1&w=2452&h=920&f=webp&q=90)',
+            backgroundSize: 'cover',
+            backgroundposition: 'center',
+            backgroundRepeat: 'no-repeat'
           },
-          "href": "https://www.mi.com/a/h/15490.html"
+          href: 'https://www.mi.com/a/h/15490.html'
         },
         {
-          'icon': {
-            backgroundImage: "url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7e882fcbdcafc352dde03c741836399b.jpg?thumb=1&w=2452&h=920&f=webp&q=90)",
-            backgroundSize: "cover",
-            backgroundposition: "center",
-            backgroundRepeat: "no-repeat",
+          icon: {
+            backgroundImage: 'url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7e882fcbdcafc352dde03c741836399b.jpg?thumb=1&w=2452&h=920&f=webp&q=90)',
+            backgroundSize: 'cover',
+            backgroundposition: 'center',
+            backgroundRepeat: 'no-repeat'
           },
-          "href": "https://www.mi.com/a/h/15490.html"
+          href: 'https://www.mi.com/a/h/15490.html'
         },
         {
-          'icon': {
-            backgroundImage: "url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/400f15aedf3b2981c462e8811e88d384.jpg?w=2452&h=920)",
-            backgroundSize: "cover",
-            backgroundposition: "center",
-            backgroundRepeat: "no-repeat",
+          icon: {
+            backgroundImage: 'url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/400f15aedf3b2981c462e8811e88d384.jpg?w=2452&h=920)',
+            backgroundSize: 'cover',
+            backgroundposition: 'center',
+            backgroundRepeat: 'no-repeat'
           },
-          "href": "https://www.mi.com/a/h/15490.html"
+          href: 'https://www.mi.com/a/h/15490.html'
         },
         {
-          'icon': {
-            backgroundImage: "url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f306ce6727f8166fd97730c5876bfadc.jpg?thumb=1&w=2452&h=920&f=webp&q=90)",
-            backgroundSize: "cover",
-            backgroundposition: "center",
-            backgroundRepeat: "no-repeat",
+          icon: {
+            backgroundImage: 'url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f306ce6727f8166fd97730c5876bfadc.jpg?thumb=1&w=2452&h=920&f=webp&q=90)',
+            backgroundSize: 'cover',
+            backgroundposition: 'center',
+            backgroundRepeat: 'no-repeat'
           },
-          "href": "https://www.mi.com/a/h/15490.html"
+          href: 'https://www.mi.com/a/h/15490.html'
         },
         {
-          'icon': {
-            backgroundImage: "url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1b5bc9a947319a1d7424cb209c632b7d.jpg?thumb=1&w=2452&h=920&f=webp&q=90)",
-            backgroundSize: "cover",
-            backgroundposition: "center",
-            backgroundRepeat: "no-repeat",
+          icon: {
+            backgroundImage: 'url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1b5bc9a947319a1d7424cb209c632b7d.jpg?thumb=1&w=2452&h=920&f=webp&q=90)',
+            backgroundSize: 'cover',
+            backgroundposition: 'center',
+            backgroundRepeat: 'no-repeat'
           },
-          "href": "https://www.mi.com/a/h/15490.html"
+          href: 'https://www.mi.com/a/h/15490.html'
         }
       ],
       swiperOption: {
@@ -653,22 +695,23 @@ export default {
         autoplay: true,
         speed: 800,
 
-        //左右点击
+        // 左右点击
         navigation: {
           nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          prevEl: '.swiper-button-prev'
         },
 
-        //分页器设置 
+        // 分页器设置
         pagination: {
-          el: ".swiper-pagination",
+          el: '.swiper-pagination',
           clickable: true,
-          type: "bullets"
-        },
+          type: 'bullets'
+        }
 
       },
       flashList: '',
-      inputDate: [{"name":"小米10","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"Redmi Note 8","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"},{"name":"小米CC9","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"黑鲨游戏手机","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"小米电视","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"小米笔记本","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"路由器","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}, {"name":"小爱音箱","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"},{"name":"净水器","href":"//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4"}],
+      inputDate: [{ name: '小米10', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: 'Redmi Note 8', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小米CC9', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '黑鲨游戏手机', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小米电视', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小米笔记本', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '路由器', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小爱音箱', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '净水器', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }],
+      timer: ''
     }
   },
   components: {
@@ -687,28 +730,30 @@ export default {
     }
   },
   mounted: function () {
-    console.log('this is current swiper instance object', this.swiper);
+    console.log('this is current swiper instance object', this.swiper)
     this.swiper.slideTo(3, 1000, false)
-    this.countdown();
-    //初始化秒杀列表
-    this.init();
+    this.countdown()
+    // 初始化秒杀列表
+    this.init()
+    // input循环定时器
+    this.timer = setInterval(this.scroll, 1000)
   },
   methods: {
-    init () {
-      this.axios.post("/api/public/flash.json").then((response) => {
-        alert("llll");
-        console.log(response)
-        let res = response.data;
-        this.flashList = res.data;
-        console.log(flashList)
-      })
-      this.axios.post("/api/public/phone.json").then((res) => {
-        console.log(res)
-        let phone = res.data;
-        this.phoneList = phone.data;
-        console.log(phoneList)
-      })
-    },
+    // init () {
+    //   this.axios.post('/api/public/flash.json').then((response) => {
+    //     alert('llll')
+    //     console.log(response)
+    //     const res = response.data
+    //     this.flashList = res.data
+    //     console.log(flashList)
+    //   })
+    //   this.axios.post('/api/public/phone.json').then((res) => {
+    //     console.log(res)
+    //     const phone = res.data
+    //     this.phoneList = phone.data
+    //     console.log(phoneList)
+    //   })
+    // },
     countdown () {
       const end = Date.parse(new Date('2020-7-14 16:00:00'))
       // 定义当前时间戳
@@ -722,25 +767,24 @@ export default {
         return
       }
       // 用结束时间减去当前时间获得倒计时时间戳
-      const timestamp = end - now;
-      let day = parseInt(timestamp / 1000 / 60 / 60 / 24);
-      let hours = parseInt(timestamp / 1000 / 60 / 60 % 24);
-      let minute = parseInt(timestamp / 1000 / 60 % 60);
-      let seconds = parseInt(timestamp / 1000 % 60);
+      const timestamp = end - now
+      const day = parseInt(timestamp / 1000 / 60 / 60 / 24)
+      const hours = parseInt(timestamp / 1000 / 60 / 60 % 24)
+      const minute = parseInt(timestamp / 1000 / 60 % 60)
+      const seconds = parseInt(timestamp / 1000 % 60)
 
       // 给数据赋值
-      this.day = day;
-      this.hours = hours > 9 ? hours : '0' + hours;
-      this.minute = minute > 9 ? minute : '0' + minute;
-      this.seconds = seconds > 9 ? seconds : '0' + seconds;
+      this.day = day
+      this.hours = hours > 9 ? hours : '0' + hours
+      this.minute = minute > 9 ? minute : '0' + minute
+      this.seconds = seconds > 9 ? seconds : '0' + seconds
       // 定义this指向
-      const that = this;
+      const that = this
 
       // 使用定时器 然后使用递归 让每一次函数能调用自己达到倒计时的效果
       setInterval(() => {
         that.countdown()
-      }, 1000);
-
+      }, 1000)
     },
     details () {
       this.$router.push({
@@ -756,16 +800,16 @@ export default {
       this.$router.push({
         path: '/Company'
       })
-    },
-
+    }
   },
   beforeDestroy () {
-    clearTimeout(this.countdown);
+    clearTimeout(this.countdown)
+    clearTimeout(this.timer)
   }
 
 }
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/main.scss");
 @import url("../assets/scss/navbar.scss");

@@ -51,26 +51,26 @@
     </div>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "SMSEn",
+  name: 'SMSEn',
   data () {
     return {
       errorMsg: '请输入手机号',
       prompt: false
-    };
+    }
   },
   methods: {
     usercode () {
       this.$router.push({
-        path: '/Login/AccountEn'
+        path: '/LoginEn/AccountEn'
       })
     }
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/login.scss");
 </style>

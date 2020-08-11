@@ -7,7 +7,7 @@
     <div class="middle">
       <div class="type">
         <div class="login-title">
-          <router-link to="/Login/SMS"
+          <router-link to="/Login/Account"
                        class="user">账号登录</router-link>
           <span></span>
           <router-link to="/Login/Qr"
@@ -30,14 +30,14 @@
     </div>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "Login",
+  name: 'Login',
   data () {
     return {
 
-    };
+    }
   },
   methods: {
     complex () {
@@ -61,9 +61,9 @@ export default {
       })
     }
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/login.scss");
 </style>
