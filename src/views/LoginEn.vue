@@ -7,7 +7,7 @@
     <div class="middle">
       <div class="type">
         <div class="login-title">
-          <router-link to="/LoginEn/AccountEn"
+          <router-link to="/LoginEn/"
                        class="user">Sign in</router-link>
           <span></span>
           <router-link to="/LoginEn/QrEn"
@@ -30,15 +30,15 @@
     </div>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "LoginEn",
+  name: 'LoginEn',
   data () {
     return {
       username: '',
       password: ''
-    };
+    }
   },
   methods: {
     complex () {
@@ -62,9 +62,9 @@ export default {
       })
     }
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/login.scss");
 </style>

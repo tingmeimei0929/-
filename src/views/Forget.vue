@@ -16,7 +16,7 @@
           <i class="el-icon-alibaocuo"></i>
           <span class="errorPrompt">{{errorMsg}}</span>
         </div>
-        <p> 用户输入手机号码时请正确选择区域前缀。如: 台湾： +8869******，香港: +8526****** <a @click="selcetCountry">选择国家码</a></p>
+        <p>用户输入手机号码时请正确选择区域前缀。如: 台湾： +8869******，香港: +8526****** <a @click="selcetCountry">选择国家码</a></p>
 
         <button>下一步</button>
       </el-form>

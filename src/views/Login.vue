@@ -7,7 +7,7 @@
     <div class="middle">
       <div class="type">
         <div class="login-title">
-          <router-link to="/Login/Account"
+          <router-link to="/Login/"
                        class="user">账号登录</router-link>
           <span></span>
           <router-link to="/Login/Qr"

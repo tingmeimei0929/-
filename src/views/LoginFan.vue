@@ -7,7 +7,7 @@
     <div class="middle">
       <div class="type">
         <div class="login-title">
-          <router-link to="/LoginFan/AccountFan"
+          <router-link to="/LoginFan/"
                        class="user">帳號登入</router-link>
           <span></span>
           <router-link to="/LoginFan/QrFan"
@@ -30,15 +30,15 @@
     </div>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "LoginFan",
+  name: 'LoginFan',
   data () {
     return {
       username: '',
       password: ''
-    };
+    }
   },
   methods: {
     complex () {
@@ -62,9 +62,9 @@ export default {
       })
     }
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/login.scss");
 </style>

@@ -17,7 +17,7 @@
                id="smsnum">
       </div>
       <div class="smsbtn">
-        <a>獲取驗證碼</a>
+        <a @click="countDown" :class="{disabled: !this.canClick}">{{content}}</a>
       </div>
     </div>
     <div class="small"
@@ -57,7 +57,10 @@ export default {
   data () {
     return {
       errorMsg: '請輸入手機號',
-      prompt: false
+      prompt: false,
+      content: '獲取驗證碼',
+      totalTime: 60,
+      canClick: true
     }
   },
   methods: {
@@ -65,6 +68,23 @@ export default {
       this.$router.push({
         path: '/LoginFan/AccountFan'
       })
+    },
+    countDown () {
+      if (!this.canClick) {
+        return
+      }
+      this.canClick = false
+      this.content = '重新發送(' + this.totalTime + ')'
+      const clock = window.setInterval(() => {
+        this.totalTime--
+        this.content = '重新發送(' + this.totalTime + ')'
+        if (this.totalTime < 0) {
+          window.clearTimeout(clock)
+          this.content = '獲取驗證碼'
+          this.totalTime = 60
+          this.canClick = true
+        }
+      }, 1000)
     }
   }
 }

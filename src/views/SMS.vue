@@ -17,7 +17,7 @@
                id="smsnum">
       </div>
       <div class="smsbtn">
-        <a>获取验证码</a>
+        <a @click="countDown" :class="{disabled: !this.canClick}">{{content}}</a>
       </div>
     </div>
     <div class="small"
@@ -30,7 +30,7 @@
       <div class="prompt-top">
         <div class="sms-link"><a @click="usercode">用户名密码登录</a></div>
         <div class="other-login-type">
-          <a>收不到验证码？</a>
+          <a @click="code">收不到验证码？</a>
         </div>
       </div>
       <fieldset>
@@ -45,31 +45,55 @@
            class="btn-zhifubao"><i class="el-icon-alizhifubao1"></i></a>
         <a href="/pass/sns/login/auth?appid=2088011127562160&&callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252Findex.html%26sign%3DMjM0MWU0NjBlOTU1YzY4NGQzOTc3MDk4N2M2MjQ5Y2ZiZTMxNTFlZQ%2C%2C&sid=mi_eshop"
            class="btn-weixin"><i class="el-icon-aliweixin2"></i></a>
-
       </div>
     </div>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "SMS",
+  name: 'SMS',
   data () {
     return {
       errorMsg: '请输入手机号',
-      prompt: false
-    };
+      prompt: false,
+      content: '发送验证码',
+      canClick: true,
+      totalTime: 60 // 记录具体倒计时时间
+    }
   },
   methods: {
     usercode () {
       this.$router.push({
         path: '/Login/Account'
       })
+    },
+    code () {
+      this.$router.push({
+        path: '/CodeRules'
+      })
+    },
+    countDown () {
+      if (!this.canClick) {
+        return
+      }
+      this.canClick = false
+      this.content = '重新发送(' + this.totalTime + ')'
+      const clock = window.setInterval(() => {
+        this.totalTime--
+        this.content = '重新发送(' + this.totalTime + ')'
+        if (this.totalTime < 0) {
+          window.clearInterval(clock)
+          this.content = '发送验证码'
+          this.totalTime = 60
+          this.canClick = true // 重新开启
+        }
+      }, 1000)
     }
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/login.scss");
 </style>

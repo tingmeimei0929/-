@@ -74,8 +74,7 @@
               <div class="result-list">
                   <!--  -->
                 <input type="text"
-                        name="slider"  v-for="(item,index) in inputDate"
-                       :key="index" :placeholder="item.name" >
+                        name="slider"  :placeholder= inputList>
                 <ul class="searchList">
                   <li v-for="(item,index) in inputDate"
                     :key="index"><a :href="item.href">{{item.name}}</a></li>
@@ -636,7 +635,7 @@ export default {
         defaults: ['小米手机', 'Redmi红米', '电视', '笔记本', '家店', '路由器', '智能硬件']
       },
       index: 0,
-      day: '',
+      day: 0,
       hours: 0,
       minute: 0,
       seconds: 0,
@@ -711,7 +710,9 @@ export default {
       },
       flashList: '',
       inputDate: [{ name: '小米10', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: 'Redmi Note 8', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小米CC9', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '黑鲨游戏手机', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小米电视', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小米笔记本', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '路由器', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小爱音箱', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '净水器', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }],
-      timer: ''
+      timer: '',
+      inputList: '',
+      seq: 0
     }
   },
   components: {
@@ -740,8 +741,8 @@ export default {
   },
   methods: {
     // init () {
+    //   alert('llll')
     //   this.axios.post('/api/public/flash.json').then((response) => {
-    //     alert('llll')
     //     console.log(response)
     //     const res = response.data
     //     this.flashList = res.data
@@ -754,8 +755,8 @@ export default {
     //     console.log(phoneList)
     //   })
     // },
-    countdown () {
-      const end = Date.parse(new Date('2020-7-14 16:00:00'))
+    countdown: function () {
+      const end = Date.parse(new Date('2020-8-13 16:00:00'))
       // 定义当前时间戳
       const now = Date.parse(new Date())
       // 做判断当倒计时结束时都为0
@@ -772,7 +773,6 @@ export default {
       const hours = parseInt(timestamp / 1000 / 60 / 60 % 24)
       const minute = parseInt(timestamp / 1000 / 60 % 60)
       const seconds = parseInt(timestamp / 1000 % 60)
-
       // 给数据赋值
       this.day = day
       this.hours = hours > 9 ? hours : '0' + hours
@@ -780,9 +780,9 @@ export default {
       this.seconds = seconds > 9 ? seconds : '0' + seconds
       // 定义this指向
       const that = this
-
+      console.log(`${hours} ${minute}`)
       // 使用定时器 然后使用递归 让每一次函数能调用自己达到倒计时的效果
-      setInterval(() => {
+      setTimeout(() => {
         that.countdown()
       }, 1000)
     },

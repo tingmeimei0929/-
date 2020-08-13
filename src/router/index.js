@@ -36,6 +36,7 @@ import Commodity5 from '../views/Commodity5'
 import Commodity6 from '../views/Commodity6'
 import Commodity7 from '../views/Commodity7'
 import Commodity8 from '../views/Commodity8'
+import CodeRules from '../views/CodeRules.vue'
 import Cart from '../views/Cart'
 Vue.use(VueRouter)
 
@@ -153,6 +154,11 @@ const routes = [{
   path: '/ForgetEn',
   name: 'ForgetEn',
   component: ForgetEn
+},
+{
+  path: '/CodeRules',
+  name: 'CodeRules',
+  component: CodeRules
 },
 {
   path: '/Spike',

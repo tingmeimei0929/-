@@ -18,7 +18,7 @@
                class="inputEn">
       </div>
       <div class="smsbtn">
-        <a>Get verification code</a>
+        <a @click="countDown" :class="{disabled: !this.canClick}">{{ content }}</a>
       </div>
     </div>
     <div class="small"
@@ -58,7 +58,10 @@ export default {
   data () {
     return {
       errorMsg: '请输入手机号',
-      prompt: false
+      prompt: false,
+      content: 'Get verification code',
+      totalTime: 60,
+      canclick: true
     }
   },
   methods: {
@@ -66,6 +69,23 @@ export default {
       this.$router.push({
         path: '/LoginEn/AccountEn'
       })
+    },
+    countDown () {
+      if (!this.canclick) {
+        return
+      }
+      this.canclick = false
+      this.content = 'Resend code(' + this.totalTime + ')'
+      const clock = window.setInterval(() => {
+        this.totalTime--
+        this.content = 'Resend code(' + this.totalTime + ')'
+        if (this.totalTime < 0) {
+          window.clearInterval(clock)
+          this.content = 'Get verification code'
+          this.totalTime = 60
+          this.canclick = true
+        }
+      }, 1000)
     }
   }
 }
