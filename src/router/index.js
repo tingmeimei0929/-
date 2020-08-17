@@ -38,6 +38,8 @@ import Commodity7 from '../views/Commodity7'
 import Commodity8 from '../views/Commodity8'
 import CodeRules from '../views/CodeRules.vue'
 import Cart from '../views/Cart'
+import AccountName from '../views/AccountName.vue'
+import SignUpAccount from '../views/SignUpAccount.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -158,7 +160,21 @@ const routes = [{
 {
   path: '/CodeRules',
   name: 'CodeRules',
-  component: CodeRules
+  component: CodeRules,
+  children: [
+    // 简介
+    {
+      path: '/AccountName',
+      name: 'AccountName',
+      component: AccountName
+    },
+    // 新人指南
+    {
+      path: '/SignUpAccount',
+      name: 'SignUpAccount',
+      component: SignUpAccount
+    }
+  ]
 },
 {
   path: '/Spike',

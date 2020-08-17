@@ -1,4 +1,6 @@
 .header {
+    position: relative;
+    width: 100%;
     height: 65px;
     padding: 12px 24px;
     border-bottom: 1px solid rgba(0,0,0,.1);
@@ -69,17 +71,25 @@
     justify-content: space-between;
     height: auto;
 
-    el-aside{
+    .el-aside{
+        position: absolute;
+        left: 0;
+        top: 65px;
+        bottom: 0;
         flex:  0 0 300px;
-        overflow-y: auto;
+        overflow-y: scroll;
         border-right: 1px solid rgba(0,0,0,.1);
-        background: red;
     }
 
-    el-main{
+    .el-main{
+        position: absolute;
+        right: 0;
+        top: 65px;
+        bottom: 0em;
+        left: 300px;
         display: flex;
         flex-direction: column;
-        overflow: auto;
+        overflow-y: scroll;
         flex: 1 1 auto;
         width: 100%;
     }
