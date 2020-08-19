@@ -13,18 +13,18 @@
     </div>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "Qr",
+  name: 'Qr',
   data () {
     return {
 
-    };
+    }
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/login.scss");
 </style>

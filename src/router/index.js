@@ -39,7 +39,9 @@ import Commodity8 from '../views/Commodity8'
 import CodeRules from '../views/CodeRules.vue'
 import Cart from '../views/Cart'
 import AccountName from '../views/AccountName.vue'
-import SignUpAccount from '../views/SignUpAccount.vue'
+import SignUp1 from '../views/SignUp1.vue'
+import SignUp2 from '../views/SignUp2.vue'
+import SmsQuestion from '../views/SmsQuestion.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -170,9 +172,19 @@ const routes = [{
     },
     // 新人指南
     {
-      path: '/SignUpAccount',
-      name: 'SignUpAccount',
-      component: SignUpAccount
+      path: '/SignUp1',
+      name: 'SignUp1',
+      component: SignUp1
+    },
+    {
+      path: '/SignUp2',
+      name: 'SignUp2',
+      component: SignUp2
+    },
+    {
+      path: '/SmsQuestion',
+      name: '/SmsQuestion',
+      component: SmsQuestion
     }
   ]
 },

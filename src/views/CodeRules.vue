@@ -11,45 +11,52 @@
             </div>
         </el-header>
         <el-container class="body">
-            <el-aside>
-                <el-menu :default-openeds="['3','3-2']"
-                         :default-active="$router.path"
-                         router>
-                    <el-submenu index="1">
+            <el-aside class="leftMenu">
+                <el-menu :default-openeds="['3','3-2']" :default-active="activePath"
+                         unique-opened :collapse-transition=false
+                            router>
+                    <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
+                        <template slot="title">{{item.authName}}</template>
+                        <el-submenu :index="item1.id + ''" v-for="item1 in item.children" :key="item1.id">
+                            <template slot="title">{{item1.secondName}}</template>
+                            <el-menu-item :index="item1.path+'/accountName'" v-for="items in item.children.children" :key="items.id" @click="saveNavState(item.path)">{{items.thirdName}}</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                    <!-- <el-submenu index="1">
                         <template slot="title">简介</template>
-                        <el-menu-item index="/accountName">什么是小米账号</el-menu-item>
+                        <el-menu-item :index="item1.path+'/accountName'" v-for="item1 in item.children" :key="item1.id" @click="saveNavState(item.path)">什么是小米账号</el-menu-item>
                     </el-submenu>
                     <el-submenu index="2">
                         <template slot="title">新人指南</template>
                         <el-submenu index="2-1">
                             <template slot="title" class="levelTitle">注册</template>
-                            <el-menu-item index="/SignUpAccount">如何注册小米账号</el-menu-item>
-                            <el-menu-item index="2-1-2">已被他人注册过小米账号的手机号，如何注册新账号</el-menu-item>
-                            <el-menu-item index="2-1-3">什么是二次号</el-menu-item>
-                            <el-menu-item index="2-1-4">能否合并微信和手机号注册的两个账号</el-menu-item>
-                            <el-menu-item index="2-1-5">一个手机号可以注册绑定几个小米账号</el-menu-item>
+                            <el-menu-item index="/SignUp1">如何注册小米账号</el-menu-item>
+                            <el-menu-item index="/SignUp2">已被他人注册过小米账号的手机号，如何注册新账号</el-menu-item>
+                            <el-menu-item index="/SignUp1">什么是二次号</el-menu-item>
+                            <el-menu-item index="/SignUp2">能否合并微信和手机号注册的两个账号</el-menu-item>
+                            <el-menu-item index="/SignUp1">一个手机号可以注册绑定几个小米账号</el-menu-item>
                         </el-submenu>
-                         <el-submenu index="2-2">
+                            <el-submenu index="2-2">
                             <template slot="title" class="levelTitle">登录</template>
-                             <el-menu-item index="2-2-1">如何登录小米账号</el-menu-item>
-                            <el-menu-item index="2-2-2">如何用微信登录小米账号</el-menu-item>
-                            <el-menu-item index="2-2-3">账号登录异常的原因</el-menu-item>
-                            <el-menu-item index="2-2-4">如何查看账号下登录的小米设备</el-menu-item>
-                            <el-menu-item index="2-2-5">账号长期不登录，会自动注销吗</el-menu-item>
+                            <el-menu-item index="/SignUp1">如何登录小米账号</el-menu-item>
+                            <el-menu-item index="/accountName">如何用微信登录小米账号</el-menu-item>
+                            <el-menu-item index="/SignUp2">账号登录异常的原因</el-menu-item>
+                            <el-menu-item index="/accountName">如何查看账号下登录的小米设备</el-menu-item>
+                            <el-menu-item index="/SignUp1">账号长期不登录，会自动注销吗</el-menu-item>
                         </el-submenu>
                         <el-submenu index="2-3">
                             <template slot="title" class="levelTitle">退出登录</template>
-                            <el-menu-item index="2-3-1">如何退出小米账号</el-menu-item>
+                            <el-menu-item index="/accountName">如何退出小米账号</el-menu-item>
                         </el-submenu>
                         <el-submenu index="2-4">
                             <template slot="title" class="levelTitle">注销</template>
-                             <el-menu-item index="2-4-1">如何注销小米账号</el-menu-item>
-                            <el-menu-item index="2-4-2">为什么账号无法注销</el-menu-item>
-                            <el-menu-item index="2-4-3">忘记密码，如何注销小米账号</el-menu-item>
+                                <el-menu-item index="/SignUp1">如何注销小米账号</el-menu-item>
+                            <el-menu-item index="/SignUp2">为什么账号无法注销</el-menu-item>
+                            <el-menu-item index="/accountName">忘记密码，如何注销小米账号</el-menu-item>
                         </el-submenu>
                         <el-submenu index="2-5">
                             <template slot="title" class="levelTitle">申诉</template>
-                             <el-menu-item index="2-5-1">如何进行小米账号申诉</el-menu-item>
+                            <el-menu-item index="2-5-1">如何进行小米账号申诉</el-menu-item>
                             <el-menu-item index="2-5-2">如何处理申诉单号丢失问题</el-menu-item>
                             <el-menu-item index="2-5-3">申诉单的定义和作用</el-menu-item>
                             <el-menu-item index="2-5-4">账号申诉审核周期</el-menu-item>
@@ -65,15 +72,15 @@
                         <template slot="title">常见问题</template>
                         <el-submenu index="3-1">
                             <template slot="title">密码</template>
-                             <el-menu-item index="3-1-1">如何重置账号密码</el-menu-item>
-                            <el-menu-item index="3-1-2">如何处理修改密码后，提示登录异常</el-menu-item>
-                            <el-menu-item index="3-1-3">忘记密码且无安全手机、邮箱、密保，如何登录小米账号</el-menu-item>
+                                <el-menu-item index="/SignUp1">如何重置账号密码</el-menu-item>
+                            <el-menu-item index="/SignUp2">如何处理修改密码后，提示登录异常</el-menu-item>
+                            <el-menu-item index="/accountName">忘记密码且无安全手机、邮箱、密保，如何登录小米账号</el-menu-item>
                         </el-submenu>
-                          <el-submenu index="3-2">
+                            <el-submenu index="3-2">
                             <template slot="title">短信和邮箱验证码</template>
-                            <el-menu-item index="3-2-1">为什么收不到短信验证码</el-menu-item>
-                            <el-menu-item index="3-2-2">为什么收不到验证邮件</el-menu-item>
-                            <el-menu-item index="3-2-3">为什么提示短信频次达到上限</el-menu-item>
+                            <el-menu-item index="/SmsQuestion">为什么收不到短信验证码</el-menu-item>
+                            <el-menu-item index="/SignUp2">为什么收不到验证邮件</el-menu-item>
+                            <el-menu-item index="/SignUp1">为什么提示短信频次达到上限</el-menu-item>
                             <el-menu-item index="3-2-4">发送验证码短信数量到达上限后，为什么时间可再次发送</el-menu-item>
                             <el-menu-item index="3-2-5">为什么短信验证码收到后无法使用</el-menu-item>
                         </el-submenu>
@@ -84,15 +91,15 @@
                             <el-menu-item index="3-3-3">如何解绑微信、QQ、微博账号</el-menu-item>
                         </el-submenu>
                     </el-submenu>
-                     <el-submenu index="4">
+                    <el-submenu index="4">
                         <template slot="title">账号安全</template>
                         <el-submenu index="4-1">
                             <template slot="title">安全手机和邮箱</template>
-                             <el-menu-item index="4-1-1">安全手机定义和作用</el-menu-item>
+                                <el-menu-item index="4-1-1">安全手机定义和作用</el-menu-item>
                             <el-menu-item index="4-1-2">如何解绑手机号和邮箱</el-menu-item>
                             <el-menu-item index="4-1-3">如何处理账号被绑定他人手机号/邮箱的问题</el-menu-item>
                         </el-submenu>
-                          <el-submenu index="4-2">
+                            <el-submenu index="4-2">
                             <template slot="title">密保问题</template>
                             <el-menu-item index="4-2-1">密保的定义和作用</el-menu-item>
                             <el-menu-item index="4-2-2">如何重置密保</el-menu-item>
@@ -103,23 +110,38 @@
                             <el-menu-item index="4-3-1">如何找回被盗账号</el-menu-item>
                             <el-menu-item index="4-3-2">小米手机丢失、遗弃、赠与要注意哪些问题</el-menu-item>
                         </el-submenu>
-                    </el-submenu>
+                    </el-submenu> -->
                 </el-menu>
             </el-aside>
-            <el-main>
+            <el-main class="rightContent">
                 <router-view></router-view>
-                <el-footer>
-                    <div class="top">
-                        有帮助吗？
-                        <el-button>是</el-button>
-                        <el-button>否</el-button>
-                    </div>
-                    <div class="bottom">
-                        <div class="block">
-                            <el-pagination layout="prev,next" :hide-on-single-page="value"></el-pagination>
+                <div class="common-question">
+                    <span>{{ prompt }}</span>
+                    <el-button @click="yes" v-show="isShow">是</el-button>
+                    <el-button @click="no" v-show="isShow">否</el-button>
+                </div>
+                <div class="footer">
+                    <ul class="pagination">
+                        <li class="prevBtn">
+                            <a href="#"><i class="el-icon-alichangyongicon-"></i>上一页</a>
+                            <span>xxxxx</span>
+                        </li>
+                        <li class="nextBtn">
+                            <a href="#">下一页<i class="el-icon-alijiantou"></i></a>
+                            <span>xxxxx</span>
+                        </li>
+                    </ul>
+                    <div class="horizontal-divider"></div>
+                    <div class="law-section">
+                        <div class="links">
+                            <a href="https://privacy.mi.com/miaccount/zh_CN">隐私政策</a>
+                            <a href="https://static.account.xiaomi.com/html/agreement/user/zh_CN_undefined.html">用户协议</a>
+                        </div>
+                        <div class="bottom">
+                            <div class="reserve">©2020 MIUI . All rights reserved 京ICP备10046444号 京公网安备1101080212535</div>
                         </div>
                     </div>
-                </el-footer>
+                </div>
             </el-main>
         </el-container>
     </el-container>
@@ -130,7 +152,185 @@ export default {
   name: 'CodeRules',
   data () {
     return {
-      value: false
+      value: false,
+      current: 1,
+      allpage: 13,
+      prompt: '有帮助吗？',
+      isShow: true,
+      menuList: [
+        { authName: '简介', children: [{ thirdName: '什么是小米账号' }] },
+        {
+          authName: '新人指南',
+          children: [{
+            secondName: '注册',
+            children: [
+              { thirdName: '如何注册小米账号' },
+              { thirdName: '已被他人注册过小米账号的手机号，如何注册新账号' },
+              { thirdName: '什么是二次号' },
+              { thirdName: '能否合并微信和手机号注册的两个账号' },
+              { thirdName: '一个手机号可以注册绑定几个小米账号' }
+            ]
+          },
+          {
+            secondName: '登录',
+            children: [
+              { thirdName: '如何登录小米账号' },
+              { thirdName: '如何用微信登录小米账号' },
+              { thirdName: '账号登录异常的原因' },
+              { thirdName: '如何查看账号下登录的小米设备' },
+              { thirdName: '账号长期不登录，会自动注销吗' }
+            ]
+          },
+          {
+            secondName: '退出登录',
+            children: [
+              { thirdName: '如何退出小米账号' }
+            ]
+          },
+          {
+            secondName: '注销',
+            children: [
+              { thirdName: '如何注销小米账号' },
+              { thirdName: '为什么账号无法注销' },
+              { thirdName: '忘记密码，如何注销小米账号' }
+            ]
+          },
+          {
+            secondName: '申诉',
+            children: [
+              { thirdName: '如何进行小米账号申诉' },
+              { thirdName: '如何处理申诉单号丢失问题' },
+              { thirdName: '申诉单的定义和作用' },
+              { thirdName: '账号申诉审核周期' },
+              { thirdName: '什么情况下要发起账号申诉' }
+            ]
+          }]
+        },
+        {
+          authName: '常见问题',
+          children: [{
+            secondName: '密码',
+            children: [
+              { thirdName: '如何重置小米账号' },
+              { thirdName: '如何处理修改密码后，提示登录异常' },
+              { thirdName: '忘记密码且无安全手机、邮箱、密保，如何登录小米账号' }
+            ]
+          },
+          {
+            secondName: '短信和邮箱验证码',
+            children: [
+              { thirdName: '为什么收不到短信验证码' },
+              { thirdName: '为什么收不到验证邮箱' },
+              { thirdName: '为什么提示短信频次达到上限' },
+              { thirdName: '发送验证码短信数量到达上限后，什么时间可再次发送' },
+              { thirdName: '为什么短信验证码收到后无法使用' }
+            ]
+          },
+          {
+            secondName: '绑定解绑第三方账号',
+            children: [
+              { thirdName: '如何查询账号绑定的第三方账号信息' },
+              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
+              { thirdName: '如何解绑微信、QQ、微博账号' }
+            ]
+          }]
+        },
+        {
+          authName: '账号安全',
+          children: [{
+            secondName: '安全手机和邮箱',
+            children: [
+              { thirdName: '安全手机定义和作用' },
+              { thirdName: '如何解绑手机号和邮箱' },
+              { thirdName: '如何处理账号被绑定他人手机号/邮箱的问题' }
+            ]
+          },
+          {
+            secondName: '密保问题',
+            children: [
+              { thirdName: '密保的定义的作用' },
+              { thirdName: '如何重置密保' },
+              { thirdName: '为什么密保重置失败' }
+            ]
+          },
+          {
+            secondName: '丢失被盗或换机',
+            children: [
+              { thirdName: '如何找回被盗账号' },
+              { thirdName: '小米手机丢失、遗弃、赠与要注意哪些问题' }
+            ]
+          },
+          {
+            secondName: '安全验证',
+            children: [
+              { thirdName: '小米账号有哪些安全验证方式' },
+              { thirdName: '为什么要验证图片验证码' },
+              { thirdName: '什么事小米账号安全令牌，有什么作用' }
+            ]
+          },
+          {
+            secondName: '冻结解冻',
+            children: [
+              { thirdName: '如何查询账号绑定的第三方账号信息' },
+              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
+              { thirdName: '如何解绑微信、QQ、微博账号' }
+            ]
+          }]
+        },
+        {
+          authName: '其他',
+          children: [{
+            secondName: '小米云服务的注册手机号已停用，能否继续登录云服务',
+            children: [
+              { thirdName: '如何查询账号绑定的第三方账号信息' },
+              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
+              { thirdName: '如何解绑微信、QQ、微博账号' }
+            ]
+          },
+          {
+            secondName: '为什么系统提示查找手机等服务激活失败',
+            children: [
+              { thirdName: '如何查询账号绑定的第三方账号信息' },
+              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
+              { thirdName: '如何解绑微信、QQ、微博账号' }
+            ]
+          },
+          {
+            secondName: '为什么提示激活短信接收失败',
+            children: [
+              { thirdName: '如何查询账号绑定的第三方账号信息' },
+              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
+              { thirdName: '如何解绑微信、QQ、微博账号' }
+            ]
+          },
+          {
+            secondName: '为什么更换SIM卡。提示重新激活服务',
+            children: [
+              { thirdName: '如何查询账号绑定的第三方账号信息' },
+              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
+              { thirdName: '如何解绑微信、QQ、微博账号' }
+            ]
+          },
+          {
+            secondName: '为什么激活服务要发送短信',
+            children: [
+              { thirdName: '如何查询账号绑定的第三方账号信息' },
+              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
+              { thirdName: '如何解绑微信、QQ、微博账号' }
+            ]
+          }]
+        }
+      ]
+    }
+  },
+  methods: {
+    yes () {
+      this.prompt = '感谢您的反馈'
+      this.isShow = false
+    },
+    no () {
+      this.prompt = '感谢您的反馈'
+      this.isShow = false
     }
   }
 }
@@ -169,5 +369,13 @@ export default {
     text-align: left !important;
     color: rgba(0,0,0,.8) !important;
     cursor: pointer;
+}
+.el-menu .el-submenu >.el-submenu__title:hover{
+   color: #ff6700 !important;
+   background: #fff !important;
+}
+.el-menu.el-submenu >.el-menu-item.is-active{
+    color: #ff6700 !important;
+    background: #fff !important;
 }
 </style>
