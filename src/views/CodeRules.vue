@@ -12,14 +12,13 @@
         </el-header>
         <el-container class="body">
             <el-aside class="leftMenu">
-                <el-menu :default-openeds="['3','3-2']" :default-active="activePath"
-                         unique-opened :collapse-transition=false
-                            router>
+                <el-menu :default-openeds="['3','3-2']" :default-active="$route.path" class="el-menu-vertical-demo"
+                        :collapse="isCollapse" router>
                     <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
                         <template slot="title">{{item.authName}}</template>
                         <el-submenu :index="item1.id + ''" v-for="item1 in item.children" :key="item1.id">
                             <template slot="title">{{item1.secondName}}</template>
-                            <el-menu-item :index="item1.path+'/accountName'" v-for="items in item.children.children" :key="items.id" @click="saveNavState(item.path)">{{items.thirdName}}</el-menu-item>
+                            <el-menu-item :index="items.path+'/accountName'" v-for="items in item1.children" :key="items.id" @click="saveNavState(item.path)">{{items.thirdName}}</el-menu-item>
                         </el-submenu>
                     </el-submenu>
                     <!-- <el-submenu index="1">
@@ -158,7 +157,14 @@ export default {
       prompt: '有帮助吗？',
       isShow: true,
       menuList: [
-        { authName: '简介', children: [{ thirdName: '什么是小米账号' }] },
+        {
+          authName: '简介',
+          children: [{
+            children: [
+              { thirdName: '什么是小米账号' }
+            ]
+          }]
+        },
         {
           authName: '新人指南',
           children: [{
@@ -202,7 +208,14 @@ export default {
               { thirdName: '如何处理申诉单号丢失问题' },
               { thirdName: '申诉单的定义和作用' },
               { thirdName: '账号申诉审核周期' },
-              { thirdName: '什么情况下要发起账号申诉' }
+              { thirdName: '什么情况下要发起账号申诉' },
+              { thirdName: '什么是申诉解锁，如何进行申诉解锁' },
+              { thirdName: '已申诉账号能否再次发起申诉，最多申诉几次' },
+              { thirdName: '为什么账号不能申诉通知' },
+              { thirdName: '如何进行申诉解锁' },
+              { thirdName: '小米账号申诉步骤流程说明' },
+              { thirdName: '能否撤销已提交的申诉' },
+              { thirdName: '如何处理账号申诉未通过' }
             ]
           }]
         },
@@ -242,7 +255,13 @@ export default {
             children: [
               { thirdName: '安全手机定义和作用' },
               { thirdName: '如何解绑手机号和邮箱' },
-              { thirdName: '如何处理账号被绑定他人手机号/邮箱的问题' }
+              { thirdName: '如何处理账号被绑定他人手机号/邮箱的问题' },
+              { thirdName: '安全邮箱的定义和作用' },
+              { thirdName: '如何更换安全手机' },
+              { thirdName: '如何更换安全邮箱' },
+              { thirdName: '如何将手机号换绑到另一账号' },
+              { thirdName: '如何处理绑定邮箱停用问题' },
+              { thirdName: '为什么账号无法绑定手机和邮箱' }
             ]
           },
           {
@@ -265,58 +284,36 @@ export default {
             children: [
               { thirdName: '小米账号有哪些安全验证方式' },
               { thirdName: '为什么要验证图片验证码' },
-              { thirdName: '什么事小米账号安全令牌，有什么作用' }
+              { thirdName: '什么事小米账号安全令牌，有什么作用' },
+              { thirdName: '为什么在登录中输入账号密码后，还需要验证手机号' }
             ]
           },
           {
             secondName: '冻结解冻',
             children: [
-              { thirdName: '如何查询账号绑定的第三方账号信息' },
-              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
-              { thirdName: '如何解绑微信、QQ、微博账号' }
+              { thirdName: '如何冻结解冻账号' },
+              { thirdName: '为什么账号被自动冻结' },
+              { thirdName: '为什么账号会被封禁' },
+              { thirdName: '什么情况下要冻结账号' }
             ]
           }]
         },
         {
           authName: '其他',
           children: [{
-            secondName: '小米云服务的注册手机号已停用，能否继续登录云服务',
             children: [
-              { thirdName: '如何查询账号绑定的第三方账号信息' },
+              { thirdName: '小米云服务的注册手机号已停用，能否继续登录云服务' },
+              { thirdName: '为什么系统提示查找手机等服务激活失败' },
+              { thirdName: '为什么提示激活短信接受失败' },
+              { thirdName: '为什么更换SIM卡，提示重新激活服务' },
+              { thirdName: '为什么激活服务要发送短信' },
+              { thirdName: '为什么小米账号绑定了两个手机号' },
+              { thirdName: '为什么米聊中绑定的手机号，小米账号中未显示' },
               { thirdName: '为什么账号无法绑定微信、QQ、微博' },
-              { thirdName: '如何解绑微信、QQ、微博账号' }
-            ]
-          },
-          {
-            secondName: '为什么系统提示查找手机等服务激活失败',
-            children: [
-              { thirdName: '如何查询账号绑定的第三方账号信息' },
-              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
-              { thirdName: '如何解绑微信、QQ、微博账号' }
-            ]
-          },
-          {
-            secondName: '为什么提示激活短信接收失败',
-            children: [
-              { thirdName: '如何查询账号绑定的第三方账号信息' },
-              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
-              { thirdName: '如何解绑微信、QQ、微博账号' }
-            ]
-          },
-          {
-            secondName: '为什么更换SIM卡。提示重新激活服务',
-            children: [
-              { thirdName: '如何查询账号绑定的第三方账号信息' },
-              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
-              { thirdName: '如何解绑微信、QQ、微博账号' }
-            ]
-          },
-          {
-            secondName: '为什么激活服务要发送短信',
-            children: [
-              { thirdName: '如何查询账号绑定的第三方账号信息' },
-              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
-              { thirdName: '如何解绑微信、QQ、微博账号' }
+              { thirdName: '为什么提示游戏账号有问题' },
+              { thirdName: '为什么账号无法登录小米论坛' },
+              { thirdName: '账号注销后，之前购买的云服务等权益，会被他人重新注册后盗用吗' },
+              { thirdName: '什么是查找手机无网络定位服务' }
             ]
           }]
         }
@@ -369,6 +366,7 @@ export default {
     text-align: left !important;
     color: rgba(0,0,0,.8) !important;
     cursor: pointer;
+    width: calc(100% + 1px);
 }
 .el-menu .el-submenu >.el-submenu__title:hover{
    color: #ff6700 !important;
@@ -376,6 +374,6 @@ export default {
 }
 .el-menu.el-submenu >.el-menu-item.is-active{
     color: #ff6700 !important;
-    background: #fff !important;
+    background: #fff4e6 !important;
 }
 </style>
