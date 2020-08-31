@@ -18,12 +18,12 @@
                         <template slot="title">{{item.authName}}</template>
                         <el-submenu :index="item1.id + ''" v-for="item1 in item.children" :key="item1.id">
                             <template slot="title">{{item1.secondName}}</template>
-                            <el-menu-item :index="items.path+'/accountName'" v-for="items in item1.children" :key="items.id" @click="saveNavState(item.path)">{{items.thirdName}}</el-menu-item>
+                            <el-menu-item  v-for="items in item1.children" :key="items.id" :index="items.url">{{items.thirdName}}</el-menu-item>
                         </el-submenu>
                     </el-submenu>
                     <!-- <el-submenu index="1">
                         <template slot="title">简介</template>
-                        <el-menu-item :index="item1.path+'/accountName'" v-for="item1 in item.children" :key="item1.id" @click="saveNavState(item.path)">什么是小米账号</el-menu-item>
+                        <el-menu-item index="1-1">什么是小米账号</el-menu-item>
                     </el-submenu>
                     <el-submenu index="2">
                         <template slot="title">新人指南</template>
@@ -31,21 +31,23 @@
                             <template slot="title" class="levelTitle">注册</template>
                             <el-menu-item index="/SignUp1">如何注册小米账号</el-menu-item>
                             <el-menu-item index="/SignUp2">已被他人注册过小米账号的手机号，如何注册新账号</el-menu-item>
-                            <el-menu-item index="/SignUp1">什么是二次号</el-menu-item>
-                            <el-menu-item index="/SignUp2">能否合并微信和手机号注册的两个账号</el-menu-item>
-                            <el-menu-item index="/SignUp1">一个手机号可以注册绑定几个小米账号</el-menu-item>
+                            <el-menu-item index="/SignUp3">什么是二次号</el-menu-item>
+                            <el-menu-item index="/SignUp4">能否合并微信和手机号注册的两个账号</el-menu-item>
+                            <el-menu-item index="/SignUp5">一个手机号可以注册绑定几个小米账号</el-menu-item>
+                            <el-menu-item index="/SignUp6">什么是物联网卡</el-menu-item>
+                            <el-menu-item index="/SignUp7">为何物联网不能注册小米账号和设置安全手机</el-menu-item>
                         </el-submenu>
                             <el-submenu index="2-2">
                             <template slot="title" class="levelTitle">登录</template>
-                            <el-menu-item index="/SignUp1">如何登录小米账号</el-menu-item>
-                            <el-menu-item index="/accountName">如何用微信登录小米账号</el-menu-item>
-                            <el-menu-item index="/SignUp2">账号登录异常的原因</el-menu-item>
-                            <el-menu-item index="/accountName">如何查看账号下登录的小米设备</el-menu-item>
-                            <el-menu-item index="/SignUp1">账号长期不登录，会自动注销吗</el-menu-item>
+                            <el-menu-item index="/LoginRules1">如何登录小米账号</el-menu-item>
+                            <el-menu-item index="/LoginRules2">如何用微信登录小米账号</el-menu-item>
+                            <el-menu-item index="/LoginRules3">账号登录异常的原因</el-menu-item>
+                            <el-menu-item index="/LoginRules4">如何查看账号下登录的小米设备</el-menu-item>
+                            <el-menu-item index="/LoginRules5">账号长期不登录，会自动注销吗</el-menu-item>
                         </el-submenu>
                         <el-submenu index="2-3">
                             <template slot="title" class="levelTitle">退出登录</template>
-                            <el-menu-item index="/accountName">如何退出小米账号</el-menu-item>
+                            <el-menu-item index="/QuitRules">如何退出小米账号</el-menu-item>
                         </el-submenu>
                         <el-submenu index="2-4">
                             <template slot="title" class="levelTitle">注销</template>
@@ -64,7 +66,12 @@
                             <el-menu-item index="2-5-7">什么是申诉解锁，如何进行申诉解锁</el-menu-item>
                             <el-menu-item index="2-5-8">已申诉账号能否再次发起申诉，最多申诉几次</el-menu-item>
                             <el-menu-item index="2-5-9">为什么账号不能发起申诉</el-menu-item>
-                            <el-menu-item index="2-5-10">如何查看申诉解锁</el-menu-item>
+                            <el-menu-item index="2-5-10">如何查看申诉记录</el-menu-item>
+                            <el-menu-item index="2-5-11">为什么收不到申诉通知</el-menu-item>
+                            <el-menu-item index="2-5-12">如何进行申诉解锁</el-menu-item>
+                            <el-menu-item index="2-5-13">小米账号申诉步骤流程说明</el-menu-item>
+                            <el-menu-item index="2-5-14">能否撤销已提交的申诉</el-menu-item>
+                            <el-menu-item index="2-5-15">如何处理账号申诉未通过</el-menu-item>
                         </el-submenu>
                     </el-submenu>
                     <el-submenu index="3">
@@ -94,9 +101,14 @@
                         <template slot="title">账号安全</template>
                         <el-submenu index="4-1">
                             <template slot="title">安全手机和邮箱</template>
-                                <el-menu-item index="4-1-1">安全手机定义和作用</el-menu-item>
+                            <el-menu-item index="4-1-1">安全手机定义和作用</el-menu-item>
                             <el-menu-item index="4-1-2">如何解绑手机号和邮箱</el-menu-item>
                             <el-menu-item index="4-1-3">如何处理账号被绑定他人手机号/邮箱的问题</el-menu-item>
+                            <el-menu-item index="4-1-4">安全邮箱的定义和作用</el-menu-item>
+                            <el-menu-item index="4-1-5">如何更换安全邮箱</el-menu-item>
+                            <el-menu-item index="4-1-6">如何将手机号换绑到另一账号</el-menu-item>
+                            <el-menu-item index="4-1-7">如何处理绑定邮箱停用问题</el-menu-item>
+                            <el-menu-item index="4-1-8">为什么账号无法绑定手机和邮箱</el-menu-item>
                         </el-submenu>
                             <el-submenu index="4-2">
                             <template slot="title">密保问题</template>
@@ -109,7 +121,39 @@
                             <el-menu-item index="4-3-1">如何找回被盗账号</el-menu-item>
                             <el-menu-item index="4-3-2">小米手机丢失、遗弃、赠与要注意哪些问题</el-menu-item>
                         </el-submenu>
-                    </el-submenu> -->
+                         <el-submenu index="4-5">
+                            <template slot="title">安全验证</template>
+                            <el-menu-item index="4-5-1">小米账号有哪些安全验证方式</el-menu-item>
+                            <el-menu-item index="4-5-2">为什么要验证图片验证码</el-menu-item>
+                            <el-menu-item index="4-5-3">什么是小米账号安全令牌，有什么作用</el-menu-item>
+                            <el-menu-item index="4-5-4">为什么在登录中输入账号密码后，还需验证手机号</el-menu-item>
+                        </el-submenu>
+                         <el-submenu index="4-6">
+                            <template slot="title">冻结解冻</template>
+                            <el-menu-item index="4-6-1">如何冻结解冻账号</el-menu-item>
+                            <el-menu-item index="4-6-2">为什么账号被自动冻结</el-menu-item>
+                            <el-menu-item index="4-6-3">为什么账号会被封禁</el-menu-item>
+                            <el-menu-item index="4-6-4">什么情况下要冻结账号</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                    <el-submenu index="5">
+                        <template slot="title">其他</template>
+                        <el-menu-item index="5-1">小米云服务的注册手机号已停用，能否继续登录云服务</el-menu-item>
+                        <el-menu-item index="5-2">为什么系统提示查找手机等服务激活失败</el-menu-item>
+                        <el-menu-item index="5-3">为什么提示激活短信接受失败</el-menu-item>
+                        <el-menu-item index="5-4">为什么更换SIM卡，提示重新激活服务</el-menu-item>
+                        <el-menu-item index="5-5">为什么激活服务要发送短信</el-menu-item>
+                        <el-menu-item index="5-6">为什么小米账号绑定了两个手机号</el-menu-item>
+                        <el-menu-item index="5-7">为什么米聊中绑定的手机号，小米账号中未显示</el-menu-item>
+                        <el-menu-item index="5-8">为什么提示游戏账号有问题</el-menu-item>
+                        <el-menu-item index="5-9">为什么账号无法登录小米论坛</el-menu-item>
+                        <el-menu-item index="5-10">账号注销后，之前购买的云服务等权益，会被他人重新注册后盗用吗</el-menu-item>
+                        <el-menu-item index="5-11">什么是查找手机无网络定位服务</el-menu-item>
+                        <el-menu-item index="5-12">什么是免费网络短信服务</el-menu-item>
+                        <el-menu-item index="5-13">什么是通话记录同步短信同步服务</el-menu-item>
+                    </el-submenu>
+
+                    -->
                 </el-menu>
             </el-aside>
             <el-main class="rightContent">
@@ -161,7 +205,7 @@ export default {
           authName: '简介',
           children: [{
             children: [
-              { thirdName: '什么是小米账号' }
+              { thirdName: '什么是小米账号', url: '/accountName' }
             ]
           }]
         },
@@ -170,27 +214,29 @@ export default {
           children: [{
             secondName: '注册',
             children: [
-              { thirdName: '如何注册小米账号' },
-              { thirdName: '已被他人注册过小米账号的手机号，如何注册新账号' },
-              { thirdName: '什么是二次号' },
-              { thirdName: '能否合并微信和手机号注册的两个账号' },
-              { thirdName: '一个手机号可以注册绑定几个小米账号' }
+              { thirdName: '如何注册小米账号', url: '/SignUp1' },
+              { thirdName: '已被他人注册过小米账号的手机号，如何注册新账号', url: '/SignUp2' },
+              { thirdName: '什么是二次号', url: '/SignUp3' },
+              { thirdName: '能否合并微信和手机号注册的两个账号', url: '/SignUp4' },
+              { thirdName: '一个手机号可以注册绑定几个小米账号', url: '/SignUp5' },
+              { thirdName: '什么是物联网卡', url: '/SignUp6' },
+              { thirdName: '为何物联网卡不能注册小米账号和设置安全手机', url: '/SignUp7' }
             ]
           },
           {
             secondName: '登录',
             children: [
-              { thirdName: '如何登录小米账号' },
-              { thirdName: '如何用微信登录小米账号' },
-              { thirdName: '账号登录异常的原因' },
-              { thirdName: '如何查看账号下登录的小米设备' },
-              { thirdName: '账号长期不登录，会自动注销吗' }
+              { thirdName: '如何登录小米账号', url: '/LoginRules1' },
+              { thirdName: '如何用微信登录小米账号', url: '/LoginRules2' },
+              { thirdName: '账号登录异常的原因', url: '/LoginRules3' },
+              { thirdName: '如何查看账号下登录的小米设备', url: '/LoginRules4' },
+              { thirdName: '账号长期不登录，会自动注销吗', url: '/LoginRules5' }
             ]
           },
           {
             secondName: '退出登录',
             children: [
-              { thirdName: '如何退出小米账号' }
+              { thirdName: '如何退出小米账号', url: '/QuitRules' }
             ]
           },
           {

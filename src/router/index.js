@@ -41,6 +41,17 @@ import Cart from '../views/Cart'
 import AccountName from '../views/AccountName.vue'
 import SignUp1 from '../views/SignUp1.vue'
 import SignUp2 from '../views/SignUp2.vue'
+import SignUp3 from '../views/SignUp3.vue'
+import SignUp4 from '../views/SignUp4.vue'
+import SignUp5 from '../views/SignUp5.vue'
+import SignUp6 from '../views/SignUp6.vue'
+import SignUp7 from '../views/SignUp7.vue'
+import LoginRules1 from '../views/LoginRules1.vue'
+import LoginRules2 from '../views/LoginRules2.vue'
+import LoginRules3 from '../views/LoginRules3.vue'
+import LoginRules4 from '../views/LoginRules4.vue'
+import LoginRules5 from '../views/LoginRules5.vue'
+import QuitRules from '../views/QuitRules.vue'
 import SmsQuestion from '../views/SmsQuestion.vue'
 Vue.use(VueRouter)
 
@@ -171,6 +182,7 @@ const routes = [{
       component: AccountName
     },
     // 新人指南
+    // 注册
     {
       path: '/SignUp1',
       name: 'SignUp1',
@@ -182,10 +194,67 @@ const routes = [{
       component: SignUp2
     },
     {
-      path: '/SmsQuestion',
-      name: '/SmsQuestion',
-      component: SmsQuestion
-    }
+        path: '/SignUp3',
+        name: 'SignUp3',
+        component: SignUp3
+      },
+      {
+        path: '/SignUp4',
+        name: 'SignUp4',
+        component: SignUp4
+      },
+      {
+        path: '/SignUp5',
+        name: 'SignUp5',
+        component: SignUp5
+      },
+      {
+        path: '/SignUp6',
+        name: 'SignUp6',
+        component: SignUp6
+      },
+      {
+        path: '/SignUp7',
+        name: 'SignUp7',
+        component: SignUp7
+      },
+    // 登录
+    {
+        path: '/LoginRules1',
+        name: 'LoginRules1',
+        component: LoginRules1
+      },
+      {
+        path: '/LoginRules2',
+        name: 'LoginRules2',
+        component: LoginRules2
+      },
+      {
+        path: '/LoginRules3',
+        name: 'LoginRules3',
+        component: LoginRules3
+      },
+      {
+        path: '/LoginRules4',
+        name: 'LoginRules4',
+        component: LoginRules4
+      },
+      {
+        path: '/LoginRules5',
+        name: 'LoginRules5',
+        component: LoginRules5
+      },
+    //   退出登录
+      {
+        path: '/QuitRules',
+        name: 'QuitRules',
+        component:QuitRules
+      },
+     {
+       path: '/SmsQuestion',
+       name: '/SmsQuestion',
+       component: SmsQuestion
+     }
   ]
 },
 {
