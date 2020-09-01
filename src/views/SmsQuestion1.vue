@@ -8,14 +8,17 @@
             <li marker="4">接受短信时手机为关机状态。  </li>
             <li marker="5">手机号码可能为海外好吗，需在手机号码前输入正确的国家码。例如：印度手机号前要添加国家码【+91】。  </li>
             <li marker="6">手机号码可能是为欠费停机状态，请及时充缴话费。  </li>
-            <li marker="7">接受短信时手机为关机状态。  </li>
+            <li marker="7">长时间未关机，可尝试关机重启。</li>
+            <li marker="8">手机型号为双卡双待，请确认AB卡槽是否正确安放（可尝试更换AB卡为止重试）。</li>
+            <li marker="9">手机可能开启短信防骚扰功能。  </li>
+            <li marker="10">短信发送超过当天频次限制。海外短信24小时限制3次，国内短信24小时限制5次。</li>
         </ol>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'SmsQuestion',
+  name: 'SmsQuestion1',
   data () {
     return {
 

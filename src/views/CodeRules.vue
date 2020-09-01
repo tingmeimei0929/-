@@ -51,44 +51,38 @@
                         </el-submenu>
                         <el-submenu index="2-4">
                             <template slot="title" class="levelTitle">注销</template>
-                                <el-menu-item index="/SignUp1">如何注销小米账号</el-menu-item>
-                            <el-menu-item index="/SignUp2">为什么账号无法注销</el-menu-item>
-                            <el-menu-item index="/accountName">忘记密码，如何注销小米账号</el-menu-item>
+                                <el-menu-item index="/Logout1">如何注销小米账号</el-menu-item>
+                            <el-menu-item index="/Logout2">为什么账号无法注销</el-menu-item>
+                            <el-menu-item index="/Logout3">忘记密码，如何注销小米账号</el-menu-item>
                         </el-submenu>
                         <el-submenu index="2-5">
                             <template slot="title" class="levelTitle">申诉</template>
-                            <el-menu-item index="2-5-1">如何进行小米账号申诉</el-menu-item>
-                            <el-menu-item index="2-5-2">如何处理申诉单号丢失问题</el-menu-item>
-                            <el-menu-item index="2-5-3">申诉单的定义和作用</el-menu-item>
-                            <el-menu-item index="2-5-4">账号申诉审核周期</el-menu-item>
-                            <el-menu-item index="2-5-5">申诉请求未通过的原因</el-menu-item>
-                            <el-menu-item index="2-5-6">什么情况下要发起账号申诉</el-menu-item>
-                            <el-menu-item index="2-5-7">什么是申诉解锁，如何进行申诉解锁</el-menu-item>
-                            <el-menu-item index="2-5-8">已申诉账号能否再次发起申诉，最多申诉几次</el-menu-item>
-                            <el-menu-item index="2-5-9">为什么账号不能发起申诉</el-menu-item>
-                            <el-menu-item index="2-5-10">如何查看申诉记录</el-menu-item>
-                            <el-menu-item index="2-5-11">为什么收不到申诉通知</el-menu-item>
-                            <el-menu-item index="2-5-12">如何进行申诉解锁</el-menu-item>
-                            <el-menu-item index="2-5-13">小米账号申诉步骤流程说明</el-menu-item>
-                            <el-menu-item index="2-5-14">能否撤销已提交的申诉</el-menu-item>
-                            <el-menu-item index="2-5-15">如何处理账号申诉未通过</el-menu-item>
+                            <el-menu-item index="/Appeal1">如何进行小米账号申诉</el-menu-item>
+                            <el-menu-item index="/Appeal2">如何处理申诉单号丢失问题</el-menu-item>
+                            <el-menu-item index="/Appeal3">申诉单的定义和作用</el-menu-item>
+                            <el-menu-item index="/Appeal4">账号申诉审核周期</el-menu-item>
+                            <el-menu-item index="/Appeal5">申诉请求未通过的原因</el-menu-item>
+                            <el-menu-item index="/Appeal6">什么情况下要发起账号申诉</el-menu-item>
+                            <el-menu-item index="/Appeal7">什么是申诉解锁，如何进行申诉解锁</el-menu-item>
+                            <el-menu-item index="/Appeal8">已申诉账号能否再次发起申诉，最多申诉几次</el-menu-item>
+                            <el-menu-item index="/Appeal9">为什么账号不能发起申诉</el-menu-item>
                         </el-submenu>
                     </el-submenu>
                     <el-submenu index="3">
                         <template slot="title">常见问题</template>
                         <el-submenu index="3-1">
                             <template slot="title">密码</template>
-                                <el-menu-item index="/SignUp1">如何重置账号密码</el-menu-item>
-                            <el-menu-item index="/SignUp2">如何处理修改密码后，提示登录异常</el-menu-item>
-                            <el-menu-item index="/accountName">忘记密码且无安全手机、邮箱、密保，如何登录小米账号</el-menu-item>
+                                <el-menu-item index="/PasswordRules1">如何重置账号密码</el-menu-item>
+                            <el-menu-item index="/PasswordRules2">如何处理修改密码后，提示登录异常</el-menu-item>
+                            <el-menu-item index="/PasswordRules3">忘记密码且无安全手机、邮箱、密保，如何登录小米账号</el-menu-item>
                         </el-submenu>
                             <el-submenu index="3-2">
                             <template slot="title">短信和邮箱验证码</template>
-                            <el-menu-item index="/SmsQuestion">为什么收不到短信验证码</el-menu-item>
-                            <el-menu-item index="/SignUp2">为什么收不到验证邮件</el-menu-item>
-                            <el-menu-item index="/SignUp1">为什么提示短信频次达到上限</el-menu-item>
-                            <el-menu-item index="3-2-4">发送验证码短信数量到达上限后，为什么时间可再次发送</el-menu-item>
-                            <el-menu-item index="3-2-5">为什么短信验证码收到后无法使用</el-menu-item>
+                            <el-menu-item index="/SmsQuestion1">为什么收不到短信验证码</el-menu-item>
+                            <el-menu-item index="/SmsQuestion2">为什么收不到验证邮件</el-menu-item>
+                            <el-menu-item index="/SmsQuestion3">为什么提示短信频次达到上限</el-menu-item>
+                            <el-menu-item index="/SmsQuestion4">发送验证码短信数量到达上限后，为什么时间可再次发送</el-menu-item>
+                            <el-menu-item index="/SmsQuestion5">为什么短信验证码收到后无法使用</el-menu-item>
                         </el-submenu>
                         <el-submenu index="3-3">
                             <template slot="title">绑定解绑第三方账号</template>
@@ -242,26 +236,23 @@ export default {
           {
             secondName: '注销',
             children: [
-              { thirdName: '如何注销小米账号' },
-              { thirdName: '为什么账号无法注销' },
-              { thirdName: '忘记密码，如何注销小米账号' }
+              { thirdName: '如何注销小米账号', url: '/Logout1' },
+              { thirdName: '为什么账号无法注销', url: '/Logout2' },
+              { thirdName: '忘记密码，如何注销小米账号', url: '/Logout3' }
             ]
           },
           {
             secondName: '申诉',
             children: [
-              { thirdName: '如何进行小米账号申诉' },
-              { thirdName: '如何处理申诉单号丢失问题' },
-              { thirdName: '申诉单的定义和作用' },
-              { thirdName: '账号申诉审核周期' },
-              { thirdName: '什么情况下要发起账号申诉' },
-              { thirdName: '什么是申诉解锁，如何进行申诉解锁' },
-              { thirdName: '已申诉账号能否再次发起申诉，最多申诉几次' },
-              { thirdName: '为什么账号不能申诉通知' },
-              { thirdName: '如何进行申诉解锁' },
-              { thirdName: '小米账号申诉步骤流程说明' },
-              { thirdName: '能否撤销已提交的申诉' },
-              { thirdName: '如何处理账号申诉未通过' }
+              { thirdName: '如何进行小米账号申诉', url: '/Appeal1' },
+              { thirdName: '如何处理申诉单号丢失问题', url: '/Appeal2' },
+              { thirdName: '申诉单的定义和作用', url: '/Appeal3' },
+              { thirdName: '账号申诉审核周期', url: '/Appeal4' },
+              { thirdName: '什么情况下要发起账号申诉', url: '/Appeal5' },
+              { thirdName: '什么是申诉解锁，如何进行申诉解锁', url: '/Appeal6' },
+              { thirdName: '已申诉账号能否再次发起申诉，最多申诉几次', url: '/Appeal7' },
+              { thirdName: '为什么账号不能申诉通知', url: '/Appeal8' },
+              { thirdName: '如何进行申诉解锁', url: '/Appeal9' }
             ]
           }]
         },
@@ -270,19 +261,19 @@ export default {
           children: [{
             secondName: '密码',
             children: [
-              { thirdName: '如何重置小米账号' },
-              { thirdName: '如何处理修改密码后，提示登录异常' },
-              { thirdName: '忘记密码且无安全手机、邮箱、密保，如何登录小米账号' }
+              { thirdName: '如何重置小米账号', url: '/PasswordRules1' },
+              { thirdName: '如何处理修改密码后，提示登录异常', url: '/PasswordRules2' },
+              { thirdName: '忘记密码且无安全手机、邮箱、密保，如何登录小米账号', url: '/PasswordRules3' }
             ]
           },
           {
             secondName: '短信和邮箱验证码',
             children: [
-              { thirdName: '为什么收不到短信验证码' },
-              { thirdName: '为什么收不到验证邮箱' },
-              { thirdName: '为什么提示短信频次达到上限' },
-              { thirdName: '发送验证码短信数量到达上限后，什么时间可再次发送' },
-              { thirdName: '为什么短信验证码收到后无法使用' }
+              { thirdName: '为什么收不到短信验证码', url: '/SmsQuestion1' },
+              { thirdName: '为什么收不到验证邮箱', url: '/SmsQuestion2' },
+              { thirdName: '为什么提示短信频次达到上限', url: '/SmsQuestion3' },
+              { thirdName: '发送验证码短信数量到达上限后，什么时间可再次发送', url: '/SmsQuestion4' },
+              { thirdName: '为什么短信验证码收到后无法使用', url: '/SmsQuestion5' }
             ]
           },
           {

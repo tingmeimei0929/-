@@ -52,7 +52,26 @@ import LoginRules3 from '../views/LoginRules3.vue'
 import LoginRules4 from '../views/LoginRules4.vue'
 import LoginRules5 from '../views/LoginRules5.vue'
 import QuitRules from '../views/QuitRules.vue'
-import SmsQuestion from '../views/SmsQuestion.vue'
+import Logout1 from '../views/Logout1.vue'
+import Logout2 from '../views/Logout2.vue'
+import Logout3 from '../views/Logout3.vue'
+import Appeal1 from '../views/Appeal1.vue'
+import Appeal2 from '../views/Appeal2.vue'
+import Appeal3 from '../views/Appeal3.vue'
+import Appeal4 from '../views/Appeal4.vue'
+import Appeal5 from '../views/Appeal5.vue'
+import Appeal6 from '../views/Appeal6.vue'
+import Appeal7 from '../views/Appeal7.vue'
+import Appeal8 from '../views/Appeal8.vue'
+import Appeal9 from '../views/Appeal9.vue'
+import PasswordRules1 from '../views/PasswordRules1.vue'
+import PasswordRules2 from '../views/PasswordRules2.vue'
+import PasswordRules3 from '../views/PasswordRules3.vue'
+import SmsQuestion1 from '../views/SmsQuestion1.vue'
+import SmsQuestion2 from '../views/SmsQuestion2.vue'
+import SmsQuestion3 from '../views/SmsQuestion3.vue'
+import SmsQuestion4 from '../views/SmsQuestion4.vue'
+import SmsQuestion5 from '../views/SmsQuestion5.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -194,67 +213,167 @@ const routes = [{
       component: SignUp2
     },
     {
-        path: '/SignUp3',
-        name: 'SignUp3',
-        component: SignUp3
-      },
-      {
-        path: '/SignUp4',
-        name: 'SignUp4',
-        component: SignUp4
-      },
-      {
-        path: '/SignUp5',
-        name: 'SignUp5',
-        component: SignUp5
-      },
-      {
-        path: '/SignUp6',
-        name: 'SignUp6',
-        component: SignUp6
-      },
-      {
-        path: '/SignUp7',
-        name: 'SignUp7',
-        component: SignUp7
-      },
+      path: '/SignUp3',
+      name: 'SignUp3',
+      component: SignUp3
+    },
+    {
+      path: '/SignUp4',
+      name: 'SignUp4',
+      component: SignUp4
+    },
+    {
+      path: '/SignUp5',
+      name: 'SignUp5',
+      component: SignUp5
+    },
+    {
+      path: '/SignUp6',
+      name: 'SignUp6',
+      component: SignUp6
+    },
+    {
+      path: '/SignUp7',
+      name: 'SignUp7',
+      component: SignUp7
+    },
     // 登录
     {
-        path: '/LoginRules1',
-        name: 'LoginRules1',
-        component: LoginRules1
-      },
-      {
-        path: '/LoginRules2',
-        name: 'LoginRules2',
-        component: LoginRules2
-      },
-      {
-        path: '/LoginRules3',
-        name: 'LoginRules3',
-        component: LoginRules3
-      },
-      {
-        path: '/LoginRules4',
-        name: 'LoginRules4',
-        component: LoginRules4
-      },
-      {
-        path: '/LoginRules5',
-        name: 'LoginRules5',
-        component: LoginRules5
-      },
+      path: '/LoginRules1',
+      name: 'LoginRules1',
+      component: LoginRules1
+    },
+    {
+      path: '/LoginRules2',
+      name: 'LoginRules2',
+      component: LoginRules2
+    },
+    {
+      path: '/LoginRules3',
+      name: 'LoginRules3',
+      component: LoginRules3
+    },
+    {
+      path: '/LoginRules4',
+      name: 'LoginRules4',
+      component: LoginRules4
+    },
+    {
+      path: '/LoginRules5',
+      name: 'LoginRules5',
+      component: LoginRules5
+    },
     //   退出登录
-      {
-        path: '/QuitRules',
-        name: 'QuitRules',
-        component:QuitRules
-      },
-     {
-       path: '/SmsQuestion',
-       name: '/SmsQuestion',
-       component: SmsQuestion
-     }
+    {
+      path: '/QuitRules',
+      name: 'QuitRules',
+      component: QuitRules
+    },
+    // 注销
+    {
+      path: '/Logout1',
+      name: 'Logout1',
+      component: Logout1
+    },
+    {
+      path: '/Logout2',
+      name: 'Logout2',
+      component: Logout2
+    },
+    {
+      path: '/Logout3',
+      name: 'Logout3',
+      component: Logout3
+    },
+    // 申诉
+    {
+      path: '/Appeal1',
+      name: 'Appeal1',
+      component: Appeal1
+    },
+    {
+      path: '/Appeal2',
+      name: 'Appeal2',
+      component: Appeal2
+    },
+    {
+      path: '/Appeal3',
+      name: 'Appeal3',
+      component: Appeal3
+    },
+    {
+      path: '/Appeal4',
+      name: 'Appeal4',
+      component: Appeal4
+    },
+    {
+      path: '/Appeal5',
+      name: 'Appeal5',
+      component: Appeal5
+    },
+    {
+      path: '/Appeal6',
+      name: 'Appeal6',
+      component: Appeal6
+    },
+    {
+      path: '/Appeal7',
+      name: 'Appeal7',
+      component: Appeal7
+    },
+    {
+      path: '/Appeal8',
+      name: 'Appeal8',
+      component: Appeal8
+    },
+    {
+      path: '/Appeal9',
+      name: 'Appeal9',
+      component: Appeal9
+    },
+    // 常见问题
+    // 密码
+    {
+      path: '/PasswordRules1',
+      name: 'PasswordRules1',
+      component: PasswordRules1
+    },
+    {
+      path: '/PasswordRules2',
+      name: 'PasswordRules2',
+      component: PasswordRules2
+    },
+    {
+      path: '/PasswordRules3',
+      name: 'PasswordRules3',
+      component: PasswordRules3
+    },
+    // 短信和邮箱验证码
+    {
+      path: '/SmsQuestion1',
+      name: '/SmsQuestion1',
+      component: SmsQuestion1
+    },
+    {
+      path: '/SmsQuestion2',
+      name: '/SmsQuestion2',
+      component: SmsQuestion2
+    },
+    {
+      path: '/SmsQuestion3',
+      name: '/SmsQuestion3',
+      component: SmsQuestion3
+    },
+    {
+      path: '/SmsQuestion4',
+      name: '/SmsQuestion4',
+      component: SmsQuestion4
+    },
+    {
+      path: '/SmsQuestion5',
+      name: '/SmsQuestion5',
+      component: SmsQuestion5
+    }
   ]
 },
 {
