@@ -86,34 +86,35 @@
                         </el-submenu>
                         <el-submenu index="3-3">
                             <template slot="title">绑定解绑第三方账号</template>
-                            <el-menu-item index="3-3-1">如何查询账号绑定的第三方信息</el-menu-item>
-                            <el-menu-item index="3-3-2">为什么账号违法绑定微信、QQ、微博</el-menu-item>
-                            <el-menu-item index="3-3-3">如何解绑微信、QQ、微博账号</el-menu-item>
+                            <el-menu-item index="/ThirdParty1">如何查询账号绑定的第三方信息</el-menu-item>
+                            <el-menu-item index="/ThirdParty2">为什么账号违法绑定微信、QQ、微博</el-menu-item>
+                            <el-menu-item index="/ThirdParty3">如何解绑微信、QQ、微博账号</el-menu-item>
                         </el-submenu>
                     </el-submenu>
                     <el-submenu index="4">
                         <template slot="title">账号安全</template>
                         <el-submenu index="4-1">
                             <template slot="title">安全手机和邮箱</template>
-                            <el-menu-item index="4-1-1">安全手机定义和作用</el-menu-item>
-                            <el-menu-item index="4-1-2">如何解绑手机号和邮箱</el-menu-item>
-                            <el-menu-item index="4-1-3">如何处理账号被绑定他人手机号/邮箱的问题</el-menu-item>
-                            <el-menu-item index="4-1-4">安全邮箱的定义和作用</el-menu-item>
-                            <el-menu-item index="4-1-5">如何更换安全邮箱</el-menu-item>
-                            <el-menu-item index="4-1-6">如何将手机号换绑到另一账号</el-menu-item>
-                            <el-menu-item index="4-1-7">如何处理绑定邮箱停用问题</el-menu-item>
-                            <el-menu-item index="4-1-8">为什么账号无法绑定手机和邮箱</el-menu-item>
+                            <el-menu-item index="/SecurePhone1">安全手机定义和作用</el-menu-item>
+                            <el-menu-item index="/SecurePhone2">如何解绑手机号和邮箱</el-menu-item>
+                            <el-menu-item index="/SecurePhone3">如何处理账号被绑定他人手机号/邮箱的问题</el-menu-item>
+                            <el-menu-item index="/SecurePhone4">安全邮箱的定义和作用</el-menu-item>
+                            <el-menu-item index="/SecurePhone5">如何更换安全手机</el-menu-item>
+                            <el-menu-item index="/SecurePhone6">如何更换安全邮箱</el-menu-item>
+                            <el-menu-item index="/SecurePhone7">如何将手机号换绑到另一账号</el-menu-item>
+                            <el-menu-item index="/SecurePhone8">如何处理绑定邮箱停用问题</el-menu-item>
+                            <el-menu-item index="/SecurePhone9">为什么账号无法绑定手机和邮箱</el-menu-item>
                         </el-submenu>
                             <el-submenu index="4-2">
                             <template slot="title">密保问题</template>
-                            <el-menu-item index="4-2-1">密保的定义和作用</el-menu-item>
-                            <el-menu-item index="4-2-2">如何重置密保</el-menu-item>
-                            <el-menu-item index="4-2-3">为什么密保重置失败</el-menu-item>
+                            <el-menu-item index="/SecurityQuestion1">密保的定义和作用</el-menu-item>
+                            <el-menu-item index="/SecurityQuestion2">如何重置密保</el-menu-item>
+                            <el-menu-item index="/SecurityQuestion3">为什么密保重置失败</el-menu-item>
                         </el-submenu>
                         <el-submenu index="4-3">
                             <template slot="title">丢失被盗或换机</template>
-                            <el-menu-item index="4-3-1">如何找回被盗账号</el-menu-item>
-                            <el-menu-item index="4-3-2">小米手机丢失、遗弃、赠与要注意哪些问题</el-menu-item>
+                            <el-menu-item index="/Lost1">如何找回被盗账号</el-menu-item>
+                            <el-menu-item index="/Lost2">小米手机丢失、遗弃、赠与要注意哪些问题</el-menu-item>
                         </el-submenu>
                          <el-submenu index="4-5">
                             <template slot="title">安全验证</template>
@@ -279,9 +280,9 @@ export default {
           {
             secondName: '绑定解绑第三方账号',
             children: [
-              { thirdName: '如何查询账号绑定的第三方账号信息' },
-              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
-              { thirdName: '如何解绑微信、QQ、微博账号' }
+              { thirdName: '如何查询账号绑定的第三方账号信息', url: '/ThirdParty1' },
+              { thirdName: '为什么账号无法绑定微信、QQ、微博', url: '/ThirdParty2' },
+              { thirdName: '如何解绑微信、QQ、微博账号', url: '/ThirdParty3' }
             ]
           }]
         },
@@ -290,30 +291,30 @@ export default {
           children: [{
             secondName: '安全手机和邮箱',
             children: [
-              { thirdName: '安全手机定义和作用' },
-              { thirdName: '如何解绑手机号和邮箱' },
-              { thirdName: '如何处理账号被绑定他人手机号/邮箱的问题' },
-              { thirdName: '安全邮箱的定义和作用' },
-              { thirdName: '如何更换安全手机' },
-              { thirdName: '如何更换安全邮箱' },
-              { thirdName: '如何将手机号换绑到另一账号' },
-              { thirdName: '如何处理绑定邮箱停用问题' },
-              { thirdName: '为什么账号无法绑定手机和邮箱' }
+              { thirdName: '安全手机定义和作用', url: '/SecurePhone1' },
+              { thirdName: '如何解绑手机号和邮箱', url: '/SecurePhone2' },
+              { thirdName: '如何处理账号被绑定他人手机号/邮箱的问题', url: '/SecurePhone3' },
+              { thirdName: '安全邮箱的定义和作用', url: '/SecurePhone4' },
+              { thirdName: '如何更换安全手机', url: '/SecurePhone5' },
+              { thirdName: '如何更换安全邮箱', url: '/SecurePhone6' },
+              { thirdName: '如何将手机号换绑到另一账号', url: '/SecurePhone7' },
+              { thirdName: '如何处理绑定邮箱停用问题', url: '/SecurePhone8' },
+              { thirdName: '为什么账号无法绑定手机和邮箱', url: '/SecurePhone9' }
             ]
           },
           {
             secondName: '密保问题',
             children: [
-              { thirdName: '密保的定义的作用' },
-              { thirdName: '如何重置密保' },
-              { thirdName: '为什么密保重置失败' }
+              { thirdName: '密保的定义的作用', url: '/SecurityQuestion1' },
+              { thirdName: '如何重置密保', url: '/SecurityQuestion2' },
+              { thirdName: '为什么密保重置失败', url: '/SecurityQuestion3' }
             ]
           },
           {
             secondName: '丢失被盗或换机',
             children: [
-              { thirdName: '如何找回被盗账号' },
-              { thirdName: '小米手机丢失、遗弃、赠与要注意哪些问题' }
+              { thirdName: '如何找回被盗账号', url: '/Lost1' },
+              { thirdName: '小米手机丢失、遗弃、赠与要注意哪些问题', url: '/Lost2' }
             ]
           },
           {

@@ -67,7 +67,7 @@
            @click="cart">购物车</div>
     </a>
     <a class="return-icon"
-       href=".header"
+       href="#"
        v-show="goTop">
       <div class="img-icon">
         <img src="//i1.mifile.cn/f/i/2018/home/totop.png"
@@ -76,6 +76,7 @@
              class="hover">
       </div>
       <div class="text return-top"><a href=".header">回顶部</a></div>
+      <el-backtop target=".header" :visibility-height="100"></el-backtop>
     </a>
   </div>
 </template>
@@ -85,7 +86,7 @@ export default {
   name: 'ToolBar',
   data () {
     return {
-      goTop: false
+      goTop: true
     }
   },
   mounted () {
@@ -101,15 +102,15 @@ export default {
       this.$router.push({
         path: '/Cart'
       })
-    },
-    handleScroll () {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      if (this.scrollTop > 349) {
-        this.goTop = true
-      } else {
-        this.goTop = false
-      }
     }
+    // handleScroll () {
+    //   const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+    //   if (this.scrollTop > 349) {
+    //     this.goTop = true
+    //   } else {
+    //     this.goTop = false
+    //   }
+    // }
   },
   destroyed () {
     window.removeEventListener('scroll', this.showScroll)

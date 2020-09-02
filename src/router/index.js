@@ -72,6 +72,23 @@ import SmsQuestion2 from '../views/SmsQuestion2.vue'
 import SmsQuestion3 from '../views/SmsQuestion3.vue'
 import SmsQuestion4 from '../views/SmsQuestion4.vue'
 import SmsQuestion5 from '../views/SmsQuestion5.vue'
+import ThirdParty1 from '../views/ThirdParty1.vue'
+import ThirdParty2 from '../views/ThirdParty2.vue'
+import ThirdParty3 from '../views/ThirdParty3.vue'
+import SecurePhone1 from '../views/SecurePhone1.vue'
+import SecurePhone2 from '../views/SecurePhone2.vue'
+import SecurePhone3 from '../views/SecurePhone3.vue'
+import SecurePhone4 from '../views/SecurePhone4.vue'
+import SecurePhone5 from '../views/SecurePhone5.vue'
+import SecurePhone6 from '../views/SecurePhone6.vue'
+import SecurePhone7 from '../views/SecurePhone7.vue'
+import SecurePhone8 from '../views/SecurePhone8.vue'
+import SecurePhone9 from '../views/SecurePhone9.vue'
+import SecurityQuestion1 from '../views/SecurityQuestion1.vue'
+import SecurityQuestion2 from '../views/SecurityQuestion2.vue'
+import SecurityQuestion3 from '../views/SecurityQuestion3.vue'
+import Lost1 from '../views/Lost1.vue'
+import Lost2 from '../views/Lost2.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -373,6 +390,95 @@ const routes = [{
       path: '/SmsQuestion5',
       name: '/SmsQuestion5',
       component: SmsQuestion5
+    },
+    // 绑定解绑第三方账号
+    {
+      path: '/ThirdParty1',
+      name: '/ThirdParty1',
+      component: ThirdParty1
+    },
+    {
+      path: '/ThirdParty2',
+      name: '/ThirdParty2',
+      component: ThirdParty2
+    },
+    {
+      path: '/ThirdParty3',
+      name: '/ThirdParty3',
+      component: ThirdParty3
+    },
+    // 安全手机有邮箱
+    {
+      path: '/SecurePhone1',
+      name: '/SecurePhone1',
+      component: SecurePhone1
+    },
+    {
+      path: '/SecurePhone2',
+      name: '/SecurePhone2',
+      component: SecurePhone2
+    },
+    {
+      path: '/SecurePhone3',
+      name: '/SecurePhone3',
+      component: SecurePhone3
+    },
+    {
+      path: '/SecurePhone4',
+      name: '/SecurePhone4',
+      component: SecurePhone4
+    },
+    {
+      path: '/SecurePhone5',
+      name: '/SecurePhone5',
+      component: SecurePhone5
+    },
+    {
+      path: '/SecurePhone6',
+      name: '/SecurePhone6',
+      component: SecurePhone6
+    },
+    {
+      path: '/SecurePhone7',
+      name: '/SecurePhone7',
+      component: SecurePhone7
+    },
+    {
+      path: '/SecurePhone8',
+      name: '/SecurePhone8',
+      component: SecurePhone8
+    },
+    {
+      path: '/SecurePhone9',
+      name: '/SecurePhone9',
+      component: SecurePhone9
+    },
+    // 密保问题
+    {
+      path: '/SecurityQuestion1',
+      name: '/SecurityQuestion1',
+      component: SecurityQuestion1
+    },
+    {
+      path: '/SecurityQuestion2',
+      name: '/SecurityQuestion2',
+      component: SecurityQuestion2
+    },
+    {
+      path: '/SecurityQuestion3',
+      name: '/SecurityQuestion3',
+      component: SecurityQuestion3
+    },
+    // 丢失被盗或换机
+    {
+      path: '/Lost1',
+      name: '/Lost1',
+      component: Lost1
+    },
+    {
+      path: '/Lost2',
+      name: '/Lost2',
+      component: Lost2
     }
   ]
 },
