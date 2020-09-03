@@ -14,9 +14,9 @@
             <el-aside class="leftMenu">
                 <el-menu :default-openeds="['3','3-2']" :default-active="$route.path" class="el-menu-vertical-demo"
                         :collapse="isCollapse" router>
-                    <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
+                    <el-submenu :index="item.id + ''" v-for="item in leftMenu.menuList" :key="item.id">
                         <template slot="title">{{item.authName}}</template>
-                        <el-submenu :index="item1.id + ''" v-for="item1 in item.children" :key="item1.id">
+                        <el-submenu :index="item1.id + ''" v-for="item1 in item.children" :key="item1.id" >
                             <template slot="title">{{item1.secondName}}</template>
                             <el-menu-item  v-for="items in item1.children" :key="items.id" :index="items.url">{{items.thirdName}}</el-menu-item>
                         </el-submenu>
@@ -159,14 +159,14 @@
                     <el-button @click="no" v-show="isShow">否</el-button>
                 </div>
                 <div class="footer">
-                    <ul class="pagination">
+                    <ul class="pagination" v-if="totalPage > 0">
                         <li class="prevBtn">
-                            <a href="#"><i class="el-icon-alichangyongicon-"></i>上一页</a>
-                            <span>xxxxx</span>
+                            <a href="javascript:void(0)" v-show="currentPage > 1 && showPrev" @click="setPage('currentPage - 1')"><i class="el-icon-alichangyongicon-"></i>上一页</a>
+                            <span>xxx</span>
                         </li>
                         <li class="nextBtn">
-                            <a href="#">下一页<i class="el-icon-alijiantou"></i></a>
-                            <span>xxxxx</span>
+                            <a href="javascript:void(0)" v-show="currentPage < totalPage && showNext" v-on:click="setPage('currentPage + 1')">下一页<i class="el-icon-alijiantou"></i></a>
+                            <span>xxx</span>
                         </li>
                     </ul>
                     <div class="horizontal-divider"></div>
@@ -195,168 +195,191 @@ export default {
       allpage: 13,
       prompt: '有帮助吗？',
       isShow: true,
-      menuList: [
-        {
-          authName: '简介',
-          children: [{
-            children: [
-              { thirdName: '什么是小米账号', url: '/accountName' }
-            ]
-          }]
-        },
-        {
-          authName: '新人指南',
-          children: [{
-            secondName: '注册',
-            children: [
-              { thirdName: '如何注册小米账号', url: '/SignUp1' },
-              { thirdName: '已被他人注册过小米账号的手机号，如何注册新账号', url: '/SignUp2' },
-              { thirdName: '什么是二次号', url: '/SignUp3' },
-              { thirdName: '能否合并微信和手机号注册的两个账号', url: '/SignUp4' },
-              { thirdName: '一个手机号可以注册绑定几个小米账号', url: '/SignUp5' },
-              { thirdName: '什么是物联网卡', url: '/SignUp6' },
-              { thirdName: '为何物联网卡不能注册小米账号和设置安全手机', url: '/SignUp7' }
-            ]
+      currentPage: 0,
+      leftMenu: {
+        isCollapse: false,
+        menuList: [
+          {
+            authName: '简介',
+            children: [{
+              children: [
+                { thirdName: '什么是小米账号', url: '/accountName' }
+              ]
+            }]
           },
           {
-            secondName: '登录',
-            children: [
-              { thirdName: '如何登录小米账号', url: '/LoginRules1' },
-              { thirdName: '如何用微信登录小米账号', url: '/LoginRules2' },
-              { thirdName: '账号登录异常的原因', url: '/LoginRules3' },
-              { thirdName: '如何查看账号下登录的小米设备', url: '/LoginRules4' },
-              { thirdName: '账号长期不登录，会自动注销吗', url: '/LoginRules5' }
-            ]
+            authName: '新人指南',
+            children: [{
+              secondName: '注册',
+              children: [
+                { thirdName: '如何注册小米账号', url: '/SignUp1' },
+                { thirdName: '已被他人注册过小米账号的手机号，如何注册新账号', url: '/SignUp2' },
+                { thirdName: '什么是二次号', url: '/SignUp3' },
+                { thirdName: '能否合并微信和手机号注册的两个账号', url: '/SignUp4' },
+                { thirdName: '一个手机号可以注册绑定几个小米账号', url: '/SignUp5' },
+                { thirdName: '什么是物联网卡', url: '/SignUp6' },
+                { thirdName: '为何物联网卡不能注册小米账号和设置安全手机', url: '/SignUp7' }
+              ]
+            },
+            {
+              secondName: '登录',
+              children: [
+                { thirdName: '如何登录小米账号', url: '/LoginRules1' },
+                { thirdName: '如何用微信登录小米账号', url: '/LoginRules2' },
+                { thirdName: '账号登录异常的原因', url: '/LoginRules3' },
+                { thirdName: '如何查看账号下登录的小米设备', url: '/LoginRules4' },
+                { thirdName: '账号长期不登录，会自动注销吗', url: '/LoginRules5' }
+              ]
+            },
+            {
+              secondName: '退出登录',
+              children: [
+                { thirdName: '如何退出小米账号', url: '/QuitRules' }
+              ]
+            },
+            {
+              secondName: '注销',
+              children: [
+                { thirdName: '如何注销小米账号', url: '/Logout1' },
+                { thirdName: '为什么账号无法注销', url: '/Logout2' },
+                { thirdName: '忘记密码，如何注销小米账号', url: '/Logout3' }
+              ]
+            },
+            {
+              secondName: '申诉',
+              children: [
+                { thirdName: '如何进行小米账号申诉', url: '/Appeal1' },
+                { thirdName: '如何处理申诉单号丢失问题', url: '/Appeal2' },
+                { thirdName: '申诉单的定义和作用', url: '/Appeal3' },
+                { thirdName: '账号申诉审核周期', url: '/Appeal4' },
+                { thirdName: '什么情况下要发起账号申诉', url: '/Appeal5' },
+                { thirdName: '什么是申诉解锁，如何进行申诉解锁', url: '/Appeal6' },
+                { thirdName: '已申诉账号能否再次发起申诉，最多申诉几次', url: '/Appeal7' },
+                { thirdName: '为什么账号不能申诉通知', url: '/Appeal8' },
+                { thirdName: '如何进行申诉解锁', url: '/Appeal9' }
+              ]
+            }]
           },
           {
-            secondName: '退出登录',
-            children: [
-              { thirdName: '如何退出小米账号', url: '/QuitRules' }
-            ]
+            authName: '常见问题',
+            children: [{
+              secondName: '密码',
+              children: [
+                { thirdName: '如何重置小米账号', url: '/PasswordRules1' },
+                { thirdName: '如何处理修改密码后，提示登录异常', url: '/PasswordRules2' },
+                { thirdName: '忘记密码且无安全手机、邮箱、密保，如何登录小米账号', url: '/PasswordRules3' }
+              ]
+            },
+            {
+              secondName: '短信和邮箱验证码',
+              children: [
+                { thirdName: '为什么收不到短信验证码', url: '/SmsQuestion1' },
+                { thirdName: '为什么收不到验证邮箱', url: '/SmsQuestion2' },
+                { thirdName: '为什么提示短信频次达到上限', url: '/SmsQuestion3' },
+                { thirdName: '发送验证码短信数量到达上限后，什么时间可再次发送', url: '/SmsQuestion4' },
+                { thirdName: '为什么短信验证码收到后无法使用', url: '/SmsQuestion5' }
+              ]
+            },
+            {
+              secondName: '绑定解绑第三方账号',
+              children: [
+                { thirdName: '如何查询账号绑定的第三方账号信息', url: '/ThirdParty1' },
+                { thirdName: '为什么账号无法绑定微信、QQ、微博', url: '/ThirdParty2' },
+                { thirdName: '如何解绑微信、QQ、微博账号', url: '/ThirdParty3' }
+              ]
+            }]
           },
           {
-            secondName: '注销',
-            children: [
-              { thirdName: '如何注销小米账号', url: '/Logout1' },
-              { thirdName: '为什么账号无法注销', url: '/Logout2' },
-              { thirdName: '忘记密码，如何注销小米账号', url: '/Logout3' }
-            ]
+            authName: '账号安全',
+            children: [{
+              secondName: '安全手机和邮箱',
+              children: [
+                { thirdName: '安全手机定义和作用', url: '/SecurePhone1' },
+                { thirdName: '如何解绑手机号和邮箱', url: '/SecurePhone2' },
+                { thirdName: '如何处理账号被绑定他人手机号/邮箱的问题', url: '/SecurePhone3' },
+                { thirdName: '安全邮箱的定义和作用', url: '/SecurePhone4' },
+                { thirdName: '如何更换安全手机', url: '/SecurePhone5' },
+                { thirdName: '如何更换安全邮箱', url: '/SecurePhone6' },
+                { thirdName: '如何将手机号换绑到另一账号', url: '/SecurePhone7' },
+                { thirdName: '如何处理绑定邮箱停用问题', url: '/SecurePhone8' },
+                { thirdName: '为什么账号无法绑定手机和邮箱', url: '/SecurePhone9' }
+              ]
+            },
+            {
+              secondName: '密保问题',
+              children: [
+                { thirdName: '密保的定义的作用', url: '/SecurityQuestion1' },
+                { thirdName: '如何重置密保', url: '/SecurityQuestion2' },
+                { thirdName: '为什么密保重置失败', url: '/SecurityQuestion3' }
+              ]
+            },
+            {
+              secondName: '丢失被盗或换机',
+              children: [
+                { thirdName: '如何找回被盗账号', url: '/Lost1' },
+                { thirdName: '小米手机丢失、遗弃、赠与要注意哪些问题', url: '/Lost2' }
+              ]
+            },
+            {
+              secondName: '安全验证',
+              children: [
+                { thirdName: '小米账号有哪些安全验证方式' },
+                { thirdName: '为什么要验证图片验证码' },
+                { thirdName: '什么事小米账号安全令牌，有什么作用' },
+                { thirdName: '为什么在登录中输入账号密码后，还需要验证手机号' }
+              ]
+            },
+            {
+              secondName: '冻结解冻',
+              children: [
+                { thirdName: '如何冻结解冻账号' },
+                { thirdName: '为什么账号被自动冻结' },
+                { thirdName: '为什么账号会被封禁' },
+                { thirdName: '什么情况下要冻结账号' }
+              ]
+            }]
           },
           {
-            secondName: '申诉',
-            children: [
-              { thirdName: '如何进行小米账号申诉', url: '/Appeal1' },
-              { thirdName: '如何处理申诉单号丢失问题', url: '/Appeal2' },
-              { thirdName: '申诉单的定义和作用', url: '/Appeal3' },
-              { thirdName: '账号申诉审核周期', url: '/Appeal4' },
-              { thirdName: '什么情况下要发起账号申诉', url: '/Appeal5' },
-              { thirdName: '什么是申诉解锁，如何进行申诉解锁', url: '/Appeal6' },
-              { thirdName: '已申诉账号能否再次发起申诉，最多申诉几次', url: '/Appeal7' },
-              { thirdName: '为什么账号不能申诉通知', url: '/Appeal8' },
-              { thirdName: '如何进行申诉解锁', url: '/Appeal9' }
-            ]
-          }]
-        },
-        {
-          authName: '常见问题',
-          children: [{
-            secondName: '密码',
-            children: [
-              { thirdName: '如何重置小米账号', url: '/PasswordRules1' },
-              { thirdName: '如何处理修改密码后，提示登录异常', url: '/PasswordRules2' },
-              { thirdName: '忘记密码且无安全手机、邮箱、密保，如何登录小米账号', url: '/PasswordRules3' }
-            ]
-          },
-          {
-            secondName: '短信和邮箱验证码',
-            children: [
-              { thirdName: '为什么收不到短信验证码', url: '/SmsQuestion1' },
-              { thirdName: '为什么收不到验证邮箱', url: '/SmsQuestion2' },
-              { thirdName: '为什么提示短信频次达到上限', url: '/SmsQuestion3' },
-              { thirdName: '发送验证码短信数量到达上限后，什么时间可再次发送', url: '/SmsQuestion4' },
-              { thirdName: '为什么短信验证码收到后无法使用', url: '/SmsQuestion5' }
-            ]
-          },
-          {
-            secondName: '绑定解绑第三方账号',
-            children: [
-              { thirdName: '如何查询账号绑定的第三方账号信息', url: '/ThirdParty1' },
-              { thirdName: '为什么账号无法绑定微信、QQ、微博', url: '/ThirdParty2' },
-              { thirdName: '如何解绑微信、QQ、微博账号', url: '/ThirdParty3' }
-            ]
-          }]
-        },
-        {
-          authName: '账号安全',
-          children: [{
-            secondName: '安全手机和邮箱',
-            children: [
-              { thirdName: '安全手机定义和作用', url: '/SecurePhone1' },
-              { thirdName: '如何解绑手机号和邮箱', url: '/SecurePhone2' },
-              { thirdName: '如何处理账号被绑定他人手机号/邮箱的问题', url: '/SecurePhone3' },
-              { thirdName: '安全邮箱的定义和作用', url: '/SecurePhone4' },
-              { thirdName: '如何更换安全手机', url: '/SecurePhone5' },
-              { thirdName: '如何更换安全邮箱', url: '/SecurePhone6' },
-              { thirdName: '如何将手机号换绑到另一账号', url: '/SecurePhone7' },
-              { thirdName: '如何处理绑定邮箱停用问题', url: '/SecurePhone8' },
-              { thirdName: '为什么账号无法绑定手机和邮箱', url: '/SecurePhone9' }
-            ]
-          },
-          {
-            secondName: '密保问题',
-            children: [
-              { thirdName: '密保的定义的作用', url: '/SecurityQuestion1' },
-              { thirdName: '如何重置密保', url: '/SecurityQuestion2' },
-              { thirdName: '为什么密保重置失败', url: '/SecurityQuestion3' }
-            ]
-          },
-          {
-            secondName: '丢失被盗或换机',
-            children: [
-              { thirdName: '如何找回被盗账号', url: '/Lost1' },
-              { thirdName: '小米手机丢失、遗弃、赠与要注意哪些问题', url: '/Lost2' }
-            ]
-          },
-          {
-            secondName: '安全验证',
-            children: [
-              { thirdName: '小米账号有哪些安全验证方式' },
-              { thirdName: '为什么要验证图片验证码' },
-              { thirdName: '什么事小米账号安全令牌，有什么作用' },
-              { thirdName: '为什么在登录中输入账号密码后，还需要验证手机号' }
-            ]
-          },
-          {
-            secondName: '冻结解冻',
-            children: [
-              { thirdName: '如何冻结解冻账号' },
-              { thirdName: '为什么账号被自动冻结' },
-              { thirdName: '为什么账号会被封禁' },
-              { thirdName: '什么情况下要冻结账号' }
-            ]
-          }]
-        },
-        {
-          authName: '其他',
-          children: [{
-            children: [
-              { thirdName: '小米云服务的注册手机号已停用，能否继续登录云服务' },
-              { thirdName: '为什么系统提示查找手机等服务激活失败' },
-              { thirdName: '为什么提示激活短信接受失败' },
-              { thirdName: '为什么更换SIM卡，提示重新激活服务' },
-              { thirdName: '为什么激活服务要发送短信' },
-              { thirdName: '为什么小米账号绑定了两个手机号' },
-              { thirdName: '为什么米聊中绑定的手机号，小米账号中未显示' },
-              { thirdName: '为什么账号无法绑定微信、QQ、微博' },
-              { thirdName: '为什么提示游戏账号有问题' },
-              { thirdName: '为什么账号无法登录小米论坛' },
-              { thirdName: '账号注销后，之前购买的云服务等权益，会被他人重新注册后盗用吗' },
-              { thirdName: '什么是查找手机无网络定位服务' }
-            ]
-          }]
-        }
-      ]
+            authName: '其他',
+            children: [{
+              children: [
+                { thirdName: '小米云服务的注册手机号已停用，能否继续登录云服务' },
+                { thirdName: '为什么系统提示查找手机等服务激活失败' },
+                { thirdName: '为什么提示激活短信接受失败' },
+                { thirdName: '为什么更换SIM卡，提示重新激活服务' },
+                { thirdName: '为什么激活服务要发送短信' },
+                { thirdName: '为什么小米账号绑定了两个手机号' },
+                { thirdName: '为什么米聊中绑定的手机号，小米账号中未显示' },
+                { thirdName: '为什么账号无法绑定微信、QQ、微博' },
+                { thirdName: '为什么提示游戏账号有问题' },
+                { thirdName: '为什么账号无法登录小米论坛' },
+                { thirdName: '账号注销后，之前购买的云服务等权益，会被他人重新注册后盗用吗' },
+                { thirdName: '什么是查找手机无网络定位服务' }
+              ]
+            }]
+          }
+        ]
+      }
+
     }
+  },
+  props: {
+    totalPage: { // 总页数
+      type: Number,
+      default: 1,
+      required: true
+    },
+    showPrev: { // 是否显示“上一页”
+      type: Boolean,
+      default: true
+    },
+    showNext: { // 是否显示“下一页”
+      type: Boolean,
+      default: true
+    }
+  },
+  created () { // 初始化时currentPage赋值
+    this.currentPage = this.initPage
   },
   methods: {
     yes () {
@@ -366,6 +389,14 @@ export default {
     no () {
       this.prompt = '感谢您的反馈'
       this.isShow = false
+    },
+    setPage (page) {
+      if (page < 1) {
+        page = 1
+      }
+      if (page > this.totalPage) {
+        page = this.totalPage
+      }
     }
   }
 }

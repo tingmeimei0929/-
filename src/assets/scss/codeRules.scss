@@ -67,31 +67,22 @@
 }
 
 .body{
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
     height: auto;
+    margin-top: 0;
 
     .leftMenu{
-        position: absolute;
-        left: 0;
-        top: 65px;
-        bottom: 0;
-        flex:  0 0 300px;
-        overflow-y: scroll;
-        border-right: 1px solid rgba(0,0,0,.1);
+       width: 300px;
+       float: left;
+       overflow-y: scroll;
+       border-right: 1px solid rgba(0,0,0,.1);
     }
    
 
     .rightContent{
-        position: absolute;
-        right: 0;
-        top: 65px;
-        bottom: 0em;
-        left: 300px;
-        display: flex;
-        flex-direction: column;
+        width: auto;
+        float: right;
         overflow-y: scroll;
-        flex: 1 0 auto;
         font-size: 14px;
         .markDown-body{
             flex: 1 1 auto;
@@ -260,5 +251,13 @@
                 }
             }
         }
+    }
+}
+@media (max-width: 768px) {
+    .leftMenu{
+        display: none;
+    }
+    .rightContent{
+        width: 100%;
     }
 }
