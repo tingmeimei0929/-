@@ -1,25 +1,22 @@
 <template>
-  <div class="login-type">
-    <div class="account">
-      <input type="text"
+  <el-form class="login-type" :rules="rules" :model="ruleForm" ref="ruleForm">
+    <el-form-item class="account" prop="account">
+      <el-input type="text"
              placeholder="邮箱/手机号码/小米ID"
-             name="username"
-             id="userName"
-             v-model="username">
-    </div>
-    <div class="account last">
-      <input type="password"
+             name="account"
+             id="account" v-model="ruleForm.account">
+    </el-input>
+    </el-form-item>
+    <el-form-item class="account last" prop="password">
+      <el-input type="password"
              placeholder="密码"
              name="password"
-             id="password"
-             v-model="password">
-    </div>
-    <div class="small"
-         v-show="prompt">
-      <i class="el-icon-alibaocuo"></i>
-      <span class="errorPrompt">{{errorMsg}}</span>
-    </div>
-    <button>登录</button>
+             id="password" v-model="ruleForm.password">
+      </el-input>
+    </el-form-item>
+    <el-button type="primary"
+                class="button"
+                @click="submitForm('ruleForm')">登录</el-button>
     <div class="prompt">
       <div class="prompt-top">
         <div class="sms-link"><a @click="smscode">手机短信登录/注册</a></div>
@@ -44,18 +41,65 @@
 
       </div>
     </div>
-  </div>
+  </el-form>
 </template>
 
 <script>
 export default {
   name: 'Account',
   data () {
+    // <!--验证账号-->
+    const account = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入账号'))
+      } else {
+        callback()
+      }
+    }
+    // <!--验证密码-->
+    const validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'))
+      } else {
+        callback()
+      }
+    }
     return {
-      username: '',
-      password: '',
-      errorMsg: '请输入账号',
-      prompt: false
+      ruleForm: {
+        account: '',
+        password: ''
+      },
+      rules: {
+        account: [
+          { required: true, message: '请输入账号', trigger: 'blur' },
+          {
+            pattern: /^(?!(\d+)$)[a-zA-Z\d_]{4,20}$/,
+            message: '用户名或密码不正确',
+            trigger: 'blur'
+          },
+          { validator: account, trigger: 'blur' }
+        //   {
+        //     pattern: /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
+        //     message: '请输入有效的邮箱账号',
+        //     trigger: 'blur'
+        //   },
+        //   {
+        //     pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
+        //     message: '请输入正确的11位手机号码',
+        //     trigger: 'blur'
+        //   },
+        //   { validator: account, trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          {
+            pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/,
+            message: '用户名或密码不正确',
+            trigger: 'blur'
+          },
+          { validator: validatePass, trigger: 'blur' }
+        ]
+      }
     }
   },
   methods: {
@@ -72,6 +116,22 @@ export default {
     smscode () {
       this.$router.push({
         path: '/Login/SMS'
+      })
+    },
+    // <!--提交登录-->
+    submitForm (formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          setTimeout(() => {
+            this.$message({
+              message: '登录成功！',
+              type: 'success'
+            })
+          }, 400)
+        } else {
+          console.log('error submit!!')
+          return false
+        }
       })
     }
   }

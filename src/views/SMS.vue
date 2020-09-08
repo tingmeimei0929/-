@@ -1,31 +1,31 @@
 <template>
-  <div class="login-type">
-    <div class="smsPush">
+  <el-form class="login-type" :rules="rules" :model="ruleForm" ref="ruleForm">
+    <el-form-item  class="smsPush" prop="tel" >
       <div class="number">+86</div>
-      <div class="phoneInput">
-        <input type="text"
+      <div class="phoneInput" >
+        <el-input type="text"
                placeholder="手机号码"
-               name="phoneNumber"
-               id="phoneNumber">
+               name="tel"
+               id="tel" v-model="ruleForm.tel">
+        </el-input>
       </div>
-    </div>
-    <div class="smsPush last">
-      <div class="smsInput">
-        <input type="text"
+    </el-form-item>
+    <el-form-item class="smsPush last"  prop="smscode">
+        <el-input type="text"
                placeholder="短信验证码"
-               name="smsnum"
-               id="smsnum">
-      </div>
-      <div class="smsbtn">
-        <a @click="countDown" :class="{disabled: !this.canClick}">{{content}}</a>
-      </div>
-    </div>
-    <div class="small"
+               name="smscode"
+               class="smsInput "
+               id="smscode" v-model="ruleForm.smscode">
+        </el-input>
+          <el-button :disabled="isDisabled"
+                         @click="sendCode">{{content}}</el-button>
+    </el-form-item>
+    <!-- <div class="small"
          v-show="prompt">
       <i class="el-icon-alibaocuo"></i>
       <span class="errorPrompt">{{errorMsg}}</span>
-    </div>
-    <button>立即登录/注册</button>
+    </div> -->
+    <el-button class="button" @click="submitForm('ruleForm')">立即登录/注册</el-button>
     <div class="prompt">
       <div class="prompt-top">
         <div class="sms-link"><a @click="usercode">用户名密码登录</a></div>
@@ -47,19 +47,59 @@
            class="btn-weixin"><i class="el-icon-aliweixin2"></i></a>
       </div>
     </div>
-  </div>
+  </el-form>
 </template>
 
 <script>
 export default {
   name: 'SMS',
   data () {
+    // <!--验证手机号是否合法-->
+    const checkTel = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入手机号码'))
+      } else if (!this.checkMobile(value)) {
+        callback(new Error('请输入正确的11位手机号码'))
+      } else {
+        callback()
+      }
+    }
+    //  <!--验证码是否为空-->
+    const checkSmscode = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入手机验证码'))
+      } else {
+        callback()
+      }
+    }
     return {
-      errorMsg: '请输入手机号',
-      prompt: false,
+      ruleForm: {
+        tel: '',
+        smscode: ''
+      },
+      rules: {
+        tel: [
+          { required: true, message: '请输入手机号', trigger: 'blur' },
+          {
+            pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
+            message: '请输入正确的11位手机号码',
+            trigger: 'blur'
+          },
+          { validator: checkTel, trigger: 'blur' }
+        ],
+        smscode: [
+          { required: true, message: '请输入短信验证码', trigger: 'blur' },
+          {
+            pattern: /^[0-9]{6}$/,
+            message: '请输入正确的六位数字验证码',
+            trigger: 'blur'
+          },
+          { validator: checkSmscode, trigger: 'blur' }
+        ]
+      },
+      isDisabled: false, // 是否禁止点击发送验证码按钮
       content: '发送验证码',
-      canClick: true,
-      totalTime: 60 // 记录具体倒计时时间
+      flag: true
     }
   },
   methods: {
@@ -73,23 +113,71 @@ export default {
         path: '/CodeRules'
       })
     },
-    countDown () {
-      if (!this.canClick) {
-        return
-      }
-      this.canClick = false
-      this.content = '重新发送(' + this.totalTime + ')'
-      const clock = window.setInterval(() => {
-        this.totalTime--
-        this.content = '重新发送(' + this.totalTime + ')'
-        if (this.totalTime < 0) {
-          window.clearInterval(clock)
-          this.content = '发送验证码'
-          this.totalTime = 60
-          this.canClick = true // 重新开启
+    // <!--发送验证码-->
+    sendCode () {
+      const tel = this.ruleForm.tel
+      if (this.checkMobile(tel)) {
+        console.log(tel)
+        let time = 60
+        this.buttonText = '已发送'
+        this.isDisabled = true
+        if (this.flag) {
+          this.flag = false
+          const timer = setInterval(() => {
+            time--
+            this.content = '重新发送(' + this.time + ')'
+            if (time === 0) {
+              clearInterval(timer)
+              this.content = '发送验证码'
+              this.isDisabled = false
+              this.flag = true
+            }
+          }, 1000)
         }
-      }, 1000)
+      }
+    },
+    // <!--提交登录-->
+    submitForm (formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          setTimeout(() => {
+            this.$message({
+              message: '登录成功！',
+              type: 'success'
+            })
+          }, 400)
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    // 验证手机号
+    checkMobile (str) {
+      const reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/
+      if (reg.test(str)) {
+        return true
+      } else {
+        return false
+      }
     }
+    // countDown () {
+    //   if (!this.canClick) {
+    //     return
+    //   }
+    //   this.canClick = false
+    //   this.content = '重新发送(' + this.totalTime + ')'
+    //   const clock = window.setInterval(() => {
+    //     this.totalTime--
+    //     this.content = '重新发送(' + this.totalTime + ')'
+    //     if (this.totalTime < 0) {
+    //       window.clearInterval(clock)
+    //       this.content = '发送验证码'
+    //       this.totalTime = 60
+    //       this.canClick = true // 重新开启
+    //     }
+    //   }, 1000)
+    // }
   }
 }
 </script>

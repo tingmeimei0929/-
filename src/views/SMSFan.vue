@@ -25,7 +25,7 @@
       <i class="el-icon-alibaocuo"></i>
       <span class="errorPrompt">{{errorMsg}}</span>
     </div>
-    <button>立即登入/注冊</button>
+    <el-button class="button">立即登入/注冊</el-button>
     <div class="prompt">
       <div class="prompt-top">
         <div class="sms-link"><a @click="usercode">用戶名密碼登入</a></div>

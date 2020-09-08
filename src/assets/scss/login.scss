@@ -148,7 +148,7 @@
               height: 22px;
               line-height: 22px;
               margin-top: 13px;
-              margin-left: 14px;
+              border: none;
             }
           }
 
@@ -165,7 +165,7 @@
                 height: 22px;
                 line-height: 22px;
                 margin-top: 13px;
-                margin-left: 14px;
+                border: none;
 
                 &.inputEn {
                   width: auto;
@@ -174,20 +174,25 @@
               }
             }
 
-            .smsbtn {
-              display:inline-block;
-              height: inherit;
-              line-height: inherit;
-              float: left;
-              padding: 15px 20px;
-              overflow: hidden;
-              border-left: 1px solid #e0e0e0;
-
-              a {
-                color: #003ab5;
-                cursor: pointer;
-              }
+            .el-input{
+                display: block;
+                float: left;
+                width: initial;
             }
+
+
+              .el-button {
+                border: none;
+                color: #003ab5;
+                height: inherit;
+                line-height: inherit;
+                cursor: pointer;
+                padding:2px 5px;
+                text-align: center;
+                border-left: 1px solid #e0e0e0;
+                background-color: #fff;
+              }
+            
           }
 
 
@@ -219,10 +224,9 @@
           }
         }
 
-        button {
+        .button {
           width: 348px;
           height: 50px;
-          line-height: 50px;
           color: #fff;
           font-size: 14px;
           cursor: pointer;

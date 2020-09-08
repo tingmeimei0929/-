@@ -26,7 +26,7 @@
       <i class="el-icon-alibaocuo"></i>
       <span class="errorPrompt">{{errorMsg}}</span>
     </div>
-    <button>Sign in/Sign up</button>
+    <el-button class="button">Sign in/Sign up</el-button>
     <div class="prompt">
       <div class="prompt-top">
         <div class="sms-link"><a @click="usercode">Sign in with password</a></div>

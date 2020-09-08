@@ -76,7 +76,7 @@
              class="hover">
       </div>
       <div class="text return-top"><a href=".header">回顶部</a></div>
-      <el-backtop target=".header" :visibility-height="100"></el-backtop>
+      <el-backtop target=".header" :visibility-height="400"></el-backtop>
     </a>
   </div>
 </template>

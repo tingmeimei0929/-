@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "async-validator": "^3.4.0",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "css-loader": "^3.5.3",

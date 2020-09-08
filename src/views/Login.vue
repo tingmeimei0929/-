@@ -54,11 +54,6 @@ export default {
       this.$router.push({
         path: '/Login'
       })
-    },
-    signup () {
-      this.$router.push({
-        path: '/Registered'
-      })
     }
   }
 }
