@@ -6,10 +6,17 @@
            class="logo"></a>
       </div>
       <h4 class="layout-title">注册小米账号</h4>
-      <div class="layout-table">
+      <el-form class="layout-table">
         <div class="regbox">
           <h4 class="regbox-title">国家/地区</h4>
-          <div class="regbox-select">
+          <el-form-item class="regbox-select">
+              <el-select v-model="value">
+                  <el-option v-for="item in options"
+                             :key="item.value"
+                             :label="item.label"
+                             :value="item.value">
+                  </el-option>
+              </el-select>
             <div class="select-block">
               <div class="block-main"
                    @click.stop="showCountry"></div>
@@ -26,7 +33,7 @@
               <p>11</p>
 
             </div>
-          </div>
+          </el-form-item>
           <div class="small">成功注册账号后，国家/地区将不能被修改</div>
 
           <h4 class="regbox-title">手机号码</h4>
@@ -63,7 +70,7 @@
         <div class="privacy_box">
           <p>已阅读并同意：小米<a>用户协议</a>和<a>隐私政策</a></p>
         </div>
-      </div>
+      </el-form>
     </div>
     <div class="layout-bottom">
       <ul>
@@ -105,7 +112,7 @@ export default {
     },
     handleOtherClick (e) {
       console.log(e.target)
-      if (e.target.className != 'block-main') {
+      if (e.target.className !== 'block-main') {
         this.country = false
         this.phoneNum = false
       }

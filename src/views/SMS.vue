@@ -58,18 +58,13 @@ export default {
     const checkTel = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入手机号码'))
-      } else if (!this.checkMobile(value)) {
-        callback(new Error('请输入正确的11位手机号码'))
       } else {
-        callback()
-      }
-    }
-    //  <!--验证码是否为空-->
-    const checkSmscode = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请输入手机验证码'))
-      } else {
-        callback()
+        const reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/
+        if (reg.test(value)) {
+          callback()
+        } else {
+          callback(new Error('请输入正确的11位手机号码'))
+        }
       }
     }
     return {
@@ -80,11 +75,6 @@ export default {
       rules: {
         tel: [
           { required: true, message: '请输入手机号', trigger: 'blur' },
-          {
-            pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
-            message: '请输入正确的11位手机号码',
-            trigger: 'blur'
-          },
           { validator: checkTel, trigger: 'blur' }
         ],
         smscode: [
@@ -93,8 +83,7 @@ export default {
             pattern: /^[0-9]{6}$/,
             message: '请输入正确的六位数字验证码',
             trigger: 'blur'
-          },
-          { validator: checkSmscode, trigger: 'blur' }
+          }
         ]
       },
       isDisabled: false, // 是否禁止点击发送验证码按钮
@@ -115,6 +104,11 @@ export default {
     },
     // <!--发送验证码-->
     sendCode () {
+      // 1、时间开始倒数
+      // 2、按钮进入禁用状态
+      // 3、如何倒计时结束 按钮回复可用状态 按钮文字变成重新发送
+      // 4、倒计时的过程中 按钮文字为 重新发送+多少秒
+
       const tel = this.ruleForm.tel
       if (this.checkMobile(tel)) {
         console.log(tel)
@@ -125,7 +119,8 @@ export default {
           this.flag = false
           const timer = setInterval(() => {
             time--
-            this.content = '重新发送(' + this.time + ')'
+            this.content = `重新发送(${this.time})`
+            // this.content = '重新发送(' + this.time + ')'
             if (time === 0) {
               clearInterval(timer)
               this.content = '发送验证码'
@@ -151,15 +146,6 @@ export default {
           return false
         }
       })
-    },
-    // 验证手机号
-    checkMobile (str) {
-      const reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/
-      if (reg.test(str)) {
-        return true
-      } else {
-        return false
-      }
     }
     // countDown () {
     //   if (!this.canClick) {

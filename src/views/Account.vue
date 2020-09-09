@@ -53,15 +53,12 @@ export default {
       if (value === '') {
         callback(new Error('请输入账号'))
       } else {
-        callback()
-      }
-    }
-    // <!--验证密码-->
-    const validatePass = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请输入密码'))
-      } else {
-        callback()
+        const reg = /^(?!(\d+)$)[a-zA-Z\d_]{4,20}$/
+        if (reg.test(value)) {
+          callback()
+        } else {
+          callback(new Error('用户名不正确'))
+        }
       }
     }
     return {
@@ -73,31 +70,24 @@ export default {
         account: [
           { required: true, message: '请输入账号', trigger: 'blur' },
           {
-            pattern: /^(?!(\d+)$)[a-zA-Z\d_]{4,20}$/,
-            message: '用户名或密码不正确',
+            pattern: /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
+            message: '请输入有效的邮箱账号',
+            trigger: 'blur'
+          },
+          {
+            pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
+            message: '请输入正确的11位手机号码',
             trigger: 'blur'
           },
           { validator: account, trigger: 'blur' }
-        //   {
-        //     pattern: /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
-        //     message: '请输入有效的邮箱账号',
-        //     trigger: 'blur'
-        //   },
-        //   {
-        //     pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
-        //     message: '请输入正确的11位手机号码',
-        //     trigger: 'blur'
-        //   },
-        //   { validator: account, trigger: 'blur' }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
           {
             pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/,
-            message: '用户名或密码不正确',
+            message: '密码不正确',
             trigger: 'blur'
-          },
-          { validator: validatePass, trigger: 'blur' }
+          }
         ]
       }
     }
