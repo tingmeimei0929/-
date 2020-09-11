@@ -9,49 +9,66 @@
       <el-form class="layout-table" :model="ruleForm" :rules="rules" ref="ruleForm">
         <div class="regbox">
             <h4 class="regbox-title">国家/地区</h4>
-            <el-select v-model="value"  class="regbox-select" placeholder="中国">
-                <el-option-group v-for="group in countryOptions"
-                            :key="group.label"
-                            :label="group.label"
-                            style="padding-left: 10px;margin-bottom: 6px;line-height: 30px;color: #ef5b00 !important;">
-                    <el-option v-for="item in group.options"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value"
-                            style="padding: 0 10px;line-height: 39px;clear: both;overflow: hidden;color: #000;border-bottom: 1px solid #e0e0e0;cursor:pointer">
-                    </el-option>
-                </el-option-group>
-            </el-select>
-            <div class="small">成功注册账号后，国家/地区将不能被修改</div>
-            <h4 class="regbox-title">手机号码</h4>
-            <el-form-item class="regbox-select" prop="tel">
-                <el-select class="block-main">
-                    <el-option-group v-for="group in phoneOptions"
-                            :key="group.label"
-                            :label="group.label"
-                            style="padding-left: 10px;margin-bottom: 6px;line-height: 30px;color: #ef5b00 !important;">
-                        <el-option v-for="item in group.options"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                            <span style="float:left">{{item.label}}</span>
-                            <span style="float:right;color:#9d9d9d;font-size:12px">{{item.value}}</span>
+            <el-form-item prop="country" >
+                <el-select v-model="ruleForm.country"  placeholder="中国"  class="regbox-select">
+                    <el-option-group v-for="group in countryOptions"
+                                :key="group.label"
+                                :label="group.label"
+                                style="padding-left: 10px;margin-bottom: 6px;line-height: 30px;color: #ef5b00 !important;">
+                        <el-option v-for="country in group.options"
+                                    :key="country.value"
+                                    :label="country.label"
+                                    :value="country.value"
+                                style="padding: 0 10px;line-height: 39px;clear: both;overflow: hidden;color: #000;border-bottom: 1px solid #e0e0e0;cursor:pointer">
                         </el-option>
                     </el-option-group>
                 </el-select>
-                <el-input type="text" class="aside-phone"
-                        v-model="ruleForm.tel"
-                        placeholder="请输入手机号码">
-                </el-input>
             </el-form-item>
-            <el-button class="btn"
-                  @click="register">立即注册</el-button>
+            <div class="small">成功注册账号后，国家/地区将不能被修改</div>
+            <h4 class="regbox-title">手机号码</h4>
+            <div class="regbox-select" >
+                <el-form-item prop="countryCode" class="countryCode">
+                    <el-select class="block-main" v-model="ruleForm.countryCode">
+                        <el-option-group v-for="itemGroup in phoneOptions"
+                                :key="itemGroup.label"
+                                :label="itemGroup.label"
+                                style="padding-left: 10px;margin-bottom: 6px;line-height: 30px;color: #ef5b00 !important;">
+                            <el-option v-for="countryCode in itemGroup.options"
+                                        :key="countryCode.value"
+                                        :label="countryCode.label"
+                                        :value="countryCode.value">
+                                <span style="float:left">{{countryCode.value}}</span>
+                                <span style="float:right;color:#9d9d9d;font-size:12px">{{countryCode.label}}</span>
+                            </el-option>
+                        </el-option-group>
+                    </el-select>
+                 </el-form-item>
+                <el-form-item class="aside-phone" prop="tel">
+                    <el-input type="text"
+                            v-model="ruleForm.tel"
+                            placeholder="请输入手机号码">
+                    </el-input>
+                </el-form-item>
+            </div>
+            <h4 class="regbox-title">图形验证码</h4>
+            <el-form-item prop="verifyCode" >
+                <el-input placeholder="图片验证码"
+                          type="text"
+                          v-model="ruleForm.verifyCode"
+                          class="identifyInput">
+                </el-input>
+                <div @click="refreshCode">
+                    <s-identify :identifyCode="identifyCode"></s-identify>
+                </div>
+            </el-form-item>
+            <el-button class="btn" @click="submitForm('ruleForm')">立即注册</el-button>
         </div>
         <div class="privacy_box">
           <p>已阅读并同意：小米<a>用户协议</a>和<a>隐私政策</a></p>
         </div>
       </el-form>
     </div>
+    <navClock></navClock>
     <div class="layout-bottom">
       <ul>
         <li @click="simple"><a class="font-type">简体</a><i class="el-icon-alivertical_line"></i></li>
@@ -65,6 +82,8 @@
 </template>
 
 <script>
+import SIdentify from '../components/SIdentify.vue'
+import navClock from '../components/Clock.vue'
 export default {
   name: 'Registered',
   data () {
@@ -81,14 +100,33 @@ export default {
         }
       }
     }
+    // 验证图片验证码
+    const checkCode = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入图片验证码'))
+      } else if (value !== this.identifyCode) {
+        console.log('checkCode:', value)
+        callback(new Error('图片验证码错误！'))
+      } else {
+        callback()
+      }
+    }
     return {
       ruleForm: {
-        tel: ''
+        tel: '',
+        country: '',
+        countryCode: '',
+        imageVerification: '',
+        verifyCode: ''
       },
       rules: {
         tel: [
           { required: true, message: '请输入手机号', trigger: 'blur' },
           { validator: checkTel, trigger: 'blur' }
+        ],
+        verifyCode: [
+          { required: true, message: '请输入图片验证码', trigger: 'blur' },
+          { validator: checkCode, trigger: 'blur' }
         ]
       },
       countryOptions: [
@@ -243,36 +281,36 @@ export default {
           label: 'A',
           options: [
             {
-              value: '+93',
-              label: '阿富汗'
+              label: '+93',
+              value: '阿富汗'
             },
             {
-              value: '+335',
-              label: '阿尔巴尼亚'
+              label: '+335',
+              value: '阿尔巴尼亚'
             },
             {
-              value: '+213',
-              label: '阿尔及利亚'
+              label: '+213',
+              value: '阿尔及利亚'
             },
             {
-              value: '+1',
-              label: '美属萨摩亚'
+              label: '+1',
+              value: '美属萨摩亚'
             },
             {
-              value: '+376',
-              label: '安道尔'
+              label: '+376',
+              value: '安道尔'
             },
             {
-              value: '+244',
-              label: '安哥拉'
+              label: '+244',
+              value: '安哥拉'
             },
             {
-              value: '+1',
-              label: '安圭拉'
+              label: '+1',
+              value: '安圭拉'
             },
             {
-              value: '+672',
-              label: '南极洲'
+              label: '+672',
+              value: '南极洲'
             }
           ]
         },
@@ -280,36 +318,36 @@ export default {
           label: 'B',
           options: [
             {
-              value: '+1',
-              label: '巴哈马'
+              label: '+1',
+              value: '巴哈马'
             },
             {
-              value: '+973',
-              label: '巴林'
+              label: '+973',
+              value: '巴林'
             },
             {
-              value: '+880',
-              label: '孟加拉国'
+              label: '+880',
+              value: '孟加拉国'
             },
             {
-              value: '+1',
-              label: '巴巴多斯'
+              label: '+1',
+              value: '巴巴多斯'
             },
             {
-              value: '+375',
-              label: '白俄罗斯'
+              label: '+375',
+              value: '白俄罗斯'
             },
             {
-              value: '+32',
-              label: '比利时'
+              label: '+32',
+              value: '比利时'
             },
             {
-              value: '+975',
-              label: '不丹'
+              label: '+975',
+              value: '不丹'
             },
             {
-              value: '+591',
-              label: '玻利维亚'
+              label: '+591',
+              value: '玻利维亚'
             }
           ]
         },
@@ -317,24 +355,24 @@ export default {
           label: 'C',
           options: [
             {
-              value: '+86',
-              label: '中国'
+              label: '+86',
+              value: '中国'
             },
             {
-              value: '+855',
-              label: '柬埔寨'
+              label: '+855',
+              value: '柬埔寨'
             },
             {
-              value: '+237',
-              label: '喀麦隆'
+              label: '+237',
+              value: '喀麦隆'
             },
             {
-              value: '+1',
-              label: '加拿大'
+              label: '+1',
+              value: '加拿大'
             },
             {
-              value: '+236',
-              label: '中非'
+              label: '+236',
+              value: '中非'
             }
           ]
         },
@@ -342,20 +380,20 @@ export default {
           label: 'D',
           options: [
             {
-              value: '+45',
-              label: '丹麦'
+              label: '+45',
+              value: '丹麦'
             },
             {
-              value: '+1',
-              label: '多尔尼克'
+              label: '+1',
+              value: '多尔尼克'
             },
             {
-              value: '+253',
-              label: '布吉提'
+              label: '+253',
+              value: '布吉提'
             },
             {
-              value: '+1',
-              label: '多米尼加'
+              label: '+1',
+              value: '多米尼加'
             }
           ]
         },
@@ -363,32 +401,40 @@ export default {
           label: 'E',
           options: [
             {
-              value: '+593',
-              label: '厄瓜尔多'
+              label: '+593',
+              value: '厄瓜尔多'
             },
             {
-              value: '+20',
-              label: '埃及'
+              label: '+20',
+              value: '埃及'
             },
             {
-              value: '+240',
-              label: '赤道几内亚'
+              label: '+240',
+              value: '赤道几内亚'
             },
             {
-              value: '+251',
-              label: '埃塞俄比亚'
+              label: '+251',
+              value: '埃塞俄比亚'
             },
             {
-              value: '+291',
-              label: '厄立特里亚'
+              label: '+291',
+              value: '厄立特里亚'
             }
           ]
         }
-      ]
+      ],
+      identifyCodes: '1234567890abcdefggijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTVUWXYZ',
+      identifyCode: ''
     }
   },
+  components: {
+    SIdentify,
+    navClock
+  },
   mounted () {
-
+    //   验证码初始化
+    this.identifyCode = ''
+    this.makeCode(this.identifyCodes, 4)
   },
   methods: {
     complex () {
@@ -405,14 +451,65 @@ export default {
       this.$router.push({
         path: '/Registered'
       })
+    },
+    // 生成随机数
+    randomNum (min, max) {
+      return Math.floor(Math.random() * (max - min) + min)
+    },
+    // 切换验证码
+    refreshCode () {
+      this.identifyCode = ''
+      this.makeCode(this.identifyCodes, 5)
+    },
+    // 生成四位随机验证码
+    makeCode (o, l) {
+      for (let i = 0; i < l; i++) {
+        this.identifyCode += this.identifyCodes[
+          this.randomNum(0, this.identifyCodes.length)
+        ]
+      }
+      console.log(this.identifyCode)
+    },
+    // <!--提交登录-->
+    //  submitForm() {
+    //      this.$refs.ruleForm.validator(valid => {
+    //          if (valid) {
+    //              this.$store.dispatch('Registered', this.ruleForm).then(res => {
+    //                  this.$router.push({path: '/'})
+    //              })
+    //          }
+    //      })
+    // }
+    submitForm (formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          this.logining = true
+          setTimeout(() => {
+            this.$message({
+              message: '登录成功！',
+              type: 'success'
+            })
+          }, 400)
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
     }
-  },
-  destroyed () {
-    document.removeEventListener('click', this.handleOtherClick)
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import url("../assets/scss/registered.scss");
+</style>
+<style lang="scss">
+.regbox-select{
+    &.el-select{
+      display: initial;
+    }
+}
+.countryCode{
+    float: left;
+}
 </style>

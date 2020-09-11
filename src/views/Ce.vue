@@ -420,5 +420,8 @@ $btn-color: #409eff;
       }
     }
   }
+  .el-form-item__content{
+      position: static;
+  }
 }
 </style>
