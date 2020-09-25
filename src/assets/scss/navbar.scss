@@ -219,7 +219,7 @@
               margin-left: auto;
               margin-right: auto;
 
-              .item-detaile {
+              li{
                 display: block;
                 width: 200px;
                 height: 240px;
@@ -227,7 +227,6 @@
 
                 a {
                   display: block;
-                  margin-top: 20px;
                   width: 200px;
                   height: 210px;
                   color: #333;
@@ -238,7 +237,6 @@
                     width: 200px;
                     height: 110px;
                     border-right: 1px solid #ccc;
-
 
                     &.last-item {
                       border-right: 1px solid transparent;

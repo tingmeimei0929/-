@@ -23,6 +23,8 @@ import './assets/scss/commodity.scss'
 import './assets/scss/cart.scss'
 import './assets/scss/toolBar.scss'
 import './assets/scss/codeRules.scss'
+import './assets/scss/details.scss'
+import './assets/scss/dialog.scss'
 import '../node_modules/swiper/css/swiper.min.css'
 
 Vue.use(VueAwesomeSwiper)

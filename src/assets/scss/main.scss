@@ -386,12 +386,13 @@
                 flex-flow: row nowrap;
                 justify-content: center;
 
-                .swiper-slide {
+                .carousel {
                   flex:1 auto;
                   display: block;
+                  float: left;
                   width: 234px;
                   height: 339px;
-                  margin-right: 14px;
+                  margin-right: 10px;
                   color: #757575;
                   background-color: #fff;
 
@@ -482,7 +483,7 @@
               height: 58px;
               line-height: 58px;
 
-              a {
+              span {
                 font-size: 16px;
                 color: #424242;
 
@@ -535,16 +536,15 @@
                 width: inherit;
                 height: 300px;
 
-                &.first-list {
-                  margin-top: 28px;
-                }
-
                 li {
                   float: left;
-                  margin-right: 14px;
+                  margin-right: 10px;
                   width: 234px;
                   height: 300px;
+                  margin-bottom: 28px;
                   background-color: #fff;
+                  -webkit-transition: all 0.2s linear;
+                  transition: all 0.2s linear;
 
 
                   a {
@@ -591,16 +591,13 @@
                     }
                   }
                 }
-
-                li:last-child {
-                  margin-right: 0;
-                }
-
                 li:hover {
-                  transition: all linear 2s;
-                }
-
-
+                    z-index: 2;
+                    -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+                    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+                    -webkit-transform: translate3d(0, -2px, 0);
+                    transform: translate3d(0, -2px, 0);
+                  }
               }
             }
 

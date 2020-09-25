@@ -74,14 +74,17 @@
           position: relative;
           width: inherit;
           height: 42px;
-            .block-main {
-              float: left;
-              width: 90px !important;
-              height: 42px;
-              line-height: 42px;
-              text-align: center;
-              border: 0 !important;
-            }   
+          .countryCode{
+              margin-bottom: 0;
+                .block-main {
+                float: left;
+                width: 90px !important;
+                height: 42px;
+                line-height: 42px;
+                text-align: center;
+                border: 0 !important;
+                } 
+            }  
             .aside-phone {
               display: block;
               float: right;
@@ -89,6 +92,15 @@
               height: 40px;
               border: 0 !important;
             }
+        }
+
+        .identifyInput{
+            width: 180px;
+            float: left;
+        }
+        .identifyCode{
+            float: left;
+            margin-left: 20px;
         }
         .small {
           width: inherit;

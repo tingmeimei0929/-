@@ -1,0 +1,45 @@
+main{
+    width: 100%;
+    
+    .container{
+        width: 1226px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+
+        .page-header{
+            width: inherit;
+            height: 63px;
+            margin-top: 0;
+            background-color: #fff;
+
+            .title{
+                height: 60px;
+                line-height: 60px;
+                font-size: 18px;
+                font-weight: 400;
+                color: #424242;
+                float: left;
+                margin: 0;
+            }
+
+            ul{
+                float: right;
+                margin: 17px 0 0 0;
+
+                li{
+                    float: left;
+                    font-size: 14px;
+                    a{
+                       color: #616161;
+                    }
+                    .separator{
+                        color: #e0e0e0;
+                        margin: 0 .5em;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}

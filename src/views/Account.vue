@@ -1,5 +1,5 @@
 <template>
-  <el-form class="login-type" :rules="rules" :model="ruleForm" ref="ruleForm">
+  <el-form class="login-type" :rules="rules" :model="ruleForm" ref="ruleForm" :visible.sync="isLogin">
     <el-form-item class="account" prop="account">
       <el-input type="text"
              placeholder="邮箱/手机号码/小米ID"
@@ -10,13 +10,13 @@
     <el-form-item class="account last" prop="password">
       <el-input type="password"
              placeholder="密码"
-             name="password"
+                name="password"
              id="password" v-model="ruleForm.password">
       </el-input>
     </el-form-item>
     <el-button type="primary"
                 class="button"
-                @click="submitForm('ruleForm')">登录</el-button>
+                @click="submitForm">登录</el-button>
     <div class="prompt">
       <div class="prompt-top">
         <div class="sms-link"><a @click="smscode">手机短信登录/注册</a></div>
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'Account',
   data () {
@@ -69,16 +70,16 @@ export default {
       rules: {
         account: [
           { required: true, message: '请输入账号', trigger: 'blur' },
-          {
-            pattern: /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
-            message: '请输入有效的邮箱账号',
-            trigger: 'blur'
-          },
-          {
-            pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
-            message: '请输入正确的11位手机号码',
-            trigger: 'blur'
-          },
+          //   {
+          //     pattern: /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
+          //     message: '请输入有效的邮箱账号',
+          //     trigger: 'blur'
+          //   },
+          //   {
+          //     pattern: /^[1][3,4,5,6,7,8,9][0-9]{9}$/,
+          //     message: '请输入正确的11位手机号码',
+          //     trigger: 'blur'
+          //   },
           { validator: account, trigger: 'blur' }
         ],
         password: [
@@ -92,7 +93,73 @@ export default {
       }
     }
   },
+  computed: {
+    //   获取vuex重的showLogin，控制登录组件是否显示
+    isLogin: {
+      get () {
+        return this.$store.getters.getShowLogin
+      },
+      set (val) {
+        this.$refs.ruleForm.resetFields()
+        this.setShowLogin(val)
+      }
+    }
+  },
   methods: {
+    ...mapActions(['setUser', 'setShowLogin']),
+    // <!--提交登录-->
+    submitForm () {
+      // 通过element自定义表单校验规则，校验用户输入的用户信息
+      this.$refs.ruleForm.validate(valid => {
+        //   如果通过校验开始登录
+        if (valid) {
+          setTimeout(() => {
+            this.$message({
+              message: '登录成功！',
+              type: 'success'
+            })
+          }, 400)
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    /*
+     有后端
+     this.$refs.ruleForm.validate(valid => {
+        //  如果通过校验开始登录
+        if(valid) {
+            this.$axios.post('/api/xxx', {
+                userName: this.ruleForm.account,
+                password: this.ruleForm.password
+            }).then(res => {
+                // 001代表登录成功，其他的均为失败
+                if(res.data.code === '001) {
+                    // 隐藏登录组件
+                    this.isLogin = false;
+                    // 登录信息存到本地
+                    let user = JSON.stringify(res.data.user)
+                    localStorage.setItem('user', user)
+                    // 登录信息存到vuex
+                    this.setUser(res.data.user)
+                    // 弹出通知框提示登录成功信息
+                    this.notifySucceed(res.data.msg)
+                }else {
+                    // 清空输入框的校验状态
+                    this.$refs['ruleForm].resetFields()
+                    // 弹出通知框提示登录失败信息
+                    this.notifyError(res.data.msg)
+                }
+            }).catch(err => {
+                retrun Promise.reject(err)
+            })
+        }else {
+            retrun false
+        }
+     })
+    */
+    },
+
     signup () {
       this.$router.push({
         path: '/Registered'
@@ -106,22 +173,6 @@ export default {
     smscode () {
       this.$router.push({
         path: '/Login/SMS'
-      })
-    },
-    // <!--提交登录-->
-    submitForm (formName) {
-      this.$refs[formName].validate(valid => {
-        if (valid) {
-          setTimeout(() => {
-            this.$message({
-              message: '登录成功！',
-              type: 'success'
-            })
-          }, 400)
-        } else {
-          console.log('error submit!!')
-          return false
-        }
       })
     }
   }

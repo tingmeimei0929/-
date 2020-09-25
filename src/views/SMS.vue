@@ -58,13 +58,18 @@ export default {
     const checkTel = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入手机号码'))
+      } else if (!this.checkMobile(value)) {
+        callback(new Error('请输入正确的11位手机号码'))
       } else {
-        const reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/
-        if (reg.test(value)) {
-          callback()
-        } else {
-          callback(new Error('请输入正确的11位手机号码'))
-        }
+        callback()
+      }
+    }
+    //  <!--验证码是否为空-->
+    const checkSmscode = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入短信验证码'))
+      } else {
+        callback()
       }
     }
     return {
@@ -79,11 +84,7 @@ export default {
         ],
         smscode: [
           { required: true, message: '请输入短信验证码', trigger: 'blur' },
-          {
-            pattern: /^[0-9]{6}$/,
-            message: '请输入正确的六位数字验证码',
-            trigger: 'blur'
-          }
+          { validator: checkSmscode, trigger: 'blur' }
         ]
       },
       isDisabled: false, // 是否禁止点击发送验证码按钮
@@ -108,19 +109,35 @@ export default {
       // 2、按钮进入禁用状态
       // 3、如何倒计时结束 按钮回复可用状态 按钮文字变成重新发送
       // 4、倒计时的过程中 按钮文字为 重新发送+多少秒
-
+      // countDown () {
+    //   if (!this.canClick) {
+    //     return
+    //   }
+    //   this.canClick = false
+    //   this.content = '重新发送(' + this.totalTime + ')'
+    //   const clock = window.setInterval(() => {
+    //     this.totalTime--
+    //     this.content = '重新发送(' + this.totalTime + ')'
+    //     if (this.totalTime < 0) {
+    //       window.clearInterval(clock)
+    //       this.content = '发送验证码'
+    //       this.totalTime = 60
+    //       this.canClick = true // 重新开启
+    //     }
+    //   }, 1000)
+    // }
       const tel = this.ruleForm.tel
       if (this.checkMobile(tel)) {
         console.log(tel)
         let time = 60
-        this.buttonText = '已发送'
+        this.content = '重新发送(' + time + ')'
         this.isDisabled = true
         if (this.flag) {
           this.flag = false
           const timer = setInterval(() => {
             time--
-            this.content = `重新发送(${this.time})`
-            // this.content = '重新发送(' + this.time + ')'
+            // this.content = `重新发送(${this.time})`
+            this.content = '重新发送(' + time + ')'
             if (time === 0) {
               clearInterval(timer)
               this.content = '发送验证码'
@@ -129,6 +146,15 @@ export default {
             }
           }, 1000)
         }
+      }
+    },
+    // 验证手机号
+    checkMobile (str) {
+      const reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/
+      if (reg.test(str)) {
+        return true
+      } else {
+        return false
       }
     },
     // <!--提交登录-->
@@ -147,23 +173,6 @@ export default {
         }
       })
     }
-    // countDown () {
-    //   if (!this.canClick) {
-    //     return
-    //   }
-    //   this.canClick = false
-    //   this.content = '重新发送(' + this.totalTime + ')'
-    //   const clock = window.setInterval(() => {
-    //     this.totalTime--
-    //     this.content = '重新发送(' + this.totalTime + ')'
-    //     if (this.totalTime < 0) {
-    //       window.clearInterval(clock)
-    //       this.content = '发送验证码'
-    //       this.totalTime = 60
-    //       this.canClick = true // 重新开启
-    //     }
-    //   }, 1000)
-    // }
   }
 }
 </script>

@@ -15,9 +15,10 @@
     margin-right: auto;
 
     .nav-logo {
+      position: absolute;
       width: 62px;
-      float: left;
-      margin-top: 22px;
+      top: 22px;
+      left: 0;
 
       .logo {
         position: relative;
@@ -39,13 +40,20 @@
     }
 
     h3 {
-      float: left;
+      position: absolute;
+      top: 25px;
+      left: 90px;
       height: 48px;
       line-height: 48px;
-      margin: 25px 0 0 45px;
       font-size: 28px;
       font-weight: 400;
       color: #424242;
+    }
+
+    p{
+        position: absolute;
+        top: 40px;
+        left: 250px; 
     }
 
     .header-right {
@@ -262,6 +270,74 @@
           }
         }
       }
+    }
+    #box{
+        width: inherit;
+        margin: 20px auto;
+
+        ul{
+            margin-right: -14px;
+            overflow: hidden;
+
+            li{
+                width: 234px;
+                float: left;
+                margin-right: 14px;
+                background: #fff;
+                text-align: center;
+                position: relative;
+                cursor: pointer;
+                margin-bottom: 14px;
+
+                .pro_img{
+                    width: 150px;
+                    height: 150px;
+                    margin: 0 auto 18px;
+                }
+                .pro_name{
+                    display: block;
+                    text-overflow: ellipsis;
+                    white-space: hidden;
+                    font-weight: 400;
+
+                    a{
+                        color: #333;
+                    }
+                }
+                .pro_price{
+                    color: #ff6700;
+                    margin: 10px;
+                }
+                .pro_rank{
+                    color: #757575;
+                    margin: 10px;
+                }
+                .add_btn{
+                    height: 22px;
+                    position: absolute;
+                    width: 122px;
+                    height: 50%;
+                    margin-left: -61px;
+                    line-height: 22px;
+                    display: none;
+                    color: #ff6600;
+                    font-size: 12px;
+                    border: 1px solid #ff6600;
+                }
+            }
+
+            li:hover .add_btn{
+                display: block;
+            }
+            li:hover .pro_rank{
+               opacity: 0;
+            }
+            .add_btn:hover{
+                background-color: #ff6600;
+                color:white;
+            }
+
+        }
     }
   }
 }

@@ -89,12 +89,18 @@ import SecurityQuestion2 from '../views/SecurityQuestion2.vue'
 import SecurityQuestion3 from '../views/SecurityQuestion3.vue'
 import Lost1 from '../views/Lost1.vue'
 import Lost2 from '../views/Lost2.vue'
+import Details from '../views/Details.vue'
 Vue.use(VueRouter)
 
 const routes = [{
   path: '/',
   name: 'Main',
   component: Main
+},
+{
+  path: '/Details',
+  name: '/Details',
+  component: Details
 },
 {
   path: '/Login',

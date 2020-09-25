@@ -57,7 +57,7 @@
                           v-model="ruleForm.verifyCode"
                           class="identifyInput">
                 </el-input>
-                <div @click="refreshCode">
+                <div @click="refreshCode" class="identifyCode">
                     <s-identify :identifyCode="identifyCode"></s-identify>
                 </div>
             </el-form-item>
@@ -68,7 +68,6 @@
         </div>
       </el-form>
     </div>
-    <navClock></navClock>
     <div class="layout-bottom">
       <ul>
         <li @click="simple"><a class="font-type">简体</a><i class="el-icon-alivertical_line"></i></li>
@@ -83,7 +82,6 @@
 
 <script>
 import SIdentify from '../components/SIdentify.vue'
-import navClock from '../components/Clock.vue'
 export default {
   name: 'Registered',
   data () {
@@ -428,8 +426,7 @@ export default {
     }
   },
   components: {
-    SIdentify,
-    navClock
+    SIdentify
   },
   mounted () {
     //   验证码初始化
