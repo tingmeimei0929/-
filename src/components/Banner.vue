@@ -1,7 +1,6 @@
 <template>
      <div class="nav">
         <div class="nav-row">
-          <div class="container">
             <div class="nav-logo">
               <a href="https://www.mi.com/index.html"
                  class="logo"></a>
@@ -40,7 +39,6 @@
               <button type="primary"
                       class="btn"><i class="el-icon-alichaxun"></i></button>
             </div>
-          </div>
         </div>
       </div>
 </template>

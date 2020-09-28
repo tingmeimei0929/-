@@ -61,18 +61,18 @@
     </div>
   </div>
 </template>
-    
+
 <script>
 export default {
-  name: "Footer",
+  name: 'Footer',
   data () {
     return {
 
-    };
+    }
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/footer.scss");
 </style>

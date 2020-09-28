@@ -1,82 +1,95 @@
 .header {
   position: relative;
   width: 100%;
+  height: 160px !important;
+  
+  .img-nav{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: inherit;
+      height: 120px;
 
-  .topbar {
-    position: relative;
-    width: 100%;
-    height: 40px;
-    background-color: #333;
-    color: #b0b0b0;
-    font-size: 12px;
-    z-index: 30px;
-
-    .container {
-      width: 1226px;
-      margin-left: auto;
-      margin-right: auto;
-
-      li {
-        float: left;
-        text-align: center;
-        height: 40px;
-        line-height: 40px;
-
-
-        a {
-          font-size: 12px;
-          color: #b0b0b0;
-        }
-
-        a:hover {
-          color: #fff;
-          cursor: pointer;
-        }
-
-        .sep {
-          font-family: sans-serif;
-          margin: 0 .4em;
-          color: #424242;
-        }
-
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit:cover;
       }
+  }
+
+  .topbar-nav{
+      position: absolute;
+      top: 120px;
+      left: 0;
+      width: inherit;
+      height: 40px;
+      line-height: 40px;
+      background-color: #333;
+      color: #b0b0b0;
+      font-size: 12px;
+  }
+
+  li {
+    float: left;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
 
 
-      .topbar-list {
+    a {
+      font-size: 12px;
+      color: #b0b0b0;
+    }
+
+    a:hover {
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .sep {
+      font-family: sans-serif;
+      margin: 0 .4em;
+      color: #424242;
+    }
+
+  }
+
+
+    .topbar-list {
         display: block;
         float: left;
         height: 40px;
         line-height: 40px;
+        margin-left: 25px;
 
         li:nth-child(12){
             .sep{
                 display: none;
             }
         }
-      }
+    }
 
-      .topbar-info {
+    .topbar-info {
         position: relative;
         display: block;
         float: right;
         height: 40px;
         line-height: 40px;
+        margin-right: 25px;
 
         li {
-          cursor: pointer;
+            cursor: pointer;
 
-          &.cartLi {
+            &.cartLi {
             display: block;
             width: 120px;
             margin-left: 10px;
             background-color: #424242;
-          }
+            }
 
-          i {
+            i {
             padding: 0 .4em;
-          }
+            }
         }
-      }
     }
-  }
 }

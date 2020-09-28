@@ -90,12 +90,26 @@ import SecurityQuestion3 from '../views/SecurityQuestion3.vue'
 import Lost1 from '../views/Lost1.vue'
 import Lost2 from '../views/Lost2.vue'
 import Details from '../views/Details.vue'
+import Video from '../views/Video.vue'
+import Popular from '../views/Popular.vue'
 Vue.use(VueRouter)
 
 const routes = [{
   path: '/',
   name: 'Main',
-  component: Main
+  component: Main,
+  children: [
+    {
+      path: 'Popular',
+      name: 'Popular',
+      component: Popular
+    },
+    {
+      path: 'Video',
+      name: 'Video',
+      component: Video
+    }
+  ]
 },
 {
   path: '/Details',
