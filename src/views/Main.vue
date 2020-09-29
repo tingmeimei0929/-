@@ -115,7 +115,7 @@
                 <div class="home-brick row">
                     <div class="brick-title">
                         <h2>手机</h2>
-                        <div class="all"><span href="#">查看全部<i class="el-icon-aliqianjinxiayige"></i></span></div>
+                        <div class="all"><span @click="seeMore">查看全部<i class="el-icon-aliqianjinxiayige"></i></span></div>
                     </div>
                     <div class="brick-box">
                         <div class="box-minor">
@@ -157,7 +157,6 @@
                         </ul>
                         <div class="box-main">
                             <router-view></router-view>
-
                         </div>
                     </div>
                 </div>
@@ -178,6 +177,7 @@
                             <li v-for="(item,index) in videoList" :key="index">
                                 <div class="video-img">
                                     <img :src="item.imgSrc">
+                                    <button><i class="el-icon-caret-right"></i></button>
                                 </div>
                                 <h3 class="video-title">{{ item.title }}</h3>
                                 <p class="video-desc">{{ item.desc }}</p>
@@ -1525,6 +1525,11 @@ export default {
     companyBtn () {
       this.$router.push({
         path: '/Company'
+      })
+    },
+    seeMore () {
+      this.$router.push({
+        path: '/PhoneDetails'
       })
     }
   },

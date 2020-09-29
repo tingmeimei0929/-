@@ -92,6 +92,7 @@ import Lost2 from '../views/Lost2.vue'
 import Details from '../views/Details.vue'
 import Video from '../views/Video.vue'
 import Popular from '../views/Popular.vue'
+import PhoneDetails from '../views/PhoneDetails.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -99,6 +100,10 @@ const routes = [{
   name: 'Main',
   component: Main,
   children: [
+    {
+      path: '/',
+      redirect: 'Popular'
+    },
     {
       path: 'Popular',
       name: 'Popular',
@@ -115,6 +120,11 @@ const routes = [{
   path: '/Details',
   name: '/Details',
   component: Details
+},
+{
+  path: '/PhoneDetails',
+  name: '/PhoneDetails',
+  component: PhoneDetails
 },
 {
   path: '/Login',
