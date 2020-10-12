@@ -82,11 +82,11 @@
                             <img src="../assets/image/falsh.jpg">
                             <h2 class="prompt">距离结束还有</h2>
                             <div class="timer">
-                            <div class="timeruning">{{hours}}</div>
+                            <div class="timeruning">{{ hours }}</div>
                             <div class="icon">:</div>
-                            <div class="timeruning">{{minute}}</div>
+                            <div class="timeruning">{{ minute }}</div>
                             <div class="icon">:</div>
-                            <div class="timeruning">{{seconds}}</div>
+                            <div class="timeruning">{{ seconds }}</div>
                             </div>
                         </div>
                         <div class="flash-swiper">
@@ -177,10 +177,22 @@
                             <li v-for="(item,index) in videoList" :key="index">
                                 <div class="video-img">
                                     <img :src="item.imgSrc">
-                                    <button><i class="el-icon-caret-right"></i></button>
+                                    <button @click="dialogVisible = true"><i class="el-icon-caret-right"></i></button>
                                 </div>
                                 <h3 class="video-title">{{ item.title }}</h3>
                                 <p class="video-desc">{{ item.desc }}</p>
+
+                                 <el-dialog :visible.sync="dialogVisible"
+                                        :befor-close="handleClose"
+                                        :title="item.title">
+                                    <video-player   class="video-player vjs-custom-skin"
+                                                    ref="videoPlayer"
+                                                  :options="playerOptions"
+                                                  :playsinline="true"
+                                                  @play="onPlayerPlay($event)"
+                                                  @pause="onPlayerPause($event)">
+                                    </video-player>
+                                </el-dialog>
                             </li>
                         </ul>
                     </div>
@@ -189,8 +201,7 @@
         </div>
     </main>
     <navToolBar></navToolBar>
-    <navFooter>
-    </navFooter>
+    <navFooter></navFooter>
   </div>
 </template>
 
@@ -201,6 +212,8 @@ import navFooter from '../components/Footer'
 import navToolBar from '../components/ToolBar'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import '../assets/swiper/css/swiper.css'
+import 'video.js/dist/video-js.css'
+import VideoPlayer from 'vue-video-player'
 export default {
   name: 'Main',
   data () {
@@ -211,6 +224,16 @@ export default {
       minute: 0,
       seconds: 0,
       showPrice: true,
+      playerOptions: {
+        height: '360',
+        sources: [{
+          type: 'rtmp/mp4',
+          src: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11c70c96529b6e6938567ec1aa0910e0.mp4'
+        }],
+        techOrder: ['flash'],
+        autoplay: false,
+        controls: true
+      },
       categoryList: [
         {
           name: '手机 电话卡',
@@ -1260,9 +1283,7 @@ export default {
         }
 
       },
-      inputDate: [{ name: '小米10', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: 'Redmi Note 8', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小米CC9', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '黑鲨游戏手机', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小米电视', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小米笔记本', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '路由器', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '小爱音箱', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }, { name: '净水器', href: '//www.mi.com/search?keyword=%E5%AE%9A%E5%88%B6T%E6%81%A4' }],
       timer: '',
-      inputList: '',
       seq: 0,
       videoList: [
         {
@@ -1452,7 +1473,8 @@ export default {
             }
           ]
         }
-      ]
+      ],
+      dialogVisible: false
     }
   },
   components: {
@@ -1461,7 +1483,8 @@ export default {
     navToolBar,
     Swiper,
     SwiperSlide,
-    navBanner
+    navBanner,
+    VideoPlayer
   },
   directives: {
     swiper: directive
@@ -1475,14 +1498,10 @@ export default {
     console.log('this is current swiper instance object', this.swiper)
     this.swiper.slideTo(3, 1000, false)
     this.countdown()
-    // 初始化秒杀列表
-    this.init()
-    // input循环定时器
-    this.timer = setInterval(this.scroll, 1000)
   },
   methods: {
     countdown () {
-      const end = Date.parse(new Date('2020-9-25 16:00:00'))
+      const end = Date.parse(new Date('2020-10-13 16:00:00'))
       // 定义当前时间戳
       const now = Date.parse(new Date())
       // 做判断当倒计时结束时都为0
@@ -1506,12 +1525,13 @@ export default {
       this.seconds = seconds > 9 ? seconds : '0' + seconds
       // 定义this指向
       const that = this
-      console.log(`${hours} ${minute}`)
+      console.log(`${hours} ${minute} ${seconds}`)
       // 使用定时器 然后使用递归 让每一次函数能调用自己达到倒计时的效果
       setTimeout(() => {
         that.countdown()
       }, 1000)
     },
+
     details () {
       this.$router.push({
         path: '/Spike'
@@ -1543,4 +1563,14 @@ export default {
 
 <style lang="scss" scoped>
 @import url("../assets/scss/main.scss");
+.el-dialog{
+    width: 880px;
+    height: 495px;
+    background-color: #fff;
+    margin-top: 15vh;
+    padding: 20px 0 0 20px;
+    margin:initial;
+    text-align: start !important;
+    font-size: 14px;
+}
 </style>

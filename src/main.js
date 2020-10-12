@@ -7,6 +7,9 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueAxios from 'vue-axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import VideoPlayer from 'vue-video-player'
+import 'video.js/dist/video-js.css'
+import 'vue-video-player/src/custom-theme.css'
 
 import './assets/scss/common.scss'
 import './assets/scss/iconfont.css'
@@ -29,6 +32,7 @@ import '../node_modules/swiper/css/swiper.min.css'
 import './assets/scss/phoneDetails.scss'
 
 Vue.use(VueAwesomeSwiper)
+Vue.use(VideoPlayer)
 Vue.use(VueAxios, axios)
 Vue.use(ElementUI)
 Vue.config.productionTip = false

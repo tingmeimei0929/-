@@ -67,6 +67,7 @@ export default {
   name: 'Spike',
   data () {
     return {
+      context: '全部商品分类',
       headerFixed: '',
       inputDate: ['小米10', 'Redmi Note 8', '小米CC9', '黑鲨游戏手机', '小米电视', '小米笔记本', '路由器', '小爱音箱', '净水器'],
       isShow: false,
