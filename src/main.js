@@ -10,6 +10,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
 import 'vue-video-player/src/custom-theme.css'
+import VueLazyLoad from 'vue-lazyload'
 
 import './assets/scss/common.scss'
 import './assets/scss/iconfont.css'
@@ -35,6 +36,10 @@ Vue.use(VueAwesomeSwiper)
 Vue.use(VideoPlayer)
 Vue.use(VueAxios, axios)
 Vue.use(ElementUI)
+Vue.use(VueLazyLoad, {
+  error: '',
+  loading: ''
+})
 Vue.config.productionTip = false
 
 new Vue({

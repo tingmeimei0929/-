@@ -32,7 +32,7 @@
                         <ul class="item-list" v-for="(num,index) in item.ulIndex" :key="index">
                         <li v-for="(list,index) in num.children" :key="index">
                             <a href="#">
-                            <img :src="list.imgSrc"
+                            <img :v-lazy="list.imgSrc"
                                 alt="">
                             <span class="text">{{ list.title }}</span>
                             </a>
@@ -212,8 +212,9 @@ import navFooter from '../components/Footer'
 import navToolBar from '../components/ToolBar'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import '../assets/swiper/css/swiper.css'
-import 'video.js/dist/video-js.css'
 import VideoPlayer from 'vue-video-player'
+import '../../node_modules/video.js/dist/video-js.css'
+import '../../node_modules/vue-video-player/src/custom-theme.css'
 export default {
   name: 'Main',
   data () {
@@ -225,13 +226,20 @@ export default {
       seconds: 0,
       showPrice: true,
       playerOptions: {
-        height: '360',
+        height: '495',
+        width: document.documentElement.clientWidth,
+        fluid: true, // 当 true时，video.js player将拥有流体大小。换句话说，他将按比例缩放以适应其容器
         sources: [{
           type: 'rtmp/mp4',
-          src: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11c70c96529b6e6938567ec1aa0910e0.mp4'
+          src: [
+            { videoUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11c70c96529b6e6938567ec1aa0910e0.mp4' },
+            { videoUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7cdabcaa763392c86b944eaf4e68d6a3.mp4' },
+            { videoUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e25d81c4922fca5ebe51877717ef9b76.mp4' },
+            { videoUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/eadb8ddc86f1791154442a928b042e2f.mp4' }
+          ]
         }],
         techOrder: ['flash'],
-        autoplay: false,
+        autoplay: false, // 如果为true,浏览器准备好时开始回放
         controls: true
       },
       categoryList: [
@@ -1305,6 +1313,7 @@ export default {
           imgSrc: '//cdn.cnbj1.fds.api.mi-img.com/mi-mall/a8dd25cab48c60fc6387b9001eddc3f9.jpg?thumb=1&w=592&h=360&f=webp&q=90',
           title: '小米10发布会',
           desc: ''
+
         }
       ],
       phoneList: [
@@ -1492,12 +1501,30 @@ export default {
   computed: {
     swiper () {
       return this.$refs.mySwiper.swiper
+    },
+    player () {
+      return this.$refs.videoPlayer.player
     }
   },
   mounted: function () {
     console.log('this is current swiper instance object', this.swiper)
     this.swiper.slideTo(3, 1000, false)
     this.countdown()
+  },
+  watch: {
+    //   更改视频源videoUrl从弹出框组件传值
+    videoUrl: function (val) {
+      if (val !== '') {
+        this.$ref.VideoPlayer.player.src(val)
+      }
+    },
+    // 弹出框关闭后暂停 否则一直在播放 state从弹出框组件传值
+    state: function (val) {
+      if (val) {
+        this.$ref.videoPlayer.player.pause()
+      }
+    }
+
   },
   methods: {
     countdown () {
@@ -1531,7 +1558,15 @@ export default {
         that.countdown()
       }, 1000)
     },
+    onPlayerPlay (player) {
 
+    },
+    onPlayerPause (player) {
+
+    },
+    playerStateChanged (player) {
+
+    },
     details () {
       this.$router.push({
         path: '/Spike'
