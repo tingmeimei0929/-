@@ -1,7 +1,7 @@
 <template>
    <div>
     <ul class="box-list ">
-        <li v-for="(item,index) in appliancesList" :key="index">
+        <li v-for="(item,index) in appliancesList" :key="index"  @click="toDetail">
             <a>
                 <div class="thumb">
                     <img :src="item.imgSrc" style="width:160px;height:160px;">
@@ -87,6 +87,13 @@ export default {
           oldPrice: '899'
         }
       ]
+    }
+  },
+  methods: {
+    toDetail () {
+      this.$router.push({
+        path: '/Details'
+      })
     }
   }
 }

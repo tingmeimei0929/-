@@ -48,6 +48,7 @@ export default {
   name: 'Banner',
   data () {
     return {
+      context: '全部商品分类',
       sorts: [
         {
           defaults: '小米手机',

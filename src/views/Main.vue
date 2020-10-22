@@ -32,7 +32,7 @@
                         <ul class="item-list" v-for="(num,index) in item.ulIndex" :key="index">
                         <li v-for="(list,index) in num.children" :key="index">
                             <a href="#">
-                            <img :v-lazy="list.imgSrc"
+                            <img v-lazy="list.imgSrc"
                                 alt="">
                             <span class="text">{{ list.title }}</span>
                             </a>
@@ -95,7 +95,7 @@
                                     <div v-for="(list,index) in item.children" :key="index">
                                         <a class="carousel">
                                             <div class="thumb">
-                                                <img :src="list.imgSrc" style="width:160px;height:160px;">
+                                                <img v-lazy="list.imgSrc" style="width:160px;height:160px;">
                                             </div>
                                             <h3 class="content-title">{{ list.title }}</h3>
                                             <p class="desc">{{ list.desc }}</p>
@@ -126,7 +126,7 @@
                                 <li v-for="(item,index) in phoneList" :key="index">
                                     <a>
                                         <div class="thumb">
-                                            <img :src="item.imgSrc" style="width:160px;height:160px;">
+                                            <img v-lazy="item.imgSrc" style="width:160px;height:160px;">
                                         </div>
                                         <h3 class="content-title">{{ item.title }}</h3>
                                         <p class="desc">{{ item.desc }}</p>
@@ -176,7 +176,7 @@
                         <ul>
                             <li v-for="(item,index) in videoList" :key="index">
                                 <div class="video-img">
-                                    <img :src="item.imgSrc">
+                                    <img v-lazy="item.imgSrc">
                                     <button @click="dialogVisible = true"><i class="el-icon-caret-right"></i></button>
                                 </div>
                                 <h3 class="video-title">{{ item.title }}</h3>
