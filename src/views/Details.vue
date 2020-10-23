@@ -44,11 +44,23 @@
                 <!-- 内容 -->
                 <div class="page-main">
                     <div class="photo-swiper">
-                        <el-carousel>
-                            <el-carousel-item v-for="item in photoList" :key="item">
+                          <swiper :options="swiperOption"
+                                ref="mySwiper"
+                                class="swiper-container">
+                            <swiper-slide v-for="item in photoList"
+                                        :key="item">
                                 <img v-lazy="item.imgSrc">
-                            </el-carousel-item>
-                        </el-carousel>
+                            </swiper-slide>
+                            <!-- 上一页 -->
+                            <div class="swiper-button-prev"
+                                slot="button-prev"></div>
+                            <!-- 下一页 -->
+                            <div class="swiper-button-next"
+                                slot="button-next"></div>
+                            <!-- 分页 -->
+                            <div class="swiper-pagination"
+                                slot="pagination"></div>
+                        </swiper>
                     </div>
                     <div class="text">
                         <h2>小米10至尊纪念版</h2>
@@ -97,32 +109,32 @@
                         <div class="service-box">
                             <ul>
                                 <li>
-                                    <el-radio v-model="radio"></el-radio>
-                                    <div class="product-con">
-                                        <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1596695587.15667138.png">
+                                    <i class="icon-check"><em>√</em></i>
+                                    <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1596695587.15667138.png">
+                                    <div class="box">
                                         <h2>意外保障服务<span>349元</span></h2>
                                         <p>手机意外碎屏/进水/碾压等损坏</p>
                                         <div class="agreement-box">
-                                            <i class="el-icon-check"></i>
+                                            <i class="check"><em>√</em></i>
                                             我已阅读
-                                            <a href="">服务条款|</a>
+                                            <a href="">服务条款<span>|</span></a>
                                             <a href="">常见问题</a>
-                                            <span>349元</span>
+                                            <span class="box-price">349元</span>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <el-radio v-model="radio" label="1"></el-radio>
-                                    <div class="product-con">
-                                        <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1596695587.15667138.png">
+                                    <i class="icon-check"><em>√</em></i>
+                                    <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1596695587.15667138.png">
+                                    <div class="box">
                                         <h2>碎屏保障服务<span>249元</span></h2>
                                         <p>手机意外碎屏</p>
                                         <div class="agreement-box">
-                                            <i class="el-icon-check"></i>
+                                            <i class="check"><em>√</em></i>
                                             我已阅读
-                                            <a href="">服务条款|</a>
+                                            <a href="">服务条款<span>|</span></a>
                                             <a href="">常见问题</a>
-                                            <span>249元</span>
+                                            <span  class="box-price">249元</span>
                                         </div>
                                     </div>
                                 </li>
@@ -132,17 +144,17 @@
                         <div class="service-box">
                             <ul>
                                 <li>
-                                    <el-radio v-model="radio" label="1"></el-radio>
-                                    <div class="product-con">
-                                        <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1596695587.15667138.png">
+                                    <i class="icon-check"><em>√</em></i>
+                                    <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1596695587.15667138.png">
+                                    <div class="box">
                                         <h2>延长保修服务<span>159元</span></h2>
                                         <p>厂保延一年，性能故障免费维修</p>
                                         <div class="agreement-box">
-                                            <i class="el-icon-check"></i>
+                                            <i class="check"><em>√</em></i>
                                             我已阅读
-                                            <a href="">服务条款|</a>
+                                            <a href="">服务条款<span>|</span></a>
                                             <a href="">常见问题</a>
-                                            <span>159元</span>
+                                            <span  class="box-price">159元</span>
                                         </div>
                                     </div>
                                 </li>
@@ -152,109 +164,134 @@
                         <div class="service-box">
                             <ul>
                                 <li>
-                                    <el-radio v-model="radio" label="1"></el-radio>
-                                    <div class="product-con">
-                                        <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1600176481.06844959.png">
+                                    <i class="icon-check"><em>√</em></i>
+                                    <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1600176481.06844959.png">
+                                    <div class="box">
                                         <h2>云空间年卡200G<span>159元</span></h2>
                                         <p>主商品签收后，自动激活至下单账号</p>
                                         <div class="agreement-box">
-                                            <i class="el-icon-check"></i>
+                                            <i class="check"><em>√</em></i>
                                             我已阅读
-                                            <a href="">服务条款|</a>
+                                            <a href="">服务条款<span>|</span></a>
                                             <a href="">常见问题</a>
-                                            <span>159元</span>
+                                            <span  class="box-price">159元</span>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <el-radio v-model="radio" label="1"></el-radio>
-                                    <div class="product-con">
-                                        <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1600176481.06844959.png">
+                                    <i class="icon-check"><em>√</em></i>
+                                    <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1600176481.06844959.png">
+                                    <div class="box">
                                         <h2>云空间年卡50G<span>49元</span></h2>
                                         <p>主商品签收后，自动激活至下单账号</p>
                                         <div class="agreement-box">
-                                            <i class="el-icon-check"></i>
+                                            <i class="check"><em>√</em></i>
                                             我已阅读
-                                            <a href="">服务条款|</a>
+                                            <a href="">服务条款<span>|</span></a>
                                             <a href="">常见问题</a>
-                                            <span>49元</span>
+                                            <span  class="box-price">49元</span>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <el-radio v-model="radio" label="1"></el-radio>
-                                    <div class="product-con">
-                                        <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1600176481.06844959.png">
+                                    <i class="icon-check"><em>√</em></i>
+                                    <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1600176481.06844959.png">
+                                    <div class="box">
                                         <h2>云空间月卡200G<span>19元</span></h2>
                                         <p>主商品签收后，自动激活至下单账号</p>
                                         <div class="agreement-box">
-                                            <i class="el-icon-check"></i>
+                                            <i class="check"><em>√</em></i>
                                             我已阅读
-                                            <a href="">服务条款|</a>
+                                            <a href="">服务条款<span>|</span></a>
                                             <a href="">常见问题</a>
-                                            <span>19元</span>
+                                            <span  class="box-price">19元</span>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <el-radio v-model="radio" label="1"></el-radio>
-                                    <div class="product-con">
-                                        <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1600176481.06844959.png">
+                                    <i class="icon-check"><em>√</em></i>
+                                    <img src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1600176481.06844959.png">
+                                    <div class="box">
                                         <h2>云空间月卡50G<span>6元</span></h2>
                                         <p>主商品签收后，自动激活至下单账号</p>
                                         <div class="agreement-box">
-                                            <i class="el-icon-check"></i>
+                                            <i class="check"><em>√</em></i>
                                             我已阅读
-                                            <a href="">服务条款|</a>
+                                            <a href="">服务条款<span>|</span></a>
                                             <a href="">常见问题</a>
-                                            <span>6元</span>
+                                            <span  class="box-price">6元</span>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="price-box">
-                            <p class="product">小米10至尊纪念版8GB+256GB 陶瓷黑<span>5599元</span></p>
-                            <p class="service">意外保障服务<span>349元</span></p>
-                            <h2>总计：5948元</h2>
+                            <ul>
+                                <li>小米10至尊纪念版8GB+256GB 陶瓷黑<span>5599元</span></li>
+                            </ul>
+                            <ul>
+                                <li class="service">意外保障服务<span>349元</span></li>
+                            </ul>
+                            <div class="total">总计：5948元</div>
                         </div>
                         <div class="button-box">
-                            <button class="addCart">加入购物车</button>
-                            <button class="like">喜欢</button>
+                            <div class="sale-btn">
+                                <a class="addCart" href="javascript:;">加入购物车</a>
+                                <a class="like">喜欢</a>
+                            </div>
                         </div>
                         <div class="after-sale-info">
-                            <a href="">
-                                <i class="el-icon-check"></i>小米自营
-                            </a>
-                            <a href="">
-                                <i class="el-icon-check"></i>小米发货
-                            </a>
-                            <a href="">
-                                <i class="el-icon-check"></i>7天无理由退货
-                            </a>
-                            <a href="">
-                                <i class="el-icon-check"></i>运费说明
-                            </a>
-                            <a href="">
-                                <i class="el-icon-check"></i>企业信息
-                            </a>
-                            <a href="">
-                                <i class="el-icon-check"></i>售后服务政策
-                            </a>
-
-                            <a href="">
-                                <i class="el-icon-check"></i>7天价格保护
-                            </a>
+                            <span>
+                                <a href="">
+                                    <i class="el-icon-check"></i>
+                                    <em>小米自营</em>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="">
+                                    <i class="el-icon-check"></i>
+                                    <em>小米发货</em>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="">
+                                    <i class="el-icon-check"></i>
+                                    <em>7天无理由退货</em>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="">
+                                    <i class="el-icon-check"></i>
+                                    <em>运费说明</em>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="">
+                                    <i class="el-icon-check"></i>
+                                    <em>企业信息</em>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="">
+                                    <i class="el-icon-check"></i>
+                                    <em>售后服务政策</em>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="">
+                                    <i class="el-icon-check"></i>
+                                    <em>7天价格保护</em>
+                                </a>
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
              <div class="price-description">
                     <div class="container">
-                        <p>价格说明</p>
+                        <h3>价格说明</h3>
                         <div class="description">
-                            <span>划线价:</span>商品展示的划横线价格为参考价，该价格可能是品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零售价(如厂商指导价
-                        、建议零售价等)活该商品在小米商城/小米有品/天猫小米官方旗舰店曾经展示过的销售价；由于地区、时间的差异性和市场行情波动，品牌专柜标价、商品吊牌价等可能会与您购物时展示的不一致，该价格仅供参考。
+                            <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/a482afa34053b1b32ece1023475af7fb.jpeg" alt="">
                         </div>
                     </div>
                 </div>
@@ -272,6 +309,27 @@ export default {
   data () {
     return {
       headerFixed: '',
+      swiperOption: {
+        notNextTick: true,
+        grabCursor: true,
+        loop: true,
+        initialSlide: 0,
+        autoplay: true,
+        speed: 800,
+
+        // 左右点击
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+
+        // 分页器设置
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          type: 'bullets'
+        }
+      },
       photoList: [
         { imgSrc: 'https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145894.51396359.jpg' },
         { imgSrc: 'https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145894.43258180.jpg' },
@@ -286,9 +344,17 @@ export default {
     navFooter,
     navBanner
   },
+  computed: {
+    swiper () {
+      return this.$refs.mySwiper.swiper
+    }
+  },
   mounted () {
     //  handleScroll为页面滚动的监听回调
     window.addEventListener('scroll', this.handleScroll)
+    console.log('this is current swiper instance object', this.swiper)
+    this.swiper.slideTo(3, 1000, false)
+    this.countdown()
   },
   methods: {
     handleScroll () {
@@ -311,11 +377,11 @@ export default {
 <style lang="scss" scoped>
 @import url("../assets/scss/navbar.scss");
 @import url('../assets/scss/details.scss');
-// .isFixed{
-//     position: fixed;
-//     top: 0;
-//     z-index: 999;
-// }
+.isFixed{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
 </style>
 <style lang="scss">
 .el-carousel--horizontal{
