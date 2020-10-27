@@ -2,41 +2,35 @@
   <div>
     <navHeader></navHeader>
     <main class="companyMain">
-      <div class="nav"
-           :class="headerFixed?'isFixed': ''">
-        <div class="nav-row">
-          <div class="container">
-            <div class="nav-logo">
-              <a href="https://www.mi.com/index.html"
-                 class="logo"></a>
-            </div>
-            <ul class="nav-list">
-              <li class="nav-title companyNav"><a href="http://www.mi.com/a/h/15391.html"></a></li>
-              <li v-for="sort in sorts.defaults"
-                  :key="sort"
-                  class="nav-link"
-                  @click="showCommdity"><a>{{ sort }}</a></li>
-
-            </ul>
-            <div class="search">
-              <div class="result-list">
-                <input type="text"
-                       v-for="(item,index) in inputDate"
-                       v-model="inputDate[index]"
-                       :key="index">
-                <ul v-for="(item,index) in inputDate"
-                    :key="index"
-                    class="searchList">
-                  <li><a>{{item}}</a></li>
+        <div class="nav"
+            :class="headerFixed?'isFixed': ''">
+            <div class="nav-row">
+                <div class="nav-logo">
+                    <a href="https://www.mi.com/index.html"
+                        class="logo"></a>
+                </div>
+                <ul class="nav-list">
+                    <li class="nav-title" style="width:initial;margin:-5px 0 0 -20px;color:#ff6700;font-weight:bold;font-size:20px;">{{ context }}</li>
+                    <li v-for="item in defaults"
+                        :key="item"
+                        class="nav-link"><a>{{ item}}</a>
+                    </li>
                 </ul>
-              </div>
-              <button type="primary"
-                      class="btn"><i class="el-icon-alichaxun"></i></button>
-
+                <div class="search">
+                    <div class="result-list">
+                        <!--  -->
+                    <input type="text"
+                            name="slider" >
+                    <ul class="searchList">
+                        <li v-for="(item,index) in inputDate"
+                        :key="index"><a :href="item.href">{{item.name}}</a></li>
+                    </ul>
+                    </div>
+                    <button type="primary"
+                            class="btn"><i class="el-icon-alichaxun"></i></button>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
       <div class="container">
         <div class="swiper-row">
           <swiper :options="swiperOption"
@@ -111,321 +105,74 @@
         </div>
       </div>
       <div class="commodity">
-        <div class="home-brick">
+        <div class="home-brick" v-for="(item, index) in detailList" :key="index">
           <div class="brick-title">
-            <h2>新品 ▪ 礼品卡</h2>
+            <h2>{{ item.title }}</h2>
             <div class="all"><a href="//www.mi.com/a/h/14933.html">查看全部<i class="el-icon-aliqianjinxiayige"></i></a></div>
           </div>
-           <div class="brick-box">
-            　<ul class="box-main">
-              <li>
+          <div class="brick-box">
+            <ul class="box-main">
+              <li v-for="(context, index) in item.children" :key="index">
                 <div class="thumb">
-                  <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
+                  <img v-lazy="context.imgSrc">
                 </div>
-                <p class="content-title">Redmi K30 5G</p>
-                <p class="desc">Redmi K30 5G</p>
+                <p class="content-title">{{ context.name }}</p>
+                <p class="desc">{{ context.desc }}</p>
                 <div class="btn-primary">登录企业账户开始采购</div>
               </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
             </ul>
           </div>
         </div>
-        <div class="home-brick">
-          <div class="brick-title">
-            <h2>手机 ▪ 平板</h2>
-            <div class="all"><a href="//www.mi.com/a/h/14933.html">查看全部<i class="el-icon-aliqianjinxiayige"></i></a></div>
-          </div>
-           <div class="brick-box">
-            　<ul class="box-main">
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="home-brick">
-          <div class="brick-title">
-            <h2>笔记本</h2>
-            <div class="all"><a href="//www.mi.com/a/h/14933.html">查看全部<i class="el-icon-aliqianjinxiayige"></i></a></div>
-          </div>
-           <div class="brick-box">
-            　<ul class="box-main">
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="home-brick">
-          <div class="brick-title">
-            <h2>家电</h2>
-            <div class="all"><a href="//www.mi.com/a/h/14933.html">查看全部<i class="el-icon-aliqianjinxiayige"></i></a></div>
-          </div>
-           <div class="brick-box">
-            　<ul class="box-main">
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="home-brick">
-          <div class="brick-title">
-            <h2>智能 ▪ 耳机 ▪ 音箱</h2>
-            <div class="all"><a href="//www.mi.com/a/h/14933.html">查看全部<i class="el-icon-aliqianjinxiayige"></i></a></div>
-          </div>
-           <div class="brick-box">
-            　<ul class="box-main">
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <div class="thumb">
-                    <img src="https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg">
-                  </div>
-                  <p class="content-title">Redmi K30 5G</p>
-                  <p class="desc">Redmi K30 5G</p>
-                </a>
-              </li>
-            </ul>
-          </div>
+
+        <div class="process">
+            <div class="container">
+                <h2>采购流程</h2>
+                <p>采购仅需4步，2个工作日内完成审核，到账后5个工作日内发货</p>
+                <div class="step">
+                </div>
+            </div>
+            <a href="#">小米企业购会员管理规则，请点击></a>
         </div>
       </div>
     </main>
     <navFooter></navFooter>
   </div>
 </template>
-    
+
 <script>
 import navHeader from '../components/Header'
 import navFooter from '../components/Footer'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import '../assets/swiper/css/swiper.css'
 export default {
-  name: "Company",
+  name: 'Company',
   data () {
     return {
-      sorts: {
-        "defaults": ['新品 ▪ 礼品卡', '手机 ▪ 平板', '笔记本', '家店', '智能 ▪ 路由器', '耳机 ▪ 音箱', '生活 ▪ 儿童', '配件 ▪ 车品']
-      },
-      inputDate: ["小米10", "Redmi Note 8", "小米CC9", "黑鲨游戏手机", "小米电视", "小米笔记本", "路由器", "小爱音箱", "净水器"],
+      context: '企业购',
+      defaults: ['新品 ▪ 礼品卡', '手机 ▪ 平板', '笔记本', '家店', '智能 ▪ 路由器', '耳机 ▪ 音箱', '生活 ▪ 儿童', '配件 ▪ 车品'],
+      inputDate: ['小米10', 'Redmi Note 8', '小米CC9', '黑鲨游戏手机', '小米电视', '小米笔记本', '路由器', '小爱音箱', '净水器'],
       isShow: false,
       showList: false,
       categoryList: '',
       headerFixed: '',
       swiperInfo: [
         {
-          'icon': {
-            backgroundImage: "url(//i8.mifile.cn/v1/a1/a34c5f94-ee51-385f-d955-5389bf70f90c!1226x460.jpg)",
-            backgroundSize: "cover",
-            backgroundposition: "center",
-            backgroundRepeat: "no-repeat",
+          icon: {
+            backgroundImage: 'url(//i8.mifile.cn/v1/a1/a34c5f94-ee51-385f-d955-5389bf70f90c!1226x460.jpg)',
+            backgroundSize: 'cover',
+            backgroundposition: 'center',
+            backgroundRepeat: 'no-repeat'
           },
-          "href": "./Login.vue"
+          href: './Login.vue'
         },
         {
-          'icon': {
-            backgroundImage: "url(//i8.mifile.cn/v1/a1/a5b313f3-44e3-bdf8-066e-449cd0a9758c!1226x460.jpg)",
-            backgroundSize: "cover",
-            backgroundposition: "center",
-            backgroundRepeat: "no-repeat",
+          icon: {
+            backgroundImage: 'url(//i8.mifile.cn/v1/a1/a5b313f3-44e3-bdf8-066e-449cd0a9758c!1226x460.jpg)',
+            backgroundSize: 'cover',
+            backgroundposition: 'center',
+            backgroundRepeat: 'no-repeat'
           },
-          "href": "./Login.vue"
+          href: './Login.vue'
         }
       ],
       swiperOption: {
@@ -436,21 +183,263 @@ export default {
         autoplay: true,
         speed: 800,
 
-        //左右点击
+        // 左右点击
         navigation: {
           nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          prevEl: '.swiper-button-prev'
         },
 
-        //分页器设置 
+        // 分页器设置
         pagination: {
-          el: ".swiper-pagination",
+          el: '.swiper-pagination',
           clickable: true,
-          type: "bullets"
-        },
+          type: 'bullets'
+        }
 
       },
-    };
+      detailList: [
+        {
+          title: '新品 ▪ 礼品卡',
+          children: [
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/605f5478-ba63-30aa-807c-d9f47de367e1!200x200.jpg',
+              name: '小米10 Pro 全网通版',
+              desc: '小米10 Pro 全网通版 '
+            },
+            {
+              imgSrc: 'https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1591779698.42084692.jpg?f=webp&thumb=1&w=200&h=200',
+              name: '小米手环 5',
+              desc: '小米手环 5'
+            },
+            {
+              imgSrc: 'https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1591780204.23966403.jpg?f=webp&thumb=1&w=200&h=200',
+              name: '小米手环5 NFC版 黑色',
+              desc: '小米手环5 NFC版 黑色'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/605f5478-ba63-30aa-807c-d9f47de367e1!200x200.jpg',
+              name: '小米10 全网通版 8GB+256GB ',
+              desc: '小米10 全网通版 8GB+256GB '
+            },
+            {
+              imgSrc: 'https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1596709637.85662673.jpg?f=webp&thumb=1&w=200&h=200',
+              name: '米家电动精修螺丝刀 灰色',
+              desc: '米家电动精修螺丝刀 灰色'
+            }
+          ]
+        },
+        {
+          title: '手机 ▪ 平板',
+          children: [
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/acd564ad-ddb7-5139-d632-28dff91e6ec5!200x200.jpg',
+              name: 'Redmi K30 5G',
+              desc: 'Redmi K30 5G'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/8e9ede5e-d0d8-4fff-fe88-37a86264d1fe!200x200.jpg',
+              name: 'Redmi 10X 5G 6GB+ 128GB',
+              desc: 'Redmi 10X 5G 6GB+ 128GB'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/41ad1b6a-e1ae-7a5b-d270-3daab9be70ae!200x200.jpg',
+              name: 'Redmi Note 8 4GB+64GB 皓月白',
+              desc: 'Redmi Note 8 4GB+64GB 皓月白'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/605f5478-ba63-30aa-807c-d9f47de367e1!200x200.jpg',
+              name: '小米10 12GB+256GB',
+              desc: '小米10 12GB+256GB'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/449dde08-fac9-9326-ce0f-36bb97767848!200x200.png',
+              name: 'Redmi Note 8 Pro',
+              desc: 'Redmi Note 8 Pro'
+            }
+          ]
+        },
+        {
+          title: '笔记本',
+          children: [
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/b1cf9dd4-fc55-4a79-b001-b7ea5f1bb614!200x200.jpg',
+              name: '12.5"小米笔记本Air ',
+              desc: '12.5"小米笔记本Air '
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/8d97cb7f-2d41-cab4-9cd0-f4c2171f1a6e!200x200.jpg',
+              name: '小米笔记本15.6" 2019款 独显版',
+              desc: '小米笔记本15.6" 2019款 独显版'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/7e0a6709-90db-03d4-26d4-c2d914a57fc0!200x200.jpg',
+              name: 'Air 13.3" 2019款',
+              desc: 'Air 13.3" 2019款'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/a9c7fd86-4971-5d79-1de8-169729df9d3e!200x200.jpg',
+              name: '小米笔记本Air 12.5',
+              desc: '小米笔记本Air 12.5'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/d78909bb-432b-5d4f-2c1d-c7671524fe54!200x200.jpg',
+              name: '小米笔记本Pro 15.6" GTX版',
+              desc: '小米笔记本Pro 15.6" GTX版'
+            }
+          ]
+        },
+        {
+          title: '家电',
+          children: [
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/63b5e6d4-10d1-bd2e-2938-89c486d22e81!200x200.jpg',
+              name: '米家电饭煲C1',
+              desc: '米家电饭煲C1 5L 白色'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/4782292c-c10c-1bac-4aab-09847faa887a!200x200.jpg',
+              name: '米家小饭煲 白色',
+              desc: '米家小饭煲 白色'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/1ed419f6-4d99-bcef-a06f-164a76e768b4!200x200.jpg',
+              name: '米家电磁炉',
+              desc: '米家电磁炉'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/171b61fe-3fc3-cacd-c013-70c67edc4874!200x200.jpg',
+              name: '米家破壁料理机',
+              desc: '米家破壁料理机'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/6b433c35-3e9c-5751-a221-ede015fdd90b!200x200.jpg',
+              name: '米家空气净化器3',
+              desc: '米家空气净化器3'
+            }
+          ]
+        },
+        {
+          title: '智能 ▪ 路由器',
+          children: [
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/aec0696a-d23f-4128-a252-1912a47642ca!200x200.jpg',
+              name: '小米多看电纸书',
+              desc: '小米多看电纸书'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/a5b08835-7ef9-bf25-2c6e-831bf2c3280b!200x200.jpg',
+              name: '小米米家照片打印机 白色',
+              desc: '小米米家照片打印机 白色'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/0aca9e3d-ae10-430d-e2b9-07e86d208c33!200x200.jpg',
+              name: '小米手表 标准版  科技银',
+              desc: '小米手表 标准版  科技银'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/62ea416d-17cc-ee09-4de2-5ab4afe4a81b!200x200.png',
+              name: '小米手环4 NFC版 黑色',
+              desc: '小米手环4 NFC版 黑色'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/321b57e1-8f43-b723-45d9-3c4ddf1c67df!200x200.jpg',
+              name: '米家走步机',
+              desc: '米家走步机'
+            }
+          ]
+        },
+        {
+          title: '耳机 ▪ 音箱',
+          children: [
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/a64b3461-d64f-d3fc-b98a-e7ee37a613c5!200x200.jpg',
+              name: '小米小爱音箱 Play版',
+              desc: '小米小爱音箱 Play版'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/2594f01b-fdc1-d122-9153-ddf0f9c5a510!200x200.jpg',
+              name: '小米真无线蓝牙耳机Air2 SE 白色	',
+              desc: '小米真无线蓝牙耳机Air2 SE 白色	'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/e8d7abbe-75af-dd6f-e128-48f1989b0edb!200x200.jpg',
+              name: '小米小爱触屏音箱',
+              desc: '小米小爱触屏音箱'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/8073a362-89ce-e0da-ad5a-e87b727c4e2c!200x200.jpg',
+              name: '小米小爱智能闹钟',
+              desc: '小米小爱智能闹钟'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/a4c2d641-72f8-3c55-ff6e-38c9f7502279!200x200.jpg',
+              name: '小米小爱音箱HD',
+              desc: '小米小爱音箱HD'
+            }
+          ]
+        },
+        {
+          title: '生活 ▪ 儿童',
+          children: [
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/c347ae62-c9dc-1bc8-b9c2-d6d5ed254de3!200x200.png',
+              name: '小米小背包',
+              desc: '小米小背包'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/87becfcd-0cce-2c35-5944-faa53c1664aa!200x200.jpg',
+              name: '米家电水壶1A 白色',
+              desc: '米家电水壶1A 白色'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/c4f956f9-b62d-57b4-b576-f79b102ad378!200x200.jpg',
+              name: '米家电动剃须刀S500C',
+              desc: '米家电动剃须刀S500C'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/ac7ddefe-c5d6-7292-2ff4-89913a800cc3!200x200.jpg',
+              name: '聚热快，受热匀 / 食品级不沾涂层',
+              desc: '聚热快，受热匀 / 食品级不沾涂层'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/7f32f4e5-c54a-e1cd-108d-dfca40555fb3!200x200.jpg',
+              name: '米家自动香氛机套装 白色',
+              desc: '米家自动香氛机套装 白色'
+            }
+          ]
+        },
+        {
+          title: '配件 ▪ 车品',
+          children: [
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/0706da79-8db7-51d2-38e7-4533e5dcb91b!200x200.jpg',
+              name: '小米净水器1A反渗透滤芯（400G） 白色',
+              desc: '小米净水器1A反渗透滤芯（400G） 白色'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/6d7c5928-e4c9-4585-6f6f-620bdc616551!200x200.jpg',
+              name: '米家空气净化器滤芯 除甲醛增强版S1 绿色',
+              desc: '米家空气净化器滤芯 除甲醛增强版S1 绿色'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/0a1fb7b2-5dbc-9ebb-feb6-f6e33c784203!200x200.jpg',
+              name: '小米蓝牙语音遥控器 单机',
+              desc: '小米蓝牙语音遥控器 单机'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/1dd259fb-d6f9-fadd-ec82-f22f0f6d0aa5!200x200.jpg',
+              name: '小米无线车充 黑色',
+              desc: '小米无线车充 黑色'
+            },
+            {
+              imgSrc: 'https://i8.mifile.cn/v1/a1/e8c1635c-a9dd-c2bc-d4d5-fd54ec708810!200x200.jpg',
+              name: '小米 Type-C to AUDIO转接线',
+              desc: '小米 Type-C to AUDIO转接线'
+            }
+          ]
+        }
+      ]
+    }
   },
   components: {
     navHeader,
@@ -469,13 +458,13 @@ export default {
   methods: {
     handleScroll () {
       // 得倒页面滚动的距离
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
 
       // 当滚动超过240时，实现吸顶效果
       if (scrollTop > 240) {
-        this.headerFixed = true;
+        this.headerFixed = true
       } else {
-        this.headerFixed = false;
+        this.headerFixed = false
       }
     },
     showCommdity () {
@@ -485,22 +474,33 @@ export default {
     }
   },
   mounted () {
-    console.log('this is current swiper instance object', this.swiper);
+    console.log('this is current swiper instance object', this.swiper)
     this.swiper.slideTo(3, 1000, false)
-    this.countdown();
+    this.countdown()
     // handleScroll为页面滚动的监听回调
-    window.addEventListener("scroll", this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll)
   },
   destroyed () {
     // 同时在destroyed回调中移除监听
-    window.removeEventListener("scroll", this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   }
-};
+}
 </script>
-  
+
 <style lang="scss" scoped>
 @import url("../assets/scss/company.scss");
 @import url("../assets/scss/navbar.scss");
-.nav-link:nth-child(1) {
-}
+
+.isFixed {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-bottom: 1px solid #f5f5f5;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
+  }
 </style>

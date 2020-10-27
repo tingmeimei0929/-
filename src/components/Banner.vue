@@ -40,7 +40,7 @@
                       class="btn"><i class="el-icon-alichaxun"></i></button>
             </div>
         </div>
-      </div>
+    </div>
 </template>
 
 <script>
