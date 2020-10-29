@@ -1,7 +1,7 @@
 <template>
   <div>
     <navHeader></navHeader>
-    <main class="companyMain">
+    <div class="companyMain">
         <div class="nav"
             :class="headerFixed?'isFixed': ''">
             <div class="nav-row">
@@ -31,117 +31,232 @@
                 </div>
             </div>
         </div>
-      <div class="container">
-        <div class="swiper-row">
-          <swiper :options="swiperOption"
-                  ref="mySwiper"
-                  class="swiper-container">
-            <swiper-slide v-for="(item,index) in swiperInfo"
-                          :key="index"
-                          :style="item.icon">
-              <a :href="item.href"></a>
-            </swiper-slide>
-            <!-- 上一页 -->
-            <div class="swiper-button-prev"
-                 slot="button-prev"></div>
-            <!-- 下一页 -->
-            <div class="swiper-button-next"
-                 slot="button-next"></div>
-            <!-- 分页 -->
-            <div class="swiper-pagination"
-                 slot="pagination"></div>
-          </swiper>
-          <div class="category-item">
-            <div class="category-top">
-              <img src="https://i1.mifile.cn/f/i/17/qiye/icon_face.png">
-              <div class="top-right">
-                <h2>您好，欢迎回来</h2>
-                <p>登录企业账户开始采购<i class="el-icon-aliqianjinxiayige"></i></p>
-              </div>
-            </div>
-            <div class="category-bottom">
-              <h3>企业专属特权</h3>
-              <ul>
-                <li>
-                  <div class="img img1"></div>
-                  <div class="bottom-right">
-                    <h2>专属价格</h2>
-                    <p>精选货品，专属优惠</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="img img2"></div>
-                  <div class="bottom-right">
-                    <h2>自主开票</h2>
-                    <p>全场商品，增票开具</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="img img3"></div>
-                  <div class="bottom-right">
-                    <h2>便捷支付</h2>
-                    <p>对公转账，票款一致</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="img img4"></div>
-                  <div class="bottom-right">
-                    <h2>专业售后</h2>
-                    <p>小米直供，售后无忧</p>
-                  </div>
-                </li>
-              </ul>
-              <p class="rule">更多会员管理规则，请点击<i class="el-icon-aliqianjinxiayige"></i></p>
-            </div>
-          </div>
-        </div>
-        <div class="home-row">
-          <ul class="home-img">
-            <li><a href="http://www.mi.com/redminote8"><img src="//i8.mifile.cn/v1/a1/79d1c803-9579-65f9-0692-da3f22d0e6f3.jpg"></a></li>
-            <li><a href="https://item.mi.com/product/10000203.html?selected=10000203"><img src="//i8.mifile.cn/v1/a1/6fbc14b8-aa4c-c49e-de33-d8efb0fcc484.jpg"></a></li>
-            <li><a href="https://www.mi.com/shouhuan4/"><img src="//i8.mifile.cn/v1/a1/392b66d8-7793-295b-1181-b70030b121e8.jpg"></a></li>
-            <li><a href="https://www.mi.com/shouhuan4/"><img src="//i8.mifile.cn/v1/a1/6ab7bfd2-22cc-3007-dd90-eea69497f607.png"></a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="commodity">
-        <div class="home-brick" v-for="(item, index) in detailList" :key="index">
-          <div class="brick-title">
-            <h2>{{ item.title }}</h2>
-            <div class="all"><a href="//www.mi.com/a/h/14933.html">查看全部<i class="el-icon-aliqianjinxiayige"></i></a></div>
-          </div>
-          <div class="brick-box">
-            <ul class="box-main">
-              <li v-for="(context, index) in item.children" :key="index">
-                <div class="thumb">
-                  <img v-lazy="context.imgSrc">
-                </div>
-                <p class="content-title">{{ context.name }}</p>
-                <p class="desc">{{ context.desc }}</p>
-                <div class="btn-primary">登录企业账户开始采购</div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="process">
+        <div class="context">
             <div class="container">
-                <h2>采购流程</h2>
-                <p>采购仅需4步，2个工作日内完成审核，到账后5个工作日内发货</p>
-                <div class="step">
+                <div class="swiper-row">
+                <swiper :options="swiperOption"
+                        ref="mySwiper"
+                        class="swiper-container">
+                    <swiper-slide v-for="(item,index) in swiperInfo"
+                                :key="index"
+                                :style="item.icon">
+                    <a :href="item.href"></a>
+                    </swiper-slide>
+                    <!-- 上一页 -->
+                    <div class="swiper-button-prev"
+                        slot="button-prev" style="margin-left:0"></div>
+                    <!-- 下一页 -->
+                    <div class="swiper-button-next"
+                        slot="button-next" style="margin-right:300px"></div>
+                    <!-- 分页 -->
+                    <div class="swiper-pagination"
+                        slot="pagination"></div>
+                </swiper>
+                <div class="category-item">
+                    <div class="category-top">
+                    <img src="https://i1.mifile.cn/f/i/17/qiye/icon_face.png">
+                    <div class="top-right">
+                        <h2>您好，欢迎回来</h2>
+                        <p>登录企业账户开始采购<i class="el-icon-aliqianjinxiayige"></i></p>
+                    </div>
+                    </div>
+                    <div class="category-bottom">
+                    <h3>企业专属特权</h3>
+                    <ul>
+                        <li>
+                        <div class="img img1"></div>
+                        <div class="bottom-right">
+                            <h2>专属价格</h2>
+                            <p>精选货品，专属优惠</p>
+                        </div>
+                        </li>
+                        <li>
+                        <div class="img img2"></div>
+                        <div class="bottom-right">
+                            <h2>自主开票</h2>
+                            <p>全场商品，增票开具</p>
+                        </div>
+                        </li>
+                        <li>
+                        <div class="img img3"></div>
+                        <div class="bottom-right">
+                            <h2>便捷支付</h2>
+                            <p>对公转账，票款一致</p>
+                        </div>
+                        </li>
+                        <li>
+                        <div class="img img4"></div>
+                        <div class="bottom-right">
+                            <h2>专业售后</h2>
+                            <p>小米直供，售后无忧</p>
+                        </div>
+                        </li>
+                    </ul>
+                    <p class="rule">更多会员管理规则，请点击<i class="el-icon-aliqianjinxiayige"></i></p>
+                    </div>
+                </div>
+                </div>
+                <div class="home-row">
+                <ul class="home-img">
+                    <li><a href="http://www.mi.com/redminote8"><img src="//i8.mifile.cn/v1/a1/79d1c803-9579-65f9-0692-da3f22d0e6f3.jpg"></a></li>
+                    <li><a href="https://item.mi.com/product/10000203.html?selected=10000203"><img src="//i8.mifile.cn/v1/a1/6fbc14b8-aa4c-c49e-de33-d8efb0fcc484.jpg"></a></li>
+                    <li><a href="https://www.mi.com/shouhuan4/"><img src="//i8.mifile.cn/v1/a1/392b66d8-7793-295b-1181-b70030b121e8.jpg"></a></li>
+                    <li><a href="https://www.mi.com/shouhuan4/"><img src="//i8.mifile.cn/v1/a1/6ab7bfd2-22cc-3007-dd90-eea69497f607.png"></a></li>
+                </ul>
                 </div>
             </div>
-            <a href="#">小米企业购会员管理规则，请点击></a>
+            <div class="commodity">
+                <div class="home-brick" v-for="(item, index) in detailList" :key="index">
+                <div class="brick-title">
+                    <h2>{{ item.title }}</h2>
+                    <div class="all"><a href="//www.mi.com/a/h/14933.html">查看全部<i class="el-icon-aliqianjinxiayige"></i></a></div>
+                </div>
+                <div class="brick-box">
+                    <ul class="box-main">
+                        <li v-for="(context, index) in item.children" :key="index">
+                            <div class="thumb">
+                            <img v-lazy="context.imgSrc">
+                            </div>
+                            <p class="content-title">{{ context.name }}</p>
+                            <p class="desc">{{ context.desc }}</p>
+                            <div class="btn-primary" @click="dialogVisible = true">登录企业账户开始采购</div>
+                            <el-dialog :visible.sync="dialogVisible" >
+                                <div>
+                                    <h2>开通企业账户</h2>
+                                    <p>24小时内完成审核(工作日)，遇法定节假日顺延</p>
+                                    <el-form :model="form">
+                                        <el-form-item label="公司信息">
+                                            <el-input v-model="name" placeholder="公司名称(审核通过后不可修改，用于增票开具)"></el-input>
+                                            <el-input v-model="code" placeholder="统一社会信用代码"></el-input>
+                                            <el-upload action="上传营业执照" list-type="picture-card" :auto-upload="false">
+                                                <i slot="default" class="el-icon-plus"></i>
+                                                <div slot="file" slot-scope="{file}">
+                                                    <img class="el-upload-list__item-thumbnail" :src="file.url" alt="">
+                                                    <span class="el-upload-list__item-actions">
+                                                        <span class="el-upload-list__item-preview" @click="handlePictureCardPreview(file)">
+                                                            <i class="el-icon-zoom-in"></i>
+                                                        </span>
+                                                        <span v-if="!disabled" class="el-upload-list_item-delete"  @click="handleDownload(file)">
+                                                            <i class="el-icon-download"></i>
+                                                        </span>
+                                                        <span v-if="!disabled" class="el-upload-list__item-delete" @click="handleRemove(file)">
+                                                            <i class="el-icon-delete"></i>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </el-upload>
+                                            <!-- <el-dialog :visible.sync="dialogVisible">
+                                                <img width="100%" :src="dialogImageUrl" alt="">
+                                            </el-dialog> -->
+                                        </el-form-item>
+                                        <el-form-item label="采购联系信息">
+                                            <el-input v-model="phone"  placeholder="手机号码"></el-input>
+                                            <el-input v-model="email"  placeholder="电子邮箱"></el-input>
+                                        </el-form-item>
+                                    </el-form>
+                                    <div slot="footer" class="dialog-footer">
+                                        <el-button type="primary" @click="dialogvisible = false">申请开通</el-button>
+                                    </div>
+                                </div>
+                            </el-dialog>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+                <div class="process">
+                    <div class="container">
+                        <h2>采购流程</h2>
+                        <p>采购仅需4步，2个工作日内完成审核，到账后5个工作日内发货</p>
+                        <div class="step">
+                        </div>
+                    </div>
+                    <a href="#">小米企业购会员管理规则，请点击></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </main>
-    <navFooter></navFooter>
+    </div>
+    <div class="footer">
+        <div class="list-service">
+            <div class="container">
+                <a href="https://weibo.com/xiaomishangcheng">
+                    <i class="el-icon-aliweibo2"></i>
+                    新浪微博
+                </a>
+                <a href="javascript:void(0);">
+                    <i class="el-icon-alixiaomi" ></i>
+                    官方微信
+                </a>
+                <a href="javascript:void(0);">
+                    <i class="el-icon-alishizhong big"></i>
+                    企业购在线客服
+                </a>
+                <a href="javascript:void(0);" class="last">
+                    <i class="el-icon-ali3 small"></i>
+                    400-100-5678转人工
+                </a>
+            </div>
+        </div>
+        <div class="info-text">
+            <div class="container">
+                <div class="nav-logo">
+                    <a href="https://www.mi.com/index.html"
+                        class="logo"></a>
+                </div>
+                <div class="info-list">
+                    <div class="sites">
+                        <a href="#">小米商城</a><span class="sep">|</span>
+                        <a href="#">MIUI</a><span class="sep">|</span>
+                        <a href="#">米家</a><span class="sep">|</span>
+                        <a href="#">米聊</a><span class="sep">|</span>
+                        <a href="#">多看</a><span class="sep">|</span>
+                        <a href="#">游戏</a><span class="sep">|</span>
+                        <a href="#">路由器</a><span class="sep">|</span>
+                        <a href="#">米粉卡</a><span class="sep">|</span>
+                        <a href="#">政企服务</a><span class="sep">|</span>
+                        <a href="#">小米天猫店</a><span class="sep">|</span>
+                        <a href="#">隐私政策</a><span class="sep">|</span>
+                        <a href="#">商城用户协议</a><span class="sep">|</span>
+                        <a href="#">账号协议</a><span class="sep">|</span>
+                        <a href="#">问题反馈</a><span class="sep">|</span>
+                        <a href="#">廉正举报</a><span class="sep">|</span>
+                        <a href="#">诚信合规</a>
+                    </div>
+                    <p>©mi.com京ICP证110507号 京ICP备10046444号 京公网安备1101082020134号 京网文[2017]1530-131号</p>
+                    <p>（京）网械平台备字（2018）第00005号 互联网药品信息服务资格证（京）-非经营性-2014-0090 营业执照 医疗器械公告</p>
+                    <p>增值电信业务许可证 网络食品经营备案（京）【2018】WLSPJYBAHF-12 食品经营许可证</p>
+                    <p>违法和不良信息举报电话：185-0130-1238 只是产权侵权投诉 本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p>
+                    <div class="info-links">
+                        <a href="//privacy.truste.com/privacy-seal/validation?rid=4fc28a8c-6822-4980-9c4b-9fdc69b94eb8&lang=zh-cn">
+                            <img src="https://i1.mifile.cn/f/i/17/site/truste.png">
+                        </a>
+                        <a href="//search.szfw.org/cert/l/CX20120926001783002010">
+                            <img src="https://s01.mifile.cn/i/v-logo-2.png" alt="诚信网站">
+                        </a>
+                        <a href="https://ss.knet.cn/verifyseal.dll?sn=e12033011010015771301369&ct=df&pa=461082">
+                            <img src="https://s01.mifile.cn/i/v-logo-1.png" alt="可信网站">
+                        </a>
+                        <a href="http://www.315online.com.cn/member/315140007.html">
+                            <img src="https://s01.mifile.cn/i/v-logo-3.png" alt="网上交易保障中心">
+                        </a>
+                        <a href="https://www.mi.com/service/buy/commitment/">
+                            <img src="https://i8.mifile.cn/b2c-mimall-media/ba10428a4f9495ac310fd0b5e0cf8370.png" alt="诚信经营 放心消费">
+                        </a>
+                        <a href="https://webcert.cnmstl.net/cert/grade?sn=3af21034e35011eab3ea00163e068ceb">
+                            <img src="https://cnbj1.fds.api.xiaomi.com/b2c-misite-activity/f1ee261b96ae71e845efba398efeca02.png" alt="">
+                            <img src="https://cnbj1.fds.api.xiaomi.com/b2c-misite-activity/3c2791ca090de29dd753fd5eaf442bad.png" alt="">
+                        </a>
+                    </div>
+                    <div class="slogn">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 </template>
 
 <script>
 import navHeader from '../components/Header'
-import navFooter from '../components/Footer'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import '../assets/swiper/css/swiper.css'
 export default {
@@ -438,12 +553,20 @@ export default {
             }
           ]
         }
-      ]
+      ],
+      form: {
+        name: '',
+        code: '',
+        phone: '',
+        email: ''
+      },
+      dialogImageUrl: '',
+      dialogVisible: false,
+      disabled: false
     }
   },
   components: {
     navHeader,
-    navFooter,
     Swiper,
     SwiperSlide
   },
@@ -471,6 +594,16 @@ export default {
       this.$router.push({
         path: '/Commodity'
       })
+    },
+    handleRemove (file) {
+      console.log(file)
+    },
+    handlePictureCardPreview (file) {
+      this.dialogImageUrl = file.url
+      this.dialogVisible = true
+    },
+    handleDownload (file) {
+      console.log(file)
     }
   },
   mounted () {
@@ -490,7 +623,6 @@ export default {
 <style lang="scss" scoped>
 @import url("../assets/scss/company.scss");
 @import url("../assets/scss/navbar.scss");
-
 .isFixed {
     position: fixed;
     width: 100%;
