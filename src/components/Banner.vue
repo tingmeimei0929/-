@@ -9,7 +9,7 @@
               <li class="nav-title">{{ context }}</li>
               <li v-for="(item, index) in sorts"
                   :key="index"
-                  class="nav-link"><a>{{ item.defaults }}</a>
+                  class="nav-link"><a class="cont">{{ item.defaults }}</a>
                 <div class="link-list">
                   <ul class="item-children">
                     <li v-for="(list, index) in item.children" :key="index">

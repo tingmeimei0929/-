@@ -27,6 +27,15 @@ import Spike3 from '../views/Spike3'
 import Spike4 from '../views/Spike4'
 import Spike5 from '../views/Spike5'
 import Company from '../views/Company'
+import NewList from '../views/NewList'
+import newProduct from '../views/newProduct'
+import newPhone from '../views/newPhone'
+import newBook from '../views/newBook'
+import newAppliances from '../views/newAppliances'
+import newRouter from '../views/newRouter'
+import newHeadset from '../views/newHeadset'
+import newLife from '../views/newLife'
+import newAccessories from '../views/newAccessories'
 import Commodity from '../views/Commodity'
 import Commodity1 from '../views/Commodity1'
 import Commodity2 from '../views/Commodity2'
@@ -550,7 +559,58 @@ const routes = [{
 {
   path: '/Company',
   name: 'Company',
-  component: Company
+  component: Company,
+  children: [
+    {
+      path: '/',
+      redirect: 'NewList'
+    },
+    {
+      path: 'NewList',
+      name: 'NewList',
+      component: NewList
+    },
+    {
+      path: 'newProduct',
+      name: 'newProduct',
+      component: newProduct
+    },
+    {
+      path: 'newPhone',
+      name: 'newPhone',
+      component: newPhone
+    },
+    {
+      path: 'newBook',
+      name: 'newBook',
+      component: newBook
+    },
+    {
+      path: 'newAppliances',
+      name: 'newAppliances',
+      component: newAppliances
+    },
+    {
+      path: 'newRouter',
+      name: 'newRouter',
+      component: newRouter
+    },
+    {
+      path: 'newHeadset',
+      name: 'newHeadset',
+      component: newHeadset
+    },
+    {
+      path: 'newLife',
+      name: 'newLife',
+      component: newLife
+    },
+    {
+      path: 'newAccessories',
+      name: 'newAccessories',
+      component: newAccessories
+    }
+  ]
 },
 {
   path: '/Commodity',

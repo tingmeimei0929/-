@@ -187,12 +187,11 @@
           }
 
           &.nav-link {
-            a {
+            .cont {
               display: block;
               color: #333;
             }
-
-            a:hover {
+            .cont:hover {
               color: #ff6700;
             }
           }
