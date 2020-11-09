@@ -1527,9 +1527,8 @@ export default {
 
   },
   methods: {
-    countdown () {
-      const end = Date.parse(new Date('2020-10-13 16:00:00'))
-      // 定义当前时间戳
+    countdown: function () {
+      const end = Date.parse(new Date('2020-11-10 16:00:00'))
       const now = Date.parse(new Date())
       // 做判断当倒计时结束时都为0
       if (now >= end) {
@@ -1539,22 +1538,17 @@ export default {
         this.seconds = '00'
         return
       }
-      // 用结束时间减去当前时间获得倒计时时间戳
-      const timestamp = end - now
-      const day = parseInt(timestamp / 1000 / 60 / 60 / 24)
-      const hours = parseInt(timestamp / 1000 / 60 / 60 % 24)
-      const minute = parseInt(timestamp / 1000 / 60 % 60)
-      const seconds = parseInt(timestamp / 1000 % 60)
-      // 给数据赋值
+      const msec = end - now
+      const day = parseInt(msec / 1000 / 60 / 60 / 24)
+      const hours = parseInt(msec / 1000 / 60 / 60 % 24)
+      const minute = parseInt(msec / 1000 / 60 % 60)
+      const seconds = parseInt(msec / 1000 % 60)
       this.day = day
       this.hours = hours > 9 ? hours : '0' + hours
       this.minute = minute > 9 ? minute : '0' + minute
       this.seconds = seconds > 9 ? seconds : '0' + seconds
-      // 定义this指向
       const that = this
-      console.log(`${hours} ${minute} ${seconds}`)
-      // 使用定时器 然后使用递归 让每一次函数能调用自己达到倒计时的效果
-      setTimeout(() => {
+      setTimeout(function () {
         that.countdown()
       }, 1000)
     },
@@ -1569,12 +1563,12 @@ export default {
     },
     details () {
       this.$router.push({
-        path: '/Spike'
+        path: '/Homepage'
       })
     },
     spikeBtn () {
       this.$router.push({
-        path: '/Spike'
+        path: '/Homepage'
       })
     },
     companyBtn () {

@@ -1,41 +1,49 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+// 引入组件路由
 import Main from '../views/Main.vue'
-import Login from '../views/Login.vue'
-import LoginFan from '../views/LoginFan.vue'
-import LoginEn from '../views/LoginEn.vue'
+// 登录
+import Login from '../views/loginFile/Login.vue'
+import LoginFan from '../views/loginFile/LoginFan.vue'
+import LoginEn from '../views/loginFile/LoginEn.vue'
+import Qr from '../views/loginFile/Qr'
+import QrFan from '../views/loginFile/QrFan'
+import QrEn from '../views/loginFile/QrEn'
+import Account from '../views/loginFile/Account'
+import AccountFan from '../views/loginFile/AccountFan'
+import AccountEn from '../views/loginFile/AccountEn'
+import SMS from '../views/loginFile/SMS'
+import SMSFan from '../views/loginFile/SMSFan'
+import SMSEn from '../views/loginFile/SMSEn'
+import Forget from '../views/loginFile/Forget'
+import ForgetFan from '../views/loginFile/ForgetFan'
+import ForgetEn from '../views/loginFile/ForgetEn'
+
+// 注册
 import Registered from '../views/Registered'
 import RegisteredFan from '../views/RegisteredFan'
 import RegisteredEn from '../views/RegisteredEn'
 import Ce from '../views/Ce'
-import Qr from '../views/Qr'
-import QrFan from '../views/QrFan'
-import QrEn from '../views/QrEn'
-import Account from '../views/Account'
-import AccountFan from '../views/AccountFan'
-import AccountEn from '../views/AccountEn'
-import SMS from '../views/SMS'
-import SMSFan from '../views/SMSFan'
-import SMSEn from '../views/SMSEn'
-import Forget from '../views/Forget'
-import ForgetFan from '../views/ForgetFan'
-import ForgetEn from '../views/ForgetEn'
-import Spike from '../views/Spike'
-import Spike1 from '../views/Spike1'
-import Spike2 from '../views/Spike2'
-import Spike3 from '../views/Spike3'
-import Spike4 from '../views/Spike4'
-import Spike5 from '../views/Spike5'
-import Company from '../views/Company'
-import NewList from '../views/NewList'
-import newProduct from '../views/newProduct'
-import newPhone from '../views/newPhone'
-import newBook from '../views/newBook'
-import newAppliances from '../views/newAppliances'
-import newRouter from '../views/newRouter'
-import newHeadset from '../views/newHeadset'
-import newLife from '../views/newLife'
-import newAccessories from '../views/newAccessories'
+
+// 小米秒杀
+import Homepage from '../views/Spike/Homepage.vue'
+import Spike1 from '../views/Spike/Spike1'
+import Spike2 from '../views/Spike/Spike2'
+import Spike3 from '../views/Spike/Spike3'
+import Spike4 from '../views/Spike/Spike4'
+// 企业团购
+import Company from '../views/corporateGroupBuying/Company.vue'
+import NewList from '../views/corporateGroupBuying/NewList'
+import newProduct from '../views/corporateGroupBuying/newProduct'
+import newPhone from '../views/corporateGroupBuying/newPhone'
+import newBook from '../views/corporateGroupBuying/newBook'
+import newAppliances from '../views/corporateGroupBuying/newAppliances'
+import newRouter from '../views/corporateGroupBuying/newRouter'
+import newHeadset from '../views/corporateGroupBuying/newHeadset'
+import newLife from '../views/corporateGroupBuying/newLife'
+import newAccessories from '../views/corporateGroupBuying/newAccessories'
+//
 import Commodity from '../views/Commodity'
 import Commodity1 from '../views/Commodity1'
 import Commodity2 from '../views/Commodity2'
@@ -135,6 +143,7 @@ const routes = [{
   name: '/PhoneDetails',
   component: PhoneDetails
 },
+// 登录
 {
   path: '/Login',
   name: 'Login',
@@ -521,10 +530,11 @@ const routes = [{
     }
   ]
 },
+// 小米秒杀
 {
-  path: '/Spike',
-  name: 'Spike',
-  component: Spike,
+  path: '/Homepage',
+  name: 'Homepage',
+  component: Homepage,
   children: [{
     path: '/',
     redirect: 'Spike1'
@@ -548,14 +558,10 @@ const routes = [{
     path: 'Spike4',
     name: 'Spike4',
     component: Spike4
-  },
-  {
-    path: 'Spike5',
-    name: 'Spike5',
-    component: Spike5
   }
   ]
 },
+// 企业团购
 {
   path: '/Company',
   name: 'Company',
