@@ -21,6 +21,11 @@
             <a @click="countDown" :class="{disabled: !this.canClick}" >{{ content }}</a>
         </div>
     </el-form-item>
+    <!-- <div class="small"
+         v-show="prompt">
+      <i class="el-icon-alibaocuo"></i>
+      <span class="errorPrompt">{{errorMsg}}</span>
+    </div> -->
     <el-button class="button" @click="submitForm('ruleForm')">立即登入/注冊</el-button>
     <div class="prompt">
       <div class="prompt-top">
@@ -32,7 +37,7 @@
       <fieldset>
         <legend>其他登入方式</legend>
       </fieldset>
-       <div class="other-type">
+      <div class="other-type">
         <a href="/pass/sns/login/auth?appid=100284651&&callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252Findex.html%26sign%3DMjM0MWU0NjBlOTU1YzY4NGQzOTc3MDk4N2M2MjQ5Y2ZiZTMxNTFlZQ%2C%2C&sid=mi_eshop"
            class="btn-qq"><i class="el-icon-aliQQ"></i></a>
         <a href="/pass/sns/login/auth?appid=2996826273&&callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252Findex.html%26sign%3DMjM0MWU0NjBlOTU1YzY4NGQzOTc3MDk4N2M2MjQ5Y2ZiZTMxNTFlZQ%2C%2C&sid=mi_eshop"
@@ -48,14 +53,14 @@
 
 <script>
 export default {
-  name: 'SMSFan',
+  name: 'SMS',
   data () {
     // <!--验证手机号是否合法-->
     const checkTel = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入手机号码'))
+        callback(new Error('請輸入手機號'))
       } else if (!this.checkMobile(value)) {
-        callback(new Error('请输入正确的11位手机号码'))
+        callback(new Error('手機號格式不正確'))
       } else {
         callback()
       }
@@ -63,7 +68,7 @@ export default {
     //  <!--验证码是否为空-->
     const checkSmscode = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入短信验证码'))
+        callback(new Error('請輸入簡訊驗證碼'))
       } else {
         callback()
       }
@@ -75,25 +80,29 @@ export default {
       },
       rules: {
         tel: [
-          { required: true, message: '请输入手机号', trigger: 'blur' },
+          { required: true, message: '請輸入手機號', trigger: 'blur' },
           { validator: checkTel, trigger: 'blur' }
         ],
         smscode: [
-          { required: true, message: '请输入短信验证码', trigger: 'blur' },
+          { required: true, message: '請輸入簡訊驗證碼', trigger: 'blur' },
           { validator: checkSmscode, trigger: 'blur' }
         ]
       },
-      isDisabled: false, // 是否禁止点击发送验证码按钮
       content: '獲取驗證碼',
       flag: true,
       totalTime: 60,
-      canClick: true
+      canclick: true
     }
   },
   methods: {
     usercode () {
       this.$router.push({
-        path: '/LoginFan/AccountFan'
+        path: '/Login/Account'
+      })
+    },
+    code () {
+      this.$router.push({
+        path: '/CodeRules'
       })
     },
     countDown () {

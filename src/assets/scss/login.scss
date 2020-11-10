@@ -159,6 +159,7 @@
               width: auto;
               float: left;
               height: inherit;
+              
 
               input[type="text"] {
                 width: 210px;
@@ -178,6 +179,7 @@
                 display: block;
                 float: left;
                 width: initial;
+                
             }
 
 
@@ -193,6 +195,11 @@
                 text-align: center;
                 border-left: 1px solid #e0e0e0;
                 background-color: #fff;
+
+                &.smsEn{
+                    font-size: 8px;
+                    padding: 3px 0;
+                }
               }
             
           }

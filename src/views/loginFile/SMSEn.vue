@@ -1,5 +1,5 @@
 <template>
- <el-form class="login-type" :rules="rules" :model="ruleForm" ref="ruleForm">
+  <el-form class="login-type" :rules="rules" :model="ruleForm" ref="ruleForm">
     <el-form-item  class="smsPush" prop="tel" >
       <div class="number">+86</div>
       <div class="phoneInput" >
@@ -17,7 +17,7 @@
                class="smsInput "
                id="smscode" v-model="ruleForm.smscode">
         </el-input>
-        <div class="smsBtn" >
+        <div class="smsBtn smsEn" >
             <a @click="countDown" :class="{disabled: !this.canClick}" >{{ content }}</a>
         </div>
     </el-form-item>
@@ -37,7 +37,7 @@
       <fieldset>
         <legend>More options</legend>
       </fieldset>
-     <div class="other-type">
+      <div class="other-type">
         <a href="/pass/sns/login/auth?appid=100284651&&callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252Findex.html%26sign%3DMjM0MWU0NjBlOTU1YzY4NGQzOTc3MDk4N2M2MjQ5Y2ZiZTMxNTFlZQ%2C%2C&sid=mi_eshop"
            class="btn-qq"><i class="el-icon-aliQQ"></i></a>
         <a href="/pass/sns/login/auth?appid=2996826273&&callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252Findex.html%26sign%3DMjM0MWU0NjBlOTU1YzY4NGQzOTc3MDk4N2M2MjQ5Y2ZiZTMxNTFlZQ%2C%2C&sid=mi_eshop"
@@ -53,14 +53,14 @@
 
 <script>
 export default {
-  name: 'SMSEn',
+  name: 'SMS',
   data () {
     // <!--验证手机号是否合法-->
     const checkTel = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入手机号码'))
+        callback(new Error('Enter phone number'))
       } else if (!this.checkMobile(value)) {
-        callback(new Error('请输入正确的11位手机号码'))
+        callback(new Error('The phone number is invalid'))
       } else {
         callback()
       }
@@ -68,7 +68,7 @@ export default {
     //  <!--验证码是否为空-->
     const checkSmscode = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入短信验证码'))
+        callback(new Error('Enter code'))
       } else {
         callback()
       }
@@ -80,17 +80,16 @@ export default {
       },
       rules: {
         tel: [
-          { required: true, message: '请输入手机号', trigger: 'blur' },
+          { required: true, message: 'Enter phone number', trigger: 'blur' },
           { validator: checkTel, trigger: 'blur' }
         ],
         smscode: [
-          { required: true, message: '请输入短信验证码', trigger: 'blur' },
+          { required: true, message: 'Enter code', trigger: 'blur' },
           { validator: checkSmscode, trigger: 'blur' }
         ]
       },
-      isDisabled: false, // 是否禁止点击发送验证码按钮
-      flag: true,
       content: 'Get verification code',
+      flag: true,
       totalTime: 60,
       canclick: true
     }
@@ -98,7 +97,12 @@ export default {
   methods: {
     usercode () {
       this.$router.push({
-        path: '/LoginEn/AccountEn'
+        path: '/Login/Account'
+      })
+    },
+    code () {
+      this.$router.push({
+        path: '/CodeRules'
       })
     },
     countDown () {
@@ -145,7 +149,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style lang="scss" scoped>

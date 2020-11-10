@@ -3,6 +3,11 @@ import VueRouter from 'vue-router'
 
 // 引入组件路由
 import Main from '../views/Main.vue'
+import Cart from '../views/Cart'
+import Details from '../views/Details.vue'
+import Video from '../views/Video.vue'
+import Popular from '../views/Popular.vue'
+import PhoneDetails from '../views/PhoneDetails.vue'
 // 登录
 import Login from '../views/loginFile/Login.vue'
 import LoginFan from '../views/loginFile/LoginFan.vue'
@@ -21,9 +26,9 @@ import ForgetFan from '../views/loginFile/ForgetFan'
 import ForgetEn from '../views/loginFile/ForgetEn'
 
 // 注册
-import Registered from '../views/Registered'
-import RegisteredFan from '../views/RegisteredFan'
-import RegisteredEn from '../views/RegisteredEn'
+import Registered from '../views/registeredFile/Registered'
+import RegisteredFan from '../views/registeredFile/RegisteredFan'
+import RegisteredEn from '../views/registeredFile/RegisteredEn'
 import Ce from '../views/Ce'
 
 // 小米秒杀
@@ -43,73 +48,78 @@ import newRouter from '../views/corporateGroupBuying/newRouter'
 import newHeadset from '../views/corporateGroupBuying/newHeadset'
 import newLife from '../views/corporateGroupBuying/newLife'
 import newAccessories from '../views/corporateGroupBuying/newAccessories'
-//
-import Commodity from '../views/Commodity'
-import Commodity1 from '../views/Commodity1'
-import Commodity2 from '../views/Commodity2'
-import Commodity3 from '../views/Commodity3'
-import Commodity4 from '../views/Commodity4'
-import Commodity5 from '../views/Commodity5'
-import Commodity6 from '../views/Commodity6'
-import Commodity7 from '../views/Commodity7'
-import Commodity8 from '../views/Commodity8'
-import CodeRules from '../views/CodeRules.vue'
-import Cart from '../views/Cart'
-import AccountName from '../views/AccountName.vue'
-import SignUp1 from '../views/SignUp1.vue'
-import SignUp2 from '../views/SignUp2.vue'
-import SignUp3 from '../views/SignUp3.vue'
-import SignUp4 from '../views/SignUp4.vue'
-import SignUp5 from '../views/SignUp5.vue'
-import SignUp6 from '../views/SignUp6.vue'
-import SignUp7 from '../views/SignUp7.vue'
-import LoginRules1 from '../views/LoginRules1.vue'
-import LoginRules2 from '../views/LoginRules2.vue'
-import LoginRules3 from '../views/LoginRules3.vue'
-import LoginRules4 from '../views/LoginRules4.vue'
-import LoginRules5 from '../views/LoginRules5.vue'
-import QuitRules from '../views/QuitRules.vue'
-import Logout1 from '../views/Logout1.vue'
-import Logout2 from '../views/Logout2.vue'
-import Logout3 from '../views/Logout3.vue'
-import Appeal1 from '../views/Appeal1.vue'
-import Appeal2 from '../views/Appeal2.vue'
-import Appeal3 from '../views/Appeal3.vue'
-import Appeal4 from '../views/Appeal4.vue'
-import Appeal5 from '../views/Appeal5.vue'
-import Appeal6 from '../views/Appeal6.vue'
-import Appeal7 from '../views/Appeal7.vue'
-import Appeal8 from '../views/Appeal8.vue'
-import Appeal9 from '../views/Appeal9.vue'
-import PasswordRules1 from '../views/PasswordRules1.vue'
-import PasswordRules2 from '../views/PasswordRules2.vue'
-import PasswordRules3 from '../views/PasswordRules3.vue'
-import SmsQuestion1 from '../views/SmsQuestion1.vue'
-import SmsQuestion2 from '../views/SmsQuestion2.vue'
-import SmsQuestion3 from '../views/SmsQuestion3.vue'
-import SmsQuestion4 from '../views/SmsQuestion4.vue'
-import SmsQuestion5 from '../views/SmsQuestion5.vue'
-import ThirdParty1 from '../views/ThirdParty1.vue'
-import ThirdParty2 from '../views/ThirdParty2.vue'
-import ThirdParty3 from '../views/ThirdParty3.vue'
-import SecurePhone1 from '../views/SecurePhone1.vue'
-import SecurePhone2 from '../views/SecurePhone2.vue'
-import SecurePhone3 from '../views/SecurePhone3.vue'
-import SecurePhone4 from '../views/SecurePhone4.vue'
-import SecurePhone5 from '../views/SecurePhone5.vue'
-import SecurePhone6 from '../views/SecurePhone6.vue'
-import SecurePhone7 from '../views/SecurePhone7.vue'
-import SecurePhone8 from '../views/SecurePhone8.vue'
-import SecurePhone9 from '../views/SecurePhone9.vue'
-import SecurityQuestion1 from '../views/SecurityQuestion1.vue'
-import SecurityQuestion2 from '../views/SecurityQuestion2.vue'
-import SecurityQuestion3 from '../views/SecurityQuestion3.vue'
-import Lost1 from '../views/Lost1.vue'
-import Lost2 from '../views/Lost2.vue'
-import Details from '../views/Details.vue'
-import Video from '../views/Video.vue'
-import Popular from '../views/Popular.vue'
-import PhoneDetails from '../views/PhoneDetails.vue'
+
+// 小米账号使用手册（收不到验证码？）
+import CodeRules from '../views/manual/CodeRules.vue'
+// 简介
+import AccountName from '../views/manual/AccountName.vue'
+// 新人指南 newcomerGuide
+// 注册 SignUp
+import SignUp1 from '../views/manual/newcomerGuide/SignUp1.vue'
+import SignUp2 from '../views/manual/newcomerGuide/SignUp2.vue'
+import SignUp3 from '../views/manual/newcomerGuide/SignUp3.vue'
+import SignUp4 from '../views/manual/newcomerGuide/SignUp4.vue'
+import SignUp5 from '../views/manual/newcomerGuide/SignUp5.vue'
+import SignUp6 from '../views/manual/newcomerGuide/SignUp6.vue'
+import SignUp7 from '../views/manual/newcomerGuide/SignUp7.vue'
+// 登录 LoginRules
+import LoginRules1 from '../views/manual/newcomerGuide/LoginRules1.vue'
+import LoginRules2 from '../views/manual/newcomerGuide/LoginRules2.vue'
+import LoginRules3 from '../views/manual/newcomerGuide/LoginRules3.vue'
+import LoginRules4 from '../views/manual/newcomerGuide/LoginRules4.vue'
+import LoginRules5 from '../views/manual/newcomerGuide/LoginRules5.vue'
+// 退出登录
+import QuitRules from '../views/manual/newcomerGuide/QuitRules.vue'
+// 注销
+import Logout1 from '../views/manual/newcomerGuide/Logout1.vue'
+import Logout2 from '../views/manual/newcomerGuide/Logout2.vue'
+import Logout3 from '../views/manual/newcomerGuide/Logout3.vue'
+// 申诉
+import Appeal1 from '../views/manual/newcomerGuide/Appeal1.vue'
+import Appeal2 from '../views/manual/newcomerGuide/Appeal2.vue'
+import Appeal3 from '../views/manual/newcomerGuide/Appeal3.vue'
+import Appeal4 from '../views/manual/newcomerGuide/Appeal4.vue'
+import Appeal5 from '../views/manual/newcomerGuide/Appeal5.vue'
+import Appeal6 from '../views/manual/newcomerGuide/Appeal6.vue'
+import Appeal7 from '../views/manual/newcomerGuide/Appeal7.vue'
+import Appeal8 from '../views/manual/newcomerGuide/Appeal8.vue'
+import Appeal9 from '../views/manual/newcomerGuide/Appeal9.vue'
+
+// 常见问题 commonProblem
+// 密码
+import PasswordRules1 from '../views/manual/commonProblem/PasswordRules1.vue'
+import PasswordRules2 from '../views/manual/commonProblem/PasswordRules2.vue'
+import PasswordRules3 from '../views/manual/commonProblem/PasswordRules3.vue'
+// 短信和邮箱验证码
+import SmsQuestion1 from '../views/manual/commonProblem/SmsQuestion1.vue'
+import SmsQuestion2 from '../views/manual/commonProblem/SmsQuestion2.vue'
+import SmsQuestion3 from '../views/manual/commonProblem/SmsQuestion3.vue'
+import SmsQuestion4 from '../views/manual/commonProblem/SmsQuestion4.vue'
+import SmsQuestion5 from '../views/manual/commonProblem/SmsQuestion5.vue'
+// 绑定解绑第三方账号
+import ThirdParty1 from '../views/manual/commonProblem/ThirdParty1.vue'
+import ThirdParty2 from '../views/manual/commonProblem/ThirdParty2.vue'
+import ThirdParty3 from '../views/manual/commonProblem/ThirdParty3.vue'
+
+// 账号安全 accountSecurity
+// 安全手机和邮箱
+import SecurePhone1 from '../views/manual/accountSecurity/SecurePhone1.vue'
+import SecurePhone2 from '../views/manual/accountSecurity/SecurePhone2.vue'
+import SecurePhone3 from '../views/manual/accountSecurity/SecurePhone3.vue'
+import SecurePhone4 from '../views/manual/accountSecurity/SecurePhone4.vue'
+import SecurePhone5 from '../views/manual/accountSecurity/SecurePhone5.vue'
+import SecurePhone6 from '../views/manual/accountSecurity/SecurePhone6.vue'
+import SecurePhone7 from '../views/manual/accountSecurity/SecurePhone7.vue'
+import SecurePhone8 from '../views/manual/accountSecurity/SecurePhone8.vue'
+import SecurePhone9 from '../views/manual/accountSecurity/SecurePhone9.vue'
+// 密保问题
+import SecurityQuestion1 from '../views/manual/accountSecurity/SecurityQuestion1.vue'
+import SecurityQuestion2 from '../views/manual/accountSecurity/SecurityQuestion2.vue'
+import SecurityQuestion3 from '../views/manual/accountSecurity/SecurityQuestion3.vue'
+// 丢失被盗或换机
+import Lost1 from '../views/manual/accountSecurity/Lost1.vue'
+import Lost2 from '../views/manual/accountSecurity/Lost2.vue'
+
 Vue.use(VueRouter)
 
 const routes = [{
@@ -265,10 +275,10 @@ const routes = [{
       name: 'AccountName',
       component: AccountName
     },
-    // 新人指南
+    // 新人指南 newcomer's Guide
     // 注册
     {
-      path: '/SignUp1',
+      path: '/newcomerGuide/SignUp1',
       name: 'SignUp1',
       component: SignUp1
     },
@@ -396,7 +406,7 @@ const routes = [{
       name: 'Appeal9',
       component: Appeal9
     },
-    // 常见问题
+    // 常见问题 common problem
     // 密码
     {
       path: '/PasswordRules1',
@@ -455,6 +465,7 @@ const routes = [{
       name: '/ThirdParty3',
       component: ThirdParty3
     },
+    // 账号安全 account security
     // 安全手机有邮箱
     {
       path: '/SecurePhone1',
@@ -616,56 +627,6 @@ const routes = [{
       name: 'newAccessories',
       component: newAccessories
     }
-  ]
-},
-{
-  path: '/Commodity',
-  name: 'Commodity',
-  component: Commodity,
-  children: [{
-    path: '/',
-    redirect: 'Commodity1'
-  },
-  {
-    path: 'Commodity1',
-    name: 'Commodity1',
-    component: Commodity1
-  },
-  {
-    path: 'Commodity2',
-    name: 'Commodity2',
-    component: Commodity2
-  },
-  {
-    path: 'Commodity3',
-    name: 'Commodity3',
-    component: Commodity3
-  },
-  {
-    path: 'Commodity4',
-    name: 'Commodity4',
-    component: Commodity4
-  },
-  {
-    path: 'Commodity5',
-    name: 'Commodity5',
-    component: Commodity5
-  },
-  {
-    path: 'Commodity6',
-    name: 'Commodity6',
-    component: Commodity6
-  },
-  {
-    path: 'Commodity7',
-    name: 'Commodity7',
-    component: Commodity7
-  },
-  {
-    path: 'Commodity8',
-    name: 'Commodity8',
-    component: Commodity8
-  }
   ]
 },
 {

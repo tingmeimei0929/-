@@ -58,9 +58,9 @@ export default {
     // <!--验证手机号是否合法-->
     const checkTel = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入手机号码'))
+        callback(new Error('请输入手机号'))
       } else if (!this.checkMobile(value)) {
-        callback(new Error('请输入正确的11位手机号码'))
+        callback(new Error('手机号格式不正确'))
       } else {
         callback()
       }
@@ -88,8 +88,7 @@ export default {
           { validator: checkSmscode, trigger: 'blur' }
         ]
       },
-      isDisabled: false, // 是否禁止点击发送验证码按钮
-      content: '发送验证码',
+      content: '获取验证码',
       flag: true,
       totalTime: 60,
       canclick: true
@@ -117,7 +116,7 @@ export default {
         this.content = '重新发送(' + this.totalTime + ')'
         if (this.totalTime < 0) {
           window.clearInterval(clock)
-          this.content = '发送验证码'
+          this.content = '获取验证码'
           this.totalTime = 60
           this.canclick = true
         }
