@@ -1,12 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import shoppingCart from './modules/shoppingCart'
-
+import mutations from './mutation'
+import actions from './action'
 Vue.use(Vuex)
+
+const state = {
+  username: '', // 登录用户名
+  cartCount: 0 // 购物车商品数量
+}
 
 export default new Vuex.Store({
   strict: true,
-  modules: {
-    shoppingCart
-  }
+  state,
+  mutations,
+  actions
 })

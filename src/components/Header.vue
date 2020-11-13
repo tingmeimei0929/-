@@ -8,12 +8,14 @@
                     <li v-for="(item,index) in topbarInfo" :key="index"><a :href="item.href">{{ item.name }}</a><span class="sep">|</span></li>
             </ul>
             <ul class="topbar-info">
-            <li @click="dialogVisible = true">登录 <span class="sep">|</span></li>
-            <li @click="signUp">注册 <span class="sep">|</span></li>
+            <li v-if="username">{{ username }}</li>
+            <li @click="dialogVisible = true" v-if="!username">登录 <span class="sep">|</span></li>
+            <li @click="signUp" v-if="!username">注册 <span class="sep">|</span></li>
             <li>消息通知</li>
+            <li v-if="username">我的订单</li>
             <li class="cartLi"
                 @click="cart">
-                <i class="el-icon-aligouwuchekong"></i>购物车<span>(0)</span>
+                <i class="el-icon-aligouwuchekong" ></i>购物车<span>{{cartCount}}</span>
             </li>
             </ul>
             <el-dialog title="小米商城用户协议"
@@ -39,7 +41,7 @@
 </template>
 
 <script>
-// import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   name: 'Header',
   data () {
@@ -60,14 +62,23 @@ export default {
         { href: 'javascript:;', name: 'Select Location' }]
     }
   },
-  //   computed: {
-  //     // 获取vuex重的dialogVisible,控制提示组件是否显示
-  //     dialogVisible: {
-  //       get () {
-  //         return this.$store.getters.getShow
-  //       }
-  //     }
-  //   },
+  computed: {
+    ...mapState(['username', 'cartCount'])
+  },
+  filters: {
+    currency (val) {
+      if (!val) {
+        return '¥' + val.toFixed(2) + '元'
+      }
+    }
+  },
+  mounted () {
+    this.getProuductList()
+    const params = this.$router.params
+    if (params && params.from === 'login') {
+      this.getCartCount()
+    }
+  },
   methods: {
     login () {
       this.$router.push({
@@ -82,6 +93,24 @@ export default {
     cart () {
       this.$router.push({
         path: '/Cart'
+      })
+    },
+    getProuductList () {
+      this.axios.get('/products', {
+        params: {
+          categoryId: '100012',
+          pageSize: 6
+        }
+      }).then(res => {
+        //   Math.max(res.list, 6)
+        if (res.list.length >= 6) {
+          this.phoneList = res.list.slice(0, 6)
+        }
+      })
+    },
+    getCartCount () {
+      this.axios.get('/carts/product/sum').then((res = 0) => {
+        this.$store.dispatch('saveCartCount', res)
       })
     }
 

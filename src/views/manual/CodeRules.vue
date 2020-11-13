@@ -13,7 +13,7 @@
         <el-container class="body">
             <el-aside class="leftMenu">
                 <el-menu :default-openeds="['3','3-2']" :default-active="$route.path" class="el-menu-vertical-demo"
-                        :collapse="isCollapse" router>
+                        @select="handleSelect" :unique-opened="true" active-text-color="#ff6700" :collapse="isCollapse">
                     <el-submenu :index="item.id + ''" v-for="item in leftMenu.menuList" :key="item.id">
                         <template slot="title">{{item.authName}}</template>
                         <el-submenu :index="item1.id + ''" v-for="item1 in item.children" :key="item1.id" >
