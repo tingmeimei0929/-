@@ -7,5 +7,9 @@ export default {
   },
   saveCartCount (state, count) {
     state.cartCount = count
+  },
+  setShoppingCart (state, data) {
+    //   设置购物车状态
+    state.shoppingCart = data
   }
 }

@@ -54,20 +54,21 @@
                         position: relative;
                         list-style: none;
                         overflow: hidden;
-                        margin-left: 14px;
+                        margin-left:0 0 14px 14px;
                         cursor: pointer;
                         -webkit-transition: all .2s linear;
                         transition: all .2s linear;
                         color: #757575;
-                        margin-bottom: 14px;
 
                         .thumb {
                             width: 160px;
                             margin: 0 auto 22px;
 
                             img {
-                            width: 160px;
-                            height: 160px;
+                                width: 140px;
+                                height: 140px;
+                                display: block;
+                                margin: 40px auto 20px;
                             }
                         }
 

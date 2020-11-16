@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import mutations from './mutation'
 import actions from './action'
+import shoppingCart from './modules/shoppingCart'
+import getters from './getters'
 Vue.use(Vuex)
 
 const state = {
@@ -13,5 +15,9 @@ export default new Vuex.Store({
   strict: true,
   state,
   mutations,
-  actions
+  actions,
+  getters,
+  modules: {
+    shoppingCart
+  }
 })

@@ -7,5 +7,8 @@ export default {
   },
   saveCartCount (context, count) {
     context.commit('saveUserName', count)
+  },
+  setShoppingCart ({ commit }, data) {
+    commit('setShoppingCart', data)
   }
 }
